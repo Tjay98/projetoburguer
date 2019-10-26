@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Preencha os campos para efetuar registo de uma conta:</p>
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-3">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
@@ -25,10 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
-                <?= $form ->field($model, 'nif') ?>
+
 
                 <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                    <?= Html::submitButton('Registo', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

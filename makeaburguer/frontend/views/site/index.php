@@ -12,6 +12,14 @@ $this->title = 'My Yii Application';
         <p class="lead">Projeto Make A Burguer</p>
 
 
+                <div class="jumbotron">
+                    <a>Menu</a>
+                </div>
+                <div class="jumbotron">
+                    <a>Promoções</a>
+                </div>
+
+
     </div>
 
     <div class="body-content">
