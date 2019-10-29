@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
@@ -12,12 +14,10 @@ $this->title = 'My Yii Application';
         <p class="lead">Projeto Make A Burguer</p>
 
 
-                <div class="jumbotron">
-                    <a>Menu</a>
-                </div>
-                <div class="jumbotron">
-                    <a>Promoções</a>
-                </div>
+
+                    <button class="container">Menu</button>
+                    <button class="container">Promoções</button>
+
 
 
     </div>
