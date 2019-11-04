@@ -17,7 +17,13 @@
         "php": ">=5.6.0",
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+<<<<<<< HEAD
+        "dmstr/yii2-adminlte-asset": "^2.1"
+=======
+        "dmstr/yii2-adminlte-asset": "^2.1",
+        "yidas/yii2-adminlte": "^2.2"
+>>>>>>> fc1290aff8a4bf28fe02da3f072b35bdbf7b13c0
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
