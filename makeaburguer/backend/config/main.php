@@ -11,18 +11,17 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-<<<<<<< Updated upstream
-=======
-    'homeUrl' => '/makeaburguer/admin',
->>>>>>> Stashed changes
     'modules' => [],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
-<<<<<<< Updated upstream
-=======
-            'baseUrl'=>'makeaburguer/admin'
->>>>>>> Stashed changes
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+                ],
+            ],
         ],
         'user' => [
             'identityClass' => 'common\models\User',
