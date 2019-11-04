@@ -2,7 +2,6 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/almasaeed2010/adminlte" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/behat/gherkin" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/bower-asset/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/bower-asset/inputmask" />
@@ -10,16 +9,13 @@
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/bower-asset/punycode" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/bower-asset/yii2-pjax" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/cebe/markdown" />
-      <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/cebe/yii2-gravatar" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/codeception/base" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/codeception/phpunit-wrapper" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/codeception/stub" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/codeception/verify" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/dmstr/yii2-adminlte-asset" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/ezyang/htmlpurifier" />
-      <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/fortawesome/font-awesome" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/myclabs/deep-copy" />
@@ -39,7 +35,6 @@
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/ralouphie/getallheaders" />
-      <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/rmrevin/yii2-fontawesome" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/sebastian/code-unit-reverse-lookup" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/sebastian/comparator" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/sebastian/diff" />
@@ -62,8 +57,6 @@
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/symfony/yaml" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/webmozart/assert" />
-      <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/yidas/yii2-adminlte" />
-      <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/yidas/yii2-fontawesome" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/yiisoft/yii2" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/yiisoft/yii2-bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/makeaburguer/vendor/yiisoft/yii2-composer" />

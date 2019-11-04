@@ -64,13 +64,6 @@
       <path value="$PROJECT_DIR$/makeaburguer/vendor/sebastian/environment" />
       <path value="$PROJECT_DIR$/makeaburguer/vendor/sebastian/comparator" />
       <path value="$PROJECT_DIR$/makeaburguer/vendor/sebastian/global-state" />
-      <path value="$PROJECT_DIR$/makeaburguer/vendor/yidas/yii2-adminlte" />
-      <path value="$PROJECT_DIR$/makeaburguer/vendor/yidas/yii2-fontawesome" />
-      <path value="$PROJECT_DIR$/makeaburguer/vendor/fortawesome/font-awesome" />
-      <path value="$PROJECT_DIR$/makeaburguer/vendor/dmstr/yii2-adminlte-asset" />
-      <path value="$PROJECT_DIR$/makeaburguer/vendor/almasaeed2010/adminlte" />
-      <path value="$PROJECT_DIR$/makeaburguer/vendor/cebe/yii2-gravatar" />
-      <path value="$PROJECT_DIR$/makeaburguer/vendor/rmrevin/yii2-fontawesome" />
     </include_path>
   </component>
   <component name="PhpUnit">
