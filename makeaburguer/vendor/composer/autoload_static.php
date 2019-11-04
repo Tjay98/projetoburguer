@@ -28,20 +28,10 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
             'yii\\composer\\' => 13,
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
-            'yidas\\yii\\fontawesome\\' => 22,
-            'yidas\\adminlte\\' => 15,
-        ),
-        'r' => 
-        array (
-            'rmrevin\\yii\\fontawesome\\' => 24,
         ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
-        ),
-        'd' => 
-        array (
-            'dmstr\\' => 6,
         ),
         'c' => 
         array (
@@ -124,27 +114,11 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
-        'yidas\\yii\\fontawesome\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yidas/yii2-fontawesome/src',
-        ),
-        'yidas\\adminlte\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yidas/yii2-adminlte/src',
-        ),
-        'rmrevin\\yii\\fontawesome\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/rmrevin/yii2-fontawesome',
-        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-        ),
-        'dmstr\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dmstr/yii2-adminlte-asset',
         ),
         'cebe\\markdown\\' => 
         array (
@@ -242,13 +216,6 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
     );
 
     public static $prefixesPsr0 = array (
-        'c' => 
-        array (
-            'cebe\\gravatar\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/cebe/yii2-gravatar',
-            ),
-        ),
         'H' => 
         array (
             'HTMLPurifier' => 
