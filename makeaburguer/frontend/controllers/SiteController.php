@@ -257,4 +257,7 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+    public function actionmenu(){
+        return $this->render('menu.php');
+    }
 }

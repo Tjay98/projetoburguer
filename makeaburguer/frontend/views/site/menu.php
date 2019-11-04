@@ -17,10 +17,7 @@ $this->title = 'My Yii Application';
 
 
 
-                    <button class="container">Menu</button>
-                    <button class="container">Promoções</button>
-
-        <a href="#"><?php echo Html::img('@web/menutemp.jpg')?></a>
+                <?php echo Html::img('@web/menutemp.jpg')?>
 
 
 
