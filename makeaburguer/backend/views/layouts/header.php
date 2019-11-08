@@ -33,7 +33,7 @@ use yii\helpers\Html;
                                 <li><!-- start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="<?= $directoryAsset ?>/img/avatar-test2.png" class="img-circle"
+                                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
                                                  alt="User Image"/>
                                         </div>
                                         <h4>
