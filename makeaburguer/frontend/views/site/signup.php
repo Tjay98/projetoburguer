@@ -15,17 +15,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>Preencha os campos para efetuar registo de uma conta:</p>
 
-    <div class="row">
-        <div class="col-lg-3">
+    <div class="row" >
+        <div class="col-lg-4">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
                 <?= $form->field($model, 'email') ?>
 
-                <?= $form->field($model,'nif') ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
+
+
 
 
 

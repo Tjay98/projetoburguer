@@ -13,8 +13,8 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-    public $nif;
-
+   // public $nif;
+   // public $telemóvel;
 
     /**
      * {@inheritdoc}
@@ -24,21 +24,26 @@ class SignupForm extends Model
         return [
             ['username', 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nome de utilizador já está registado.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este email já está registado.'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
 
-            ['nif','required'],
-            ['nif','string','length'=>9],
-            ['nif','unique']
+           // ['nif','required'],
+            //['nif','string','length'=>9],
+            //['nif','unique','targetClass'=>'\common\models\User','message'=>'Este nif já está atribuido a outro utilizador'],
+
+          //  ['telemóvel','trim'],
+          //  ['telemóvel','string','length'=>9],
+
+
         ];
     }
 
