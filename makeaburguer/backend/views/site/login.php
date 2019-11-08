@@ -56,7 +56,8 @@ $fieldOptions2 = [
 
 
         <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <?= Html::a('Registar uma conta nova', ['frontend/site/signup']) ?>
+        <a href="#" class="text-center">Register a new membership</a>
 
     </div>
     <!-- /.login-box-body -->
