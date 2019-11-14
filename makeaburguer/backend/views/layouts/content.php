@@ -2,7 +2,6 @@
 use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
 use vendor\almasaeed2010\adminlte\pages;
-php
 ?>
 <div class="content-wrapper">
     <section class="content-header">
