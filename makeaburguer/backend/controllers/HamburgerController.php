@@ -1,7 +1,9 @@
 <?php
 
-namespace app\controllers;
+namespace backend\controllers;
 
+use yii\helpers\ArrayHelper;
+use app\models\Ingrediente;
 use Yii;
 use app\models\Hamburger;
 use app\models\HamburgerSearch;
@@ -44,6 +46,14 @@ class HamburgerController extends Controller
         ]);
     }
 
+   /* public function toList()
+
+    {
+        $model = Igrediente::model()->findAll('');
+
+        return CHtml::listData($model, 'CodDepartment', 'CodDepartment'." | ".'DescDepartment');
+    }*/
+
     /**
      * Displays a single Hamburger model.
      * @param integer $id
@@ -66,12 +76,15 @@ class HamburgerController extends Controller
     {
         $model = new Hamburger();
 
+        $getI =Ingrediente::find()->all();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
+//por 'getI' =$getI no create
         return $this->render('create', [
             'model' => $model,
+            'getI' => ArrayHelper::map($getI,'id','nome'),
         ]);
     }
 
@@ -124,4 +137,12 @@ class HamburgerController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+    public function  actionGetIngrediente(){
+
+        $this->find()->all();
+        return ArrayHelper::map(Ingrediente::find()->all(),'id','nome');
+    }
+
 }

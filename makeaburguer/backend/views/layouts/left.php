@@ -31,10 +31,16 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
+                    ['label' => 'user', 'url' => ['user/index']],
+                    ['label' => 'hamburger', 'url' => ['hamburger/index']],
+                    ['label' => 'cliente', 'url' => ['cliente/index']],
+                    ['label' => 'ingrediente', 'url' => ['ingrediente/index']],
+                    ['label' => 'pedido', 'url' => ['pedido/index']],
+                    ['label' => 'produtos', 'url' => ['produtos/index']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    [
+                     /*  [
                         'label' => 'Some tools',
                         'icon' => 'share',
                         'url' => '#',
@@ -59,7 +65,7 @@
                                 ],
                             ],
                         ],
-                    ],
+                    ],*/
                 ],
             ]
         ) ?>
