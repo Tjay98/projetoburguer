@@ -26,7 +26,7 @@ use yii\helpers\Html;
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= $directoryAsset ?>/img/user-icon-white.png" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Nome utilizador</span>
+                        <span class="hidden-xs"><?= \Yii::$app->user->identity->username ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -35,7 +35,7 @@ use yii\helpers\Html;
                                  alt="User Image"/>
 
                             <p>
-                                Nome de utilizador temporario
+                                <?= \Yii::$app->user->identity->username ?>
                             </p>
                         </li>
                         <!-- Menu Body -->

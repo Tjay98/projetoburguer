@@ -8,7 +8,7 @@
                 <img src="<?= $directoryAsset ?>/img/user-icon-white.png" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>utilizador</p>
+                <h4><?= \Yii::$app->user->identity->username ?></h4>
 
 
             </div>

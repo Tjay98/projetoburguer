@@ -8,6 +8,7 @@ use Yii;
 use app\models\Hamburger;
 use app\models\HamburgerSearch;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -37,13 +38,19 @@ class HamburgerController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new HamburgerSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(Yii::$app->user->can('view-admin')) {
+            $searchModel = new HamburgerSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -66,18 +73,24 @@ class HamburgerController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Hamburger();
+        if(Yii::$app->user->can('create-all-admin')) {
+            $model = new Hamburger();
 
-        $getI =Ingrediente::find()->all();
+            $getI = Ingrediente::find()->all();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+            return $this->render('create', [
+                'model' => $model,
+                'getI' => ArrayHelper::map($getI, 'id', 'nome'),
+            ]);
         }
-//por 'getI' =$getI no create
-        return $this->render('create', [
-            'model' => $model,
-            'getI' => ArrayHelper::map($getI,'id','nome'),
-        ]);
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -89,18 +102,25 @@ class HamburgerController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if(Yii::$app->user->can('update-detalhes')) {
 
-        $getI =Ingrediente::find()->all();
+            $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $getI = Ingrediente::find()->all();
+
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+            return $this->render('update', [
+                'model' => $model,
+                'getI' => ArrayHelper::map($getI, 'id', 'nome'),
+            ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-            'getI' => ArrayHelper::map($getI,'id','nome'),
-        ]);
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -112,9 +132,15 @@ class HamburgerController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if (Yii::$app->user->can('delete-produto')) {
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        }
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**

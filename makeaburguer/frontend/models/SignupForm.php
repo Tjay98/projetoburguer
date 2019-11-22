@@ -13,6 +13,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $repeat;
    // public $nif;
    // public $telemóvel;
 
@@ -34,7 +35,10 @@ class SignupForm extends Model
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este email já está registado.'],
 
             ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'string', 'min' => 6, 'max'=>25],
+
+
+          //  ['Repeat','compare','compareAttribute'=>'Password','message'=>'password must be the same']
 
            // ['nif','required'],
             //['nif','string','length'=>9],
@@ -65,6 +69,7 @@ class SignupForm extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
+
         return $user->save() && $this->sendEmail($user);
 
     }
