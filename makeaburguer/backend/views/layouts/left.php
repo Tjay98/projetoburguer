@@ -1,7 +1,7 @@
 <aside class="main-sidebar">
 
     <section class="sidebar">
-
+        <?php if(Yii::$app->user->can('admin')) { ?>
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
@@ -31,45 +31,41 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
-                    ['label' => 'user', 'url' => ['user/index']],
-                    ['label' => 'hamburger', 'url' => ['hamburger/index']],
-                    ['label' => 'cliente', 'url' => ['cliente/index']],
-                    ['label' => 'ingrediente', 'url' => ['ingrediente/index']],
-                    ['label' => 'pedido', 'url' => ['pedido/index']],
-                    ['label' => 'produtos', 'url' => ['produtos/index']],
+                    ['label' => 'User', 'url' => ['user/index']],
+                    ['label' => 'Hamburger', 'url' => ['hamburger/index']],
+                    ['label' => 'Cliente', 'url' => ['cliente/index']],
+                    ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
+                    ['label' => 'Pedido', 'url' => ['pedido/index']],
+                    ['label' => 'Produtos', 'url' => ['produtos/index']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                     /*  [
-                        'label' => 'Some tools',
-                        'icon' => 'share',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],*/
+
                 ],
             ]
         ) ?>
+        <?php } else{ ?>
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="<?= $directoryAsset ?>/img/user-icon-white.png" class="img-circle" alt="User Image"/>
+            </div>
+            <div class="pull-left info">
+                <h4>Guest</h4>
 
+
+            </div>
+        </div>
+            <?= dmstr\widgets\Menu::widget(
+                [
+                    'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+                    'items' => [
+
+                        ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+
+                    ],
+                ]
+            ) ?>
+        <?php }?>
     </section>
 
 </aside>

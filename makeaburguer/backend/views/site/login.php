@@ -53,11 +53,6 @@ $fieldOptions2 = [
 
         <?php ActiveForm::end(); ?>
 
-
-
-        <a href="#">I forgot my password</a><br>
-        <?= Html::a('Registar uma conta nova', ['frontend/site/signup']) ?>
-
     </div>
     <!-- /.login-box-body -->
 </div><!-- /.login-box -->
