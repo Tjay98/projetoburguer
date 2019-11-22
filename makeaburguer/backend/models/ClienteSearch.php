@@ -18,7 +18,7 @@ class ClienteSearch extends Cliente
     {
         return [
             [['id', 'nif', 'id_user'], 'integer'],
-            [['nome', 'telemovel', 'email', 'password', 'estado'], 'safe'],
+            [['nome', 'telemovel', 'email', 'password'], 'safe'],
         ];
     }
 
@@ -66,8 +66,7 @@ class ClienteSearch extends Cliente
         $query->andFilterWhere(['like', 'nome', $this->nome])
             ->andFilterWhere(['like', 'telemovel', $this->telemovel])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'estado', $this->estado]);
+            ->andFilterWhere(['like', 'password', $this->password]);
 
         return $dataProvider;
     }

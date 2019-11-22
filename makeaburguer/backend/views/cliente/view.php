@@ -35,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'telemovel',
             'email:email',
             'password',
-            'estado',
             'id_user',
         ],
     ]) ?>
