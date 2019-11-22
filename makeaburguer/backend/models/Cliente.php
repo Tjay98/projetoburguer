@@ -13,7 +13,6 @@ use Yii;
  * @property string $telemovel
  * @property string $email
  * @property string $password
- * @property string $estado
  * @property int $id_user
  *
  * @property User $user
@@ -35,9 +34,9 @@ class Cliente extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'nif', 'telemovel', 'email', 'password', 'estado', 'id_user'], 'required'],
+            [['nome', 'nif', 'telemovel', 'email', 'password', 'id_user'], 'required'],
             [['nif', 'id_user'], 'integer'],
-            [['nome', 'email', 'password', 'estado'], 'string', 'max' => 50],
+            [['nome', 'email', 'password'], 'string', 'max' => 50],
             [['telemovel'], 'string', 'max' => 20],
             [['nif'], 'unique'],
             [['email'], 'unique'],
@@ -57,7 +56,6 @@ class Cliente extends \yii\db\ActiveRecord
             'telemovel' => 'Telemovel',
             'email' => 'Email',
             'password' => 'Password',
-            'estado' => 'Estado',
             'id_user' => 'Id User',
         ];
     }

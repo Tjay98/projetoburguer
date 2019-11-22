@@ -22,8 +22,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'estado')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'id_user')->textInput() ?>
 
     <div class="form-group">
