@@ -14,7 +14,9 @@ use Yii;
  * @property string $email
  * @property string $password
  * @property string $estado
+ * @property int $id_user
  *
+ * @property User $user
  * @property Pedido[] $pedidos
  */
 class Cliente extends \yii\db\ActiveRecord
@@ -33,12 +35,13 @@ class Cliente extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'nif', 'telemovel', 'email', 'password', 'estado'], 'required'],
-            [['nif'], 'integer'],
+            [['nome', 'nif', 'telemovel', 'email', 'password', 'estado', 'id_user'], 'required'],
+            [['nif', 'id_user'], 'integer'],
             [['nome', 'email', 'password', 'estado'], 'string', 'max' => 50],
             [['telemovel'], 'string', 'max' => 20],
             [['nif'], 'unique'],
             [['email'], 'unique'],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
         ];
     }
 
@@ -55,7 +58,16 @@ class Cliente extends \yii\db\ActiveRecord
             'email' => 'Email',
             'password' => 'Password',
             'estado' => 'Estado',
+            'id_user' => 'Id User',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 namespace backend\controllers;
 
+use app\models\Hamburger;
+use app\models\Cliente;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -60,7 +62,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $Hamburger = Hamburger::find()->count();
+        $Cliente = Cliente::find()->count();
+
+        return $this->render('index',
+            ['Hamburger' => $Hamburger,
+            'Cliente' => $Cliente ]
+        );
     }
 
     /**
@@ -96,5 +104,10 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionCount(){
+        $count = Notification::model()->countByAttributes(array('user_id'=> Yii::app()->user->uid));
+        return $count;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -17,7 +17,7 @@ class ClienteSearch extends Cliente
     public function rules()
     {
         return [
-            [['id', 'nif'], 'integer'],
+            [['id', 'nif', 'id_user'], 'integer'],
             [['nome', 'telemovel', 'email', 'password', 'estado'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class ClienteSearch extends Cliente
         $query->andFilterWhere([
             'id' => $this->id,
             'nif' => $this->nif,
+            'id_user' => $this->id_user,
         ]);
 
         $query->andFilterWhere(['like', 'nome', $this->nome])

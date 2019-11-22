@@ -46,14 +46,6 @@ class HamburgerController extends Controller
         ]);
     }
 
-   /* public function toList()
-
-    {
-        $model = Igrediente::model()->findAll('');
-
-        return CHtml::listData($model, 'CodDepartment', 'CodDepartment'." | ".'DescDepartment');
-    }*/
-
     /**
      * Displays a single Hamburger model.
      * @param integer $id
@@ -99,12 +91,15 @@ class HamburgerController extends Controller
     {
         $model = $this->findModel($id);
 
+        $getI =Ingrediente::find()->all();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'getI' => ArrayHelper::map($getI,'id','nome'),
         ]);
     }
 
@@ -138,11 +133,11 @@ class HamburgerController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-
-    public function  actionGetIngrediente(){
+   /* public function  actionGetIngrediente(){
 
         $this->find()->all();
         return ArrayHelper::map(Ingrediente::find()->all(),'id','nome');
-    }
+    }*/
+
 
 }
