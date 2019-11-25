@@ -38,7 +38,7 @@ class HamburgerController extends Controller
      */
     public function actionIndex()
     {
-        if(Yii::$app->user->can('view-admin')) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
             $searchModel = new HamburgerSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -61,7 +61,7 @@ class HamburgerController extends Controller
      */
     public function actionView($id)
     {
-        if(Yii::$app->user->can('view-admin')) {
+        if((Yii::$app->user->can('view-detalhes-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
             return $this->render('view', [
                 'model' => $this->findModel($id),
             ]);

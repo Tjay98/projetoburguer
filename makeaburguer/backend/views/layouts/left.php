@@ -46,9 +46,9 @@
                     ['label' => 'Hamburger', 'url' => ['hamburger/index']],
                     ['label' => 'Cliente', 'url' => ['cliente/index']],
                     ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
+                    ['label' => 'Produtos', 'url' => ['produtos/index']],
                     ['label' => 'Pedido', 'url' => ['pedido/index']],
                     ['label' => 'Menus', 'url' => ['menu/index']],
-                    ['label' => 'Produtos', 'url' => ['produtos/index']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
 
@@ -63,9 +63,10 @@
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
                     ['label' => 'Hamburger', 'url' => ['hamburger/index']],
                     ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
+                    ['label' => 'Produtos', 'url' => ['produtos/index']],
                     ['label' => 'Pedido', 'url' => ['pedido/index']],
                     ['label' => 'Menus', 'url' => ['menu/index']],
-                    ['label' => 'Produtos', 'url' => ['produtos/index']],
+
 
 
                 ],
