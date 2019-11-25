@@ -6,6 +6,7 @@ use app\models\Cliente;
 use app\models\Ingrediente;
 use app\models\Pedido;
 use app\models\Produtos;
+use app\models\Menu;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -72,10 +73,17 @@ class SiteController extends Controller
             $Produtos = Produtos::find()->count();
             $Ingredientes = Ingrediente::find()->count();
             $Pedidos = Pedido::find()->count();
+            $Menu= Menu::find()->count();
 
 
             return $this->render('index',
-                ['Hamburger' => $Hamburger, 'Cliente' => $Cliente, 'Produtos' => $Produtos, 'Ingredientes' => $Ingredientes, 'Pedidos' => $Pedidos
+                [
+                    'Hamburger' => $Hamburger,
+                    'Cliente' => $Cliente,
+                    'Produtos' => $Produtos,
+                    'Ingredientes' => $Ingredientes,
+                    'Pedidos' => $Pedidos,
+                    'Menu'=>$Menu,
                 ]
             );
         }
