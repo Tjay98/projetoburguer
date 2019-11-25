@@ -3,11 +3,15 @@ namespace backend\controllers;
 
 use app\models\Hamburger;
 use app\models\Cliente;
+use app\models\Ingrediente;
+use app\models\Pedido;
+use app\models\Produtos;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use yii\web\ForbiddenHttpException;
 
 /**
  * Site controller
@@ -62,13 +66,26 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $Hamburger = Hamburger::find()->count();
-        $Cliente = Cliente::find()->count();
+        if(Yii::$app->user->can('login-backoffice')) {
+            $Hamburger = Hamburger::find()->count();
+            $Cliente = Cliente::find()->count();
+            $Produtos = Produtos::find()->count();
+            $Ingredientes = Ingrediente::find()->count();
+            $Pedidos = Pedido::find()->count();
 
-        return $this->render('index',
-            ['Hamburger' => $Hamburger,
-            'Cliente' => $Cliente ]
-        );
+
+            return $this->render('index',
+                ['Hamburger' => $Hamburger, 'Cliente' => $Cliente, 'Produtos' => $Produtos, 'Ingredientes' => $Ingredientes, 'Pedidos' => $Pedidos
+                ]
+            );
+        }
+        else{
+            //soluçao temporaria
+            //o utilizador ao fazer login nao sendo admin leva logout e vai para a página inicial
+
+            Yii::$app->user->logout();
+            return $this->goHome();
+        }
     }
 
     /**
@@ -106,8 +123,5 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionCount(){
-        $count = Notification::model()->countByAttributes(array('user_id'=> Yii::app()->user->uid));
-        return $count;
-    }
+
 }

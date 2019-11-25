@@ -61,9 +61,14 @@ class HamburgerController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if(Yii::$app->user->can('view-admin')) {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }
+        else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -73,7 +78,7 @@ class HamburgerController extends Controller
      */
     public function actionCreate()
     {
-        if(Yii::$app->user->can('create-all-admin')) {
+        if(Yii::$app->user->can('create-admin')) {
             $model = new Hamburger();
 
             $getI = Ingrediente::find()->all();
@@ -102,7 +107,7 @@ class HamburgerController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(Yii::$app->user->can('update-detalhes')) {
+        if(Yii::$app->user->can('update-detalhes-admin')) {
 
             $model = $this->findModel($id);
 
@@ -132,7 +137,7 @@ class HamburgerController extends Controller
      */
     public function actionDelete($id)
     {
-        if (Yii::$app->user->can('delete-produto')) {
+        if (Yii::$app->user->can('delete-admin')) {
             $this->findModel($id)->delete();
 
             return $this->redirect(['index']);

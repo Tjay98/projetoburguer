@@ -22,7 +22,7 @@ use yii\helpers\Html;
 
 
                 <!-- User Account: style can be found in dropdown.less -->
-            <?php if(Yii::$app->user->can('admin')) {?>
+            <?php if((Yii::$app->user->can('admin'))||(Yii::$app->user->can('funcionario'))) {?>
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= $directoryAsset ?>/img/user-icon-white.png" class="user-image" alt="User Image"/>
