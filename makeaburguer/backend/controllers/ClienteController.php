@@ -58,7 +58,7 @@ class ClienteController extends Controller
      */
     public function actionView($id)
     {
-        if(Yii::$app->user->can('view-detalhes-admin')) {
+        if(Yii::$app->user->can('view-admin')) {
             return $this->render('view', [
                 'model' => $this->findModel($id),
             ]);

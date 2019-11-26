@@ -59,7 +59,7 @@ class ProdutosController extends Controller
      */
     public function actionView($id)
     {
-        if((Yii::$app->user->can('view-detalhes-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
             return $this->render('view', [
                 'model' => $this->findModel($id),
             ]);

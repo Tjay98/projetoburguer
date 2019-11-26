@@ -77,7 +77,7 @@ class MenuController extends Controller
      */
     public function actionCreate()
     {
-        if(Yii::$app->user->can('view-detalhes-admin')) {
+        if(Yii::$app->user->can('create-admin')) {
             $model = new Menu();
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
