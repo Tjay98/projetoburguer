@@ -8,7 +8,6 @@ use Yii;
  * This is the model class for table "menu".
  *
  * @property int $id
- * @property string $nome
  * @property int $id_hamburger
  * @property int $id_bebida
  * @property int $id_complemento
@@ -22,7 +21,7 @@ use Yii;
  * @property Produtos $complemento
  * @property Produtos $sobremesa
  * @property Produtos $extra
- * @property Menupedido[] $menupedidos
+ * @property Pedido[] $pedidos
  */
 class Menu extends \yii\db\ActiveRecord
 {
@@ -40,10 +39,8 @@ class Menu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome'], 'required'],
             [['id_hamburger', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
             [['preco'], 'number'],
-            [['nome'], 'string', 'max' => 50],
             [['descricao'], 'string', 'max' => 255],
             [['id_hamburger'], 'exist', 'skipOnError' => true, 'targetClass' => Hamburger::className(), 'targetAttribute' => ['id_hamburger' => 'id']],
             [['id_bebida'], 'exist', 'skipOnError' => true, 'targetClass' => Produtos::className(), 'targetAttribute' => ['id_bebida' => 'id']],
@@ -60,7 +57,6 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nome' => 'Nome',
             'id_hamburger' => 'Id Hamburger',
             'id_bebida' => 'Id Bebida',
             'id_complemento' => 'Id Complemento',
@@ -114,8 +110,8 @@ class Menu extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMenupedidos()
+    public function getPedidos()
     {
-        return $this->hasMany(Menupedido::className(), ['id_menus' => 'id']);
+        return $this->hasMany(Pedido::className(), ['id_menu' => 'id']);
     }
 }
