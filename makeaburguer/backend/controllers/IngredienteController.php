@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
+use app\models\Hamburger;
 use app\models\Ingrediente;
 use app\models\IngredienteSearch;
 use yii\web\Controller;
@@ -127,15 +128,42 @@ class IngredienteController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
-        if(Yii::$app->user->can('delete-admin')) {
-            $this->findModel($id)->delete();
 
-            return $this->redirect(['index']);
+    public function actionDelete($id){
+
+        if(Yii::$app->user->can('delete-admin')) {
+
+
+            $verifica = Hamburger::find()
+                ->select('id')
+                ->where(['ingrediente1' => $id])
+                ->orWhere(['ingrediente2' => $id])
+                ->orWhere(['ingrediente3' => $id])
+                ->orWhere(['ingrediente4' => $id])
+                ->orWhere(['ingrediente5' => $id])
+                ->orWhere(['ingrediente6' => $id])
+                ->orWhere(['ingrediente7' => $id])
+                ->orWhere(['ingrediente8' => $id])
+                ->orWhere(['ingrediente9' => $id])
+                ->orWhere(['ingrediente10' => $id])
+                ->orWhere(['ingrediente_extra1' => $id])
+                ->orWhere(['ingrediente_extra2' => $id])
+                ->orWhere(['ingrediente_extra3' => $id])
+                ->orWhere(['ingrediente_extra4' => $id])
+                ->orWhere(['ingrediente_extra5' => $id])
+                ->one();
+            if( $verifica !== null ) {
+
+                return $this->redirect(['hamburger/view','id' => $verifica->id]);
+            }
+            else{
+
+                $this->findModel($id)->delete();
+                return $this->redirect(['index']);
+            }
         }
-        else
-        {
+
+        else{
             throw new ForbiddenHttpException();
         }
     }
