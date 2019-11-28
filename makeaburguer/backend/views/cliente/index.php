@@ -14,11 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
+    <?Php if(Yii::$app->user->can('admin')){?>
     <p>
         <?= Html::a('Criar Cliente', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php }?>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

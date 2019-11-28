@@ -143,11 +143,13 @@ class ActionColumn extends Column
     protected function initDefaultButtons()
     {
         $this->initDefaultButton('view', 'eye-open');
-        $this->initDefaultButton('update', 'pencil');
-        $this->initDefaultButton('delete', 'trash', [
-            'data-confirm' => Yii::t('yii', 'Tem a certeza que deseja apagar o item selecionado? Se tiver um produto associado irá redirecionar para o mesmo!'),
-            'data-method' => 'post',
-        ]);
+        if(yii::$app->user->can('admin')) {
+            $this->initDefaultButton('update', 'pencil');
+            $this->initDefaultButton('delete', 'trash', [
+                'data-confirm' => Yii::t('yii', 'Tem a certeza que deseja apagar o item selecionado? Se tiver um produto associado irá redirecionar para o mesmo!'),
+                'data-method' => 'post',
+            ]);
+        }
     }
 
     /**
