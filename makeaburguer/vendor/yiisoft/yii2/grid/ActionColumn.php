@@ -145,7 +145,7 @@ class ActionColumn extends Column
         $this->initDefaultButton('view', 'eye-open');
         $this->initDefaultButton('update', 'pencil');
         $this->initDefaultButton('delete', 'trash', [
-            'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+            'data-confirm' => Yii::t('yii', 'Tem a certeza que deseja apagar o item selecionado? Se tiver um produto associado irá redirecionar para o mesmo!'),
             'data-method' => 'post',
         ]);
     }

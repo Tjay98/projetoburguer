@@ -103,7 +103,7 @@ class ProdutosController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(Yii::$app->user->can('update-admin')) {
+        if(Yii::$app->user->can('update-detalhes-admin')) {
             $model = $this->findModel($id);
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {

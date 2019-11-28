@@ -6,14 +6,14 @@ use backend\models\Ingrediente;
 /* @var $this yii\web\View */
 /* @var $model app\models\Hamburger */
 
-$this->title = $model->id;
+$this->title = $model->nome;
 $this->params['breadcrumbs'][] = ['label' => 'Hamburgers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="hamburger-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
