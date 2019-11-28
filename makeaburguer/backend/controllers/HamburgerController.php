@@ -62,6 +62,9 @@ class HamburgerController extends Controller
     public function actionView($id)
     {
         if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
+
+            //Ingrediente::find()->select(nome) selecionar ingredien nome pelo hamburger id
+
             return $this->render('view', [
                 'model' => $this->findModel($id),
             ]);
