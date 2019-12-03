@@ -3,6 +3,18 @@ body {
     height: 100%;
 }
 
+#imagem1{
+   align: center;
+
+}
+
+.carousel{
+    width:33% !important;
+    height:300px !important;
+    align-content: center;
+    background-color: transparent;
+
+}
 .wrap {
     min-height: 100%;
     height: auto;
@@ -108,6 +120,13 @@ a.desc:after {
         width: 100%;
         padding: 10px 15px;
     }
+    .carousel{
+        width:100% !important;
+        height:300px !important;
+        align-content: center;
+        background-color: transparent;
+
+    }
 }
 
 .nav > li > form > button.logout:focus,
@@ -118,8 +137,3 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
-/*
-.botaomenu{
-    background-image: url("/web/")
-}
- */

@@ -64,9 +64,12 @@ class HamburgerController extends Controller
         if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
 
             //Ingrediente::find()->select(nome) selecionar ingredien nome pelo hamburger id
+            $model = $this->findModel($id);
+            $getI = Ingrediente::find()->all();
 
             return $this->render('view', [
-                'model' => $this->findModel($id),
+                'model' => $model,
+                'getI' => ArrayHelper::map($getI, 'id', 'nome'),
             ]);
         }
         else{
@@ -167,11 +170,6 @@ class HamburgerController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-   /* public function  actionGetIngrediente(){
-
-        $this->find()->all();
-        return ArrayHelper::map(Ingrediente::find()->all(),'id','nome');
-    }*/
 
 
 }
