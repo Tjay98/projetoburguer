@@ -41,6 +41,7 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
         ),
         'd' => 
         array (
+            'dosamigos\\datetimepicker\\' => 25,
             'dosamigos\\datepicker\\' => 21,
             'dmstr\\' => 6,
         ),
@@ -142,6 +143,10 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'dosamigos\\datetimepicker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/2amigos/yii2-date-time-picker-widget/src',
         ),
         'dosamigos\\datepicker\\' => 
         array (
