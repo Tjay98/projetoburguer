@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use app\models\Hamburger;
+use app\models\Pedido;
 use app\models\Produtos;
 use Yii;
 use app\models\Menu;
@@ -175,9 +176,22 @@ class MenuController extends Controller
     public function actionDelete($id)
     {
         if(Yii::$app->user->can('delete-admin')) {
-            $this->findModel($id)->delete();
 
-            return $this->redirect(['index']);
+            $verifica = Pedido::find()
+                ->select('id')
+                ->where(['id_menu' => $id])
+                ->one();
+
+            if( $verifica !== null ) {
+
+                return $this->redirect(['pedido/view','id' => $verifica->id]);
+            }
+
+            else{
+                $this->findModel($id)->delete();
+                return $this->redirect(['index']);
+            }
+
         }
         else{
             throw new ForbiddenHttpException();

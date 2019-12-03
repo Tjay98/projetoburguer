@@ -133,19 +133,17 @@ class UserController extends Controller
     {
         if(Yii::$app->user->identity->getId()!=$id){
 
-            $cliente = Cliente::find()
-            ->select(['id','nome'])
-            ->where(['id_user' => $id])
-            ->one();
-
-            $Pedidos = Pedido::find()
-            ->select('id')
-            ->where(['id_cliente' => $cliente])
-            ->all();
-
-
             if(Yii::$app->user->can('view-admin')) {
 
+                $cliente = Cliente::find()
+                ->select(['id','nome'])
+                ->where(['id_user' => $id])
+                ->one();
+
+                $Pedidos = Pedido::find()
+                ->select('id')
+                ->where(['id_cliente' => $cliente])
+                ->all();
 
                foreach($Pedidos as $Pedido)
                 {

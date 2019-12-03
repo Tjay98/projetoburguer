@@ -94,7 +94,7 @@ class PedidoController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'getC' => ArrayHelper::map($getC, 'id', 'nome'),
-                'getM' => ArrayHelper::map($getM, 'id','descricao'),
+                'getM' => ArrayHelper::map($getM, 'id','id'),
             ]);
         }
         else

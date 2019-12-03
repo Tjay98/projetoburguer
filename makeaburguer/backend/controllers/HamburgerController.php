@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use app\models\Menu;
 use yii\helpers\ArrayHelper;
 use app\models\Ingrediente;
 use Yii;
@@ -144,9 +145,20 @@ class HamburgerController extends Controller
     public function actionDelete($id)
     {
         if (Yii::$app->user->can('delete-admin')) {
-            $this->findModel($id)->delete();
 
-            return $this->redirect(['index']);
+            $verifica = Menu::find()
+                ->select('id')
+                ->where(['id_hamburger' => $id])
+                ->one();
+
+            if( $verifica !== null ) {
+
+                return $this->redirect(['menu/view','id' => $verifica->id]);
+            }
+            else{
+                $this->findModel($id)->delete();
+                return $this->redirect(['index']);
+            }
         }
         else
         {
