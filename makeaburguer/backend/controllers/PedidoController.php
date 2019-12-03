@@ -3,8 +3,11 @@
 namespace backend\controllers;
 
 use Yii;
+use app\models\Cliente;
+use app\models\Menu;
 use app\models\Pedido;
 use app\models\PedidoSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -81,12 +84,17 @@ class PedidoController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Pedido();
 
+            $getC = Cliente::find()->all();
+            $getM = Menu::find()->all();
+
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
             return $this->render('create', [
                 'model' => $model,
+                'getC' => ArrayHelper::map($getC, 'id', 'nome'),
+                'getM' => ArrayHelper::map($getM, 'id','descricao'),
             ]);
         }
         else

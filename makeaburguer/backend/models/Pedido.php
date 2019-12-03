@@ -33,10 +33,10 @@ class Pedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_cliente', 'id_menu', 'preco', 'compra'], 'required'],
+            [['id_cliente', 'id_menu', 'preco', 'data', 'compra'], 'required'],
             [['id_cliente', 'id_menu'], 'integer'],
             [['preco'], 'number'],
-            [['data'], 'safe'],
+            [['data'], 'string', 'max' => 255],
             [['compra'], 'string', 'max' => 1],
             [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['id_cliente' => 'id']],
             [['id_menu'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['id_menu' => 'id']],

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\models\Ingrediente;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Hamburger */
 /* @var $form yii\widgets\ActiveForm */

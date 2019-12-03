@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use app\models\Menu;
 use Yii;
 use app\models\Produtos;
 use backend\models\ProdutosSearch;
@@ -130,9 +131,22 @@ class ProdutosController extends Controller
     public function actionDelete($id)
     {
         if(Yii::$app->user->can('delete-admin')) {
-            $this->findModel($id)->delete();
 
-            return $this->redirect(['index']);
+            $verifica = Menu::find()
+                ->where(['id_bebida' => $id])
+                ->orWhere(['id_complemento' => $id])
+                ->orWhere(['id_sobremesa' => $id])
+                ->orWhere(['id_extra' => $id])
+                ->one();
+
+            if($verifica != null) {
+                return $this->redirect(['Menu/view','id' => $verifica->id]);
+
+            }
+            else{
+                $this->findModel($id)->delete();
+                return $this->redirect(['index']);
+            }
         }
         else
         {

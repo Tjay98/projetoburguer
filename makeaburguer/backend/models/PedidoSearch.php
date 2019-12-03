@@ -63,10 +63,10 @@ class PedidoSearch extends Pedido
             'id_cliente' => $this->id_cliente,
             'id_menu' => $this->id_menu,
             'preco' => $this->preco,
-            'data' => $this->data,
         ]);
 
-        $query->andFilterWhere(['like', 'compra', $this->compra]);
+        $query->andFilterWhere(['like', 'data', $this->data])
+            ->andFilterWhere(['like', 'compra', $this->compra]);
 
         return $dataProvider;
     }

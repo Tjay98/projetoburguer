@@ -12,12 +12,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pedido-index">
 
-    <?Php if(Yii::$app->user->can('admin')){?>
+    <h1><?= Html::encode($this->title) ?></h1>
+
     <p>
-        <?= Html::a('Criar Pedido', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Pedido', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php }?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

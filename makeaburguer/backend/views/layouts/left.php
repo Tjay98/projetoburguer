@@ -10,7 +10,6 @@
             <div class="pull-left info">
                 <h4><?= \Yii::$app->user->identity->username ?></h4>
 
-
             </div>
         </div>
             <?php }else{ ?>

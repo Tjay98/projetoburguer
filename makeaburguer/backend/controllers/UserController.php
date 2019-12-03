@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
+use app\models\Cliente;
+use app\models\Pedido;
 use app\models\User;
 use app\models\UserSearch;
 use yii\web\Controller;
@@ -129,8 +131,41 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-        if(Yii::$app->user->can('view-admin')) {
-            $this->findModel($id)->delete();
+        if(Yii::$app->user->identity->getId()!=$id){
+
+            $cliente = Cliente::find()
+            ->select(['id','nome'])
+            ->where(['id_user' => $id])
+            ->one();
+
+            $Pedidos = Pedido::find()
+            ->select('id')
+            ->where(['id_cliente' => $cliente])
+            ->all();
+
+
+            if(Yii::$app->user->can('view-admin')) {
+
+
+               foreach($Pedidos as $Pedido)
+                {
+                    $Pedido->delete();
+                }
+
+                if($cliente!=null) {
+                    $cliente->delete();
+                }
+
+                $this->findModel($id)->delete();
+
+            }
+            else{
+                $model = $this->findModel($id);
+
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
 
             return $this->redirect(['index']);
         }

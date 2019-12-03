@@ -2,9 +2,12 @@
 
 namespace backend\controllers;
 
+use app\models\Hamburger;
+use app\models\Produtos;
 use Yii;
 use app\models\Menu;
 use app\models\MenuSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -80,12 +83,33 @@ class MenuController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Menu();
 
+            $getH = Hamburger::find()->all();
+
+            $Bebida = Produtos::find()
+                ->where(['tipo' => 'Bebida'])
+                ->all();
+
+            $Sobremesa = Produtos::find()
+                ->where(['tipo' => 'Sobremesa'])
+                ->all();
+
+            $Complemento = Produtos::find()
+                ->where(['tipo' => 'Complementos'])
+                ->all();
+
+            $extra =Produtos::find()->all();
+
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
             return $this->render('create', [
                 'model' => $model,
+                'getH' => ArrayHelper::map($getH, 'id', 'nome'),
+                'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
+                'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
+                'Complemento' => ArrayHelper::map($Complemento, 'id', 'nome'),
+                'extra'=> ArrayHelper::map($extra, 'id', 'nome'),
             ]);
         }
         else
@@ -106,12 +130,33 @@ class MenuController extends Controller
         if(Yii::$app->user->can('update-detalhes-admin')) {
             $model = $this->findModel($id);
 
+            $getH = Hamburger::find()->all();
+
+            $Bebida = Produtos::find()
+                ->where(['tipo' => 'Bebida'])
+                ->all();
+
+            $Sobremesa = Produtos::find()
+                ->where(['tipo' => 'Sobremesa'])
+                ->all();
+
+            $Complemento = Produtos::find()
+                ->where(['tipo' => 'Complementos'])
+                ->all();
+
+            $extra =Produtos::find()->all();
+
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
             return $this->render('update', [
                 'model' => $model,
+                'getH' => ArrayHelper::map($getH, 'id', 'nome'),
+                'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
+                'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
+                'Complemento' => ArrayHelper::map($Complemento, 'id', 'nome'),
+                'extra'=> ArrayHelper::map($extra, 'id', 'nome'),
             ]);
         }
         else

@@ -133,7 +133,6 @@ class IngredienteController extends Controller
 
         if(Yii::$app->user->can('delete-admin')) {
 
-
             $verifica = Hamburger::find()
                 ->select('id')
                 ->where(['ingrediente1' => $id])
@@ -157,7 +156,6 @@ class IngredienteController extends Controller
                 return $this->redirect(['hamburger/view','id' => $verifica->id]);
             }
             else{
-
                 $this->findModel($id)->delete();
                 return $this->redirect(['index']);
             }
