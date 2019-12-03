@@ -30,7 +30,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
 
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::img('@web/hamburgers/logo_makeaburguer.png'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -38,13 +38,16 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Contactos', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => 'Registo', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+        $menuItems[]=['label'=>'Hamburguers','url'=>['/site/produtos/hamburguers']];
+        $menuItems[]=['label'=>'Bebidas','url'=>['/site/produtos/bebidas']];
+        $menuItems[]=['label'=>'Sobremesas','url'=>['/site/produtos/sobremesas']];
+        $menuItems[]=['label'=>'Complementos','url'=>['/site/produtos/complementos']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -53,6 +56,7 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
+
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
