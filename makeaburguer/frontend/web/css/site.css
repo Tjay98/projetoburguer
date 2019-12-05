@@ -3,16 +3,17 @@ body {
     height: 100%;
 }
 
-#imagem1{
-   align: center;
-
-}
 
 .carousel{
     width:33% !important;
     height:300px !important;
     align-content: center;
     background-color: transparent;
+
+}
+#logo{
+    width:165px !important;
+    height:auto;
 
 }
 .wrap {

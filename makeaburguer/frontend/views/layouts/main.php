@@ -30,24 +30,46 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
 
-        'brandLabel' => Html::img('@web/hamburgers/logo_makeaburguer.png'),
+        'brandLabel' => Html::img('@web/hamburgers/logo_makeaburguer1.png',['id'=>'logo']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+
         ['label' => 'Contactos', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Registo', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
-        $menuItems[]=['label'=>'Hamburguers','url'=>['/site/produtos/hamburguers']];
-        $menuItems[]=['label'=>'Bebidas','url'=>['/site/produtos/bebidas']];
-        $menuItems[]=['label'=>'Sobremesas','url'=>['/site/produtos/sobremesas']];
-        $menuItems[]=['label'=>'Complementos','url'=>['/site/produtos/complementos']];
+        $menuItems[]=['label'=>'Produtos',
+                      'items'=>[
+//                          '<li class="dropdown-header">Produtos</li>',
+                          ['label'=>'Hamburguers','url'=>['produtos/hamburguers']],
+                          '<li class="divider"></li>',
+                          ['label'=>'Complementos','url'=>['produtos/complementos']],
+                          '<li class="divider"></li>',
+                          ['label'=>'Bebidas','url'=>['produtos/bebidas']],
+                          '<li class="divider"></li>',
+                          ['label'=>'Sobremesas','url'=>['produtos/sobremesas']],
+                          '<li class="divider"></li>',
+                          ['label'=>'Promoções','url'=>['produtos/sobremesas']],
+
+                      ]
+        ];
+        $menuItems[]=['label'=>'Perfil',
+                    'items'=>[
+                        ['label'=>'Ver Perfil','url'=>['/site/produtos/hamburguers']],
+                        '<li class="divider"></li>',
+                        ['label'=>'Pedidos','url'=>['/site/produtos/complementos']],
+                        '<li class="divider"></li>',
+                        ['label'=>'Faturas','url'=>['/site/produtos/bebidas']],
+
+
+                    ]
+        ];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -59,7 +81,7 @@ AppAsset::register($this);
 
     }
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav navbar-right nav-pills'],
         'items' => $menuItems,
     ]);
     NavBar::end();
