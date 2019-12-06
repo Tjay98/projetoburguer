@@ -141,7 +141,8 @@ class SiteController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            Yii::$app->session->setFlash('success', 'Registro efetuado');
+
             return $this->goHome();
         }
 
@@ -246,6 +247,9 @@ class SiteController extends Controller
     }
     public function actionMenu(){
         return $this->render('menu.php');
+    }
+    public function actionContactos(){
+        return $this->render('contactos.php');
     }
 
 }

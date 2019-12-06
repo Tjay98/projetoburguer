@@ -38,7 +38,7 @@ AppAsset::register($this);
     ]);
 
     if (Yii::$app->user->isGuest) {
-        $menuItems[]=['label'=>'Contactos','url'=>'site/contact'];
+        $menuItems[]=['label'=>'Contactos','url'=>'site/contactos'];
         $menuItems[] = ['label' => 'Registo', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
@@ -68,7 +68,7 @@ AppAsset::register($this);
 
                     ]
         ];
-        $menuItems[]=['label'=>'Contactos','url'=>'site/contact'];
+        $menuItems[]=['label'=>'Contactos','url'=>'site/contactos'];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(

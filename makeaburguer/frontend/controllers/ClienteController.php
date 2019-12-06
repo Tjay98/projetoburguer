@@ -36,6 +36,13 @@ class ClienteController extends Controller
     public function actionUpdate($id)
     {
         if(Yii::$app->user->can('utilizador')) {
+            $nomeuser=Yii::$app->user->identity->username;
+
+            //procurar o id do utilizador atraves do username
+            $id=User::find()
+                ->select('id')
+                ->where(['username'=>$nomeuser]);
+
             $model = $this->findModel($id);
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {

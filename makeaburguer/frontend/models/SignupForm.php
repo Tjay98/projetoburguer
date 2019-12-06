@@ -13,9 +13,10 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $password_repeat;
     public $repeat;
-   // public $nif;
-   // public $telemóvel;
+    public $nif;
+    public $telemovel;
 
     /**
      * {@inheritdoc}
@@ -24,28 +25,27 @@ class SignupForm extends Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
+            ['username', 'required','message'=>'Preencha o nome de utilizador'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este nome de utilizador já está registado.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
-            ['email', 'required'],
+            ['email', 'required','message'=>'Preencha o email'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Este email já está registado.'],
 
-            ['password', 'required'],
+            ['password', 'required','message'=>'Preencha a password'],
             ['password', 'string', 'min' => 6, 'max'=>25],
+            ['password_repeat','compare','compareAttribute'=>'password','message'=>'As passwords devem corresponder'],
 
+            ['nif','required','message'=>'Preencha o Nif'],
+            ['nif','string','length'=>9],
+            ['nif','unique','targetClass'=>'\common\models\User','message'=>'Este nif já está atribuido a outro utilizador'],
 
-          //  ['Repeat','compare','compareAttribute'=>'Password','message'=>'password must be the same']
-
-           // ['nif','required'],
-            //['nif','string','length'=>9],
-            //['nif','unique','targetClass'=>'\common\models\User','message'=>'Este nif já está atribuido a outro utilizador'],
-
-          //  ['telemóvel','trim'],
-          //  ['telemóvel','string','length'=>9],
+            ['telemovel','trim'],
+            ['telemovel','required','Preencha o numero de telemovel'],
+            ['telemovel','string','length'=>9],
 
 
         ];
@@ -61,16 +61,17 @@ class SignupForm extends Model
         if (!$this->validate()) {
             return null;
         }
-        
+
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
-       // $user->nif=$this->nif;
+        $user->nif=$this->nif;
+        $user->telemovel->$this->telemovel;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
 
-        return $user->save() && $this->sendEmail($user);
+        return $user->save();
 
     }
 
@@ -79,17 +80,17 @@ class SignupForm extends Model
      * @param User $user user model to with email should be send
      * @return bool whether the email was sent
      */
-    protected function sendEmail($user)
-    {
-        return Yii::$app
-            ->mailer
-            ->compose(
-                ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
-                ['user' => $user]
-            )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
-            ->setTo($this->email)
-            ->setSubject('Account registration at ' . Yii::$app->name)
-            ->send();
-    }
+//    protected function sendEmail($user)
+//    {
+//        return Yii::$app
+//            ->mailer
+//            ->compose(
+//                ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
+//                ['user' => $user]
+//            )
+//            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+//            ->setTo($this->email)
+//            ->setSubject('Account registration at ' . Yii::$app->name)
+//            ->send();
+//    }
 }

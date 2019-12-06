@@ -25,9 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
+                <?= $form->field($model, 'password_repeat')->passwordInput() ?>
 
+                <?= $form->field($model,'nif') ?>
 
-
+                <?= $form->field($model,'telemovel')?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Registo', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
