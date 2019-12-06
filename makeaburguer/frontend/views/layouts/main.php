@@ -36,11 +36,9 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
 
-        ['label' => 'Contactos', 'url' => ['/site/contact']],
-    ];
     if (Yii::$app->user->isGuest) {
+        $menuItems[]=['label'=>'Contactos','url'=>'site/contact'];
         $menuItems[] = ['label' => 'Registo', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
@@ -55,21 +53,22 @@ AppAsset::register($this);
                           '<li class="divider"></li>',
                           ['label'=>'Sobremesas','url'=>['produtos/sobremesas']],
                           '<li class="divider"></li>',
-                          ['label'=>'Promoções','url'=>['produtos/sobremesas']],
+                          ['label'=>'Promoções','url'=>['produtos/promocoes']],
 
                       ]
         ];
         $menuItems[]=['label'=>'Perfil',
                     'items'=>[
-                        ['label'=>'Ver Perfil','url'=>['/site/produtos/hamburguers']],
+                        ['label'=>'Ver Perfil','url'=>['cliente/info']],
                         '<li class="divider"></li>',
-                        ['label'=>'Pedidos','url'=>['/site/produtos/complementos']],
+                        ['label'=>'Pedidos','url'=>['#']],
                         '<li class="divider"></li>',
-                        ['label'=>'Faturas','url'=>['/site/produtos/bebidas']],
+                        ['label'=>'Faturas','url'=>['#']],
 
 
                     ]
         ];
+        $menuItems[]=['label'=>'Contactos','url'=>'site/contact'];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -80,6 +79,7 @@ AppAsset::register($this);
             . '</li>';
 
     }
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right nav-pills'],
         'items' => $menuItems,

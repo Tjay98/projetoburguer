@@ -18,7 +18,7 @@ class ProdutosController extends Controller
      * {@inheritdoc}
      */
 
-    public function actionHamburguer()
+    public function actionHamburguers()
     {
         return $this->render('hamburguers');
     }
