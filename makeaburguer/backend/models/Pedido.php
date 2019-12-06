@@ -8,13 +8,13 @@ use Yii;
  * This is the model class for table "pedido".
  *
  * @property int $id
- * @property int $id_cliente
+ * @property int $id_user
  * @property int $id_menu
  * @property string $preco
  * @property string $data
  * @property string $compra
  *
- * @property Cliente $cliente
+ * @property User $user
  * @property Menu $menu
  */
 class Pedido extends \yii\db\ActiveRecord
@@ -33,12 +33,12 @@ class Pedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_cliente', 'id_menu', 'preco', 'data', 'compra'], 'required'],
-            [['id_cliente', 'id_menu'], 'integer'],
+            [['id_user', 'id_menu', 'preco', 'data', 'compra'], 'required'],
+            [['id_user', 'id_menu'], 'integer'],
             [['preco'], 'number'],
             [['data'], 'string', 'max' => 255],
             [['compra'], 'string', 'max' => 1],
-            [['id_cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['id_cliente' => 'id']],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
             [['id_menu'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['id_menu' => 'id']],
         ];
     }
@@ -50,7 +50,7 @@ class Pedido extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_cliente' => 'Id Cliente',
+            'id_user' => 'Id User',
             'id_menu' => 'Id Menu',
             'preco' => 'Preco',
             'data' => 'Data',
@@ -61,9 +61,9 @@ class Pedido extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCliente()
+    public function getUser()
     {
-        return $this->hasOne(Cliente::className(), ['id' => 'id_cliente']);
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
 
     /**

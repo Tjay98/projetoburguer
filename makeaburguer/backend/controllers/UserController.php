@@ -3,10 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\Cliente;
-use app\models\Pedido;
 use app\models\User;
-use app\models\UserSearch;
+use backend\models\UserSearch;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -71,7 +69,6 @@ class UserController extends Controller
             throw new ForbiddenHttpException();
         }
     }
-
     /**
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -135,23 +132,14 @@ class UserController extends Controller
 
             if(Yii::$app->user->can('view-admin')) {
 
-                $cliente = Cliente::find()
-                ->select(['id','nome'])
-                ->where(['id_user' => $id])
-                ->one();
-
                 $Pedidos = Pedido::find()
-                ->select('id')
-                ->where(['id_cliente' => $cliente])
-                ->all();
+                    ->select('id')
+                    ->where(['id_user' => $id])
+                    ->all();
 
-               foreach($Pedidos as $Pedido)
+                foreach($Pedidos as $Pedido)
                 {
                     $Pedido->delete();
-                }
-
-                if($cliente!=null) {
-                    $cliente->delete();
                 }
 
                 $this->findModel($id)->delete();

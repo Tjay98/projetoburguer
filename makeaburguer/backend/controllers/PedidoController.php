@@ -2,11 +2,10 @@
 
 namespace backend\controllers;
 
-use Yii;
-use app\models\Cliente;
 use app\models\Menu;
+use Yii;
 use app\models\Pedido;
-use app\models\PedidoSearch;
+use backend\models\PedidoSearch;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
@@ -79,12 +78,13 @@ class PedidoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+
+
     public function actionCreate()
     {
         if(Yii::$app->user->can('create-admin')) {
             $model = new Pedido();
 
-            $getC = Cliente::find()->all();
             $getM = Menu::find()->all();
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -93,7 +93,6 @@ class PedidoController extends Controller
 
             return $this->render('create', [
                 'model' => $model,
-                'getC' => ArrayHelper::map($getC, 'id', 'nome'),
                 'getM' => ArrayHelper::map($getM, 'id','id'),
             ]);
         }
@@ -115,12 +114,15 @@ class PedidoController extends Controller
         if(Yii::$app->user->can('update-detalhes-admin')) {
             $model = $this->findModel($id);
 
+            $getM = Menu::find()->all();
+
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
             return $this->render('update', [
                 'model' => $model,
+                'getM' => ArrayHelper::map($getM, 'id','id'),
             ]);
         }
         else

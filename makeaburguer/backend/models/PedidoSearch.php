@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -17,7 +17,7 @@ class PedidoSearch extends Pedido
     public function rules()
     {
         return [
-            [['id', 'id_cliente', 'id_menu'], 'integer'],
+            [['id', 'id_user', 'id_menu'], 'integer'],
             [['preco'], 'number'],
             [['data', 'compra'], 'safe'],
         ];
@@ -60,7 +60,7 @@ class PedidoSearch extends Pedido
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_cliente' => $this->id_cliente,
+            'id_user' => $this->id_user,
             'id_menu' => $this->id_menu,
             'preco' => $this->preco,
         ]);

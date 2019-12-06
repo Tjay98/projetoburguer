@@ -17,6 +17,10 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  * @property string $verification_token
+ * @property string $nif
+ * @property string $telemovel
+ *
+ * @property Pedido[] $pedidos
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -34,10 +38,12 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
+            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'nif', 'telemovel'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
+            [['nif'], 'string', 'max' => 9],
+            [['telemovel'], 'string', 'max' => 12],
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
@@ -60,6 +66,16 @@ class User extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'verification_token' => 'Verification Token',
+            'nif' => 'Nif',
+            'telemovel' => 'Telemovel',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPedidos()
+    {
+        return $this->hasMany(Pedido::className(), ['id_user' => 'id']);
     }
 }

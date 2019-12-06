@@ -7,6 +7,7 @@ use app\models\Ingrediente;
 use app\models\Pedido;
 use app\models\Produtos;
 use app\models\Menu;
+use app\models\User;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -72,7 +73,7 @@ class SiteController extends Controller
         if(Yii::$app->user->can('login-backoffice')) {
 
             $Hamburger = Hamburger::find()->count();
-            $Cliente = Cliente::find()->count();
+            $Cliente = User::find()->count();
             $Produtos = Produtos::find()->count();
             $Ingredientes = Ingrediente::find()->count();
             $Pedidos = Pedido::find()->count();

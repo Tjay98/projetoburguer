@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\UserSearch */
+/* @var $model backend\models\UserSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -35,9 +35,13 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'verification_token') ?>
 
+    <?php // echo $form->field($model, 'nif') ?>
+
+    <?php // echo $form->field($model, 'telemovel') ?>
+
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Limpar', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
