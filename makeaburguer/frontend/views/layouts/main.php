@@ -36,27 +36,26 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    $menuItems[]=['label'=>'Produtos',
+        'items'=>[
+//                          '<li class="dropdown-header">Produtos</li>',
+            ['label'=>'Hamburguers','url'=>['produtos/hamburguers']],
+            '<li class="divider"></li>',
+            ['label'=>'Complementos','url'=>['produtos/complementos']],
+            '<li class="divider"></li>',
+            ['label'=>'Bebidas','url'=>['produtos/bebidas']],
+            '<li class="divider"></li>',
+            ['label'=>'Sobremesas','url'=>['produtos/sobremesas']],
+            '<li class="divider"></li>',
+            ['label'=>'Promoções','url'=>['produtos/promocoes']],
 
+        ]
+    ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[]=['label'=>'Contactos','url'=>'site/contactos'];
         $menuItems[] = ['label' => 'Registo', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
-        $menuItems[]=['label'=>'Produtos',
-                      'items'=>[
-//                          '<li class="dropdown-header">Produtos</li>',
-                          ['label'=>'Hamburguers','url'=>['produtos/hamburguers']],
-                          '<li class="divider"></li>',
-                          ['label'=>'Complementos','url'=>['produtos/complementos']],
-                          '<li class="divider"></li>',
-                          ['label'=>'Bebidas','url'=>['produtos/bebidas']],
-                          '<li class="divider"></li>',
-                          ['label'=>'Sobremesas','url'=>['produtos/sobremesas']],
-                          '<li class="divider"></li>',
-                          ['label'=>'Promoções','url'=>['produtos/promocoes']],
 
-                      ]
-        ];
         $menuItems[]=['label'=>'Perfil',
                     'items'=>[
                         ['label'=>'Ver Perfil','url'=>['cliente/info']],
@@ -68,7 +67,6 @@ AppAsset::register($this);
 
                     ]
         ];
-        $menuItems[]=['label'=>'Contactos','url'=>'site/contactos'];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(

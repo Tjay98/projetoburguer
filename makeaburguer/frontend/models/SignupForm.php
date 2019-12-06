@@ -44,7 +44,7 @@ class SignupForm extends Model
             ['nif','unique','targetClass'=>'\common\models\User','message'=>'Este nif já está atribuido a outro utilizador'],
 
             ['telemovel','trim'],
-            ['telemovel','required','Preencha o numero de telemovel'],
+//            ['telemovel','required','Preencha o numero de telemovel'],
             ['telemovel','string','length'=>9],
 
 
@@ -66,7 +66,7 @@ class SignupForm extends Model
         $user->username = $this->username;
         $user->email = $this->email;
         $user->nif=$this->nif;
-        $user->telemovel->$this->telemovel;
+        $user->telemovel=$this->telemovel;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();

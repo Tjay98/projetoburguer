@@ -33,7 +33,7 @@ class ClienteController extends Controller
         }
     }
 
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
         if(Yii::$app->user->can('utilizador')) {
             $nomeuser=Yii::$app->user->identity->username;
