@@ -43,6 +43,8 @@
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
                     ['label' => 'User', 'url' => ['user/index']],
                     ['label' => 'Hamburger', 'url' => ['hamburger/index']],
+                    ['label' => 'Hamburger costumizado', 'url' => ['hamburgerc/index']],
+                    ['label' => 'Categoria', 'url' => ['categoria/index']],
                     ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
                     ['label' => 'Produtos', 'url' => ['produtos/index']],
                     ['label' => 'Pedido', 'url' => ['pedido/index']],
