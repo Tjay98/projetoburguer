@@ -18,35 +18,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ingrediente1')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'pao')->dropDownList($getI,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'ingrediente2')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'molho')->dropDownList($getI,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'ingrediente3')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'carne')->dropDownList($getI,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'ingrediente4')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'vegetais')->dropDownList($getI,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'ingrediente5')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'queijo')->dropDownList($getI,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'ingrediente6')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'complemento')->dropDownList($getI,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'ingrediente7')->dropDownList($getI,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'ingrediente8')->dropDownList($getI,['prompt'=>'']) ?>
-
-    <?= $form->field($model, 'ingrediente9')->dropDownList($getI,['prompt'=>'']) ?>
-
-    <?= $form->field($model, 'ingrediente10')->dropDownList($getI,['prompt'=>'']) ?>
-
-    <?= $form->field($model, 'ingrediente_extra1')->dropDownList($getI,['prompt'=>'']) ?>
-
-    <?= $form->field($model, 'ingrediente_extra2')->dropDownList($getI,['prompt'=>'']) ?>
-
-    <?= $form->field($model, 'ingrediente_extra3')->dropDownList($getI,['prompt'=>'']) ?>
-
-    <?= $form->field($model, 'ingrediente_extra4')->dropDownList($getI,['prompt'=>'']) ?>
-
-    <?= $form->field($model, 'ingrediente_extra5')->dropDownList($getI,['prompt'=>'']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

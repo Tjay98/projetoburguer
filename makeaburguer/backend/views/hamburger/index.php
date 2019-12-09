@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nome',
             'preco',
             'descricao',
-            'ingrediente1',
+            'pao',
             //'ingrediente2',
             //'ingrediente3',
             //'ingrediente4',

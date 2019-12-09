@@ -9,8 +9,8 @@ use Yii;
  *
  * @property int $id
  * @property string $nome
- * @property string $descricao
  * @property string $preco
+ * @property int $tipo
  *
  * @property Hamburger[] $hamburgers
  * @property Hamburger[] $hamburgers0
@@ -18,15 +18,14 @@ use Yii;
  * @property Hamburger[] $hamburgers2
  * @property Hamburger[] $hamburgers3
  * @property Hamburger[] $hamburgers4
- * @property Hamburger[] $hamburgers5
- * @property Hamburger[] $hamburgers6
- * @property Hamburger[] $hamburgers7
- * @property Hamburger[] $hamburgers8
- * @property Hamburger[] $hamburgers9
- * @property Hamburger[] $hamburgers10
- * @property Hamburger[] $hamburgers11
- * @property Hamburger[] $hamburgers12
- * @property Hamburger[] $hamburgers13
+ * @property HamburgerC[] $hamburgerCs
+ * @property HamburgerC[] $hamburgerCs0
+ * @property HamburgerC[] $hamburgerCs1
+ * @property HamburgerC[] $hamburgerCs2
+ * @property HamburgerC[] $hamburgerCs3
+ * @property HamburgerC[] $hamburgerCs4
+ * @property Categoria $tipo0
+ * @property Categoria $tipo1
  */
 class Ingrediente extends \yii\db\ActiveRecord
 {
@@ -44,10 +43,13 @@ class Ingrediente extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'preco'], 'required'],
+            [['id', 'nome', 'preco', 'tipo'], 'required'],
+            [['id', 'tipo'], 'integer'],
             [['preco'], 'number'],
             [['nome'], 'string', 'max' => 50],
-            [['descricao'], 'string', 'max' => 255],
+            [['id'], 'unique'],
+            [['tipo'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::className(), 'targetAttribute' => ['tipo' => 'id']],
+            [['tipo'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::className(), 'targetAttribute' => ['tipo' => 'id']],
         ];
     }
 
@@ -59,8 +61,8 @@ class Ingrediente extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nome' => 'Nome',
-            'descricao' => 'Descricao',
             'preco' => 'Preco',
+            'tipo' => 'Tipo',
         ];
     }
 
@@ -69,7 +71,7 @@ class Ingrediente extends \yii\db\ActiveRecord
      */
     public function getHamburgers()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente1' => 'id']);
+        return $this->hasMany(Hamburger::className(), ['pao' => 'id']);
     }
 
     /**
@@ -77,7 +79,7 @@ class Ingrediente extends \yii\db\ActiveRecord
      */
     public function getHamburgers0()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente10' => 'id']);
+        return $this->hasMany(Hamburger::className(), ['molho' => 'id']);
     }
 
     /**
@@ -85,7 +87,7 @@ class Ingrediente extends \yii\db\ActiveRecord
      */
     public function getHamburgers1()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente_extra1' => 'id']);
+        return $this->hasMany(Hamburger::className(), ['carne' => 'id']);
     }
 
     /**
@@ -93,7 +95,7 @@ class Ingrediente extends \yii\db\ActiveRecord
      */
     public function getHamburgers2()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente_extra2' => 'id']);
+        return $this->hasMany(Hamburger::className(), ['vegetais' => 'id']);
     }
 
     /**
@@ -101,7 +103,7 @@ class Ingrediente extends \yii\db\ActiveRecord
      */
     public function getHamburgers3()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente_extra3' => 'id']);
+        return $this->hasMany(Hamburger::className(), ['queijo' => 'id']);
     }
 
     /**
@@ -109,78 +111,70 @@ class Ingrediente extends \yii\db\ActiveRecord
      */
     public function getHamburgers4()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente_extra4' => 'id']);
+        return $this->hasMany(Hamburger::className(), ['complemento' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers5()
+    public function getHamburgerCs()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente_extra5' => 'id']);
+        return $this->hasMany(HamburgerC::className(), ['pao' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers6()
+    public function getHamburgerCs0()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente2' => 'id']);
+        return $this->hasMany(HamburgerC::className(), ['molho' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers7()
+    public function getHamburgerCs1()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente3' => 'id']);
+        return $this->hasMany(HamburgerC::className(), ['carne' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers8()
+    public function getHamburgerCs2()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente4' => 'id']);
+        return $this->hasMany(HamburgerC::className(), ['vegetais' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers9()
+    public function getHamburgerCs3()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente5' => 'id']);
+        return $this->hasMany(HamburgerC::className(), ['queijo' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers10()
+    public function getHamburgerCs4()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente6' => 'id']);
+        return $this->hasMany(HamburgerC::className(), ['complementos' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers11()
+    public function getTipo0()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente7' => 'id']);
+        return $this->hasOne(Categoria::className(), ['id' => 'tipo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers12()
+    public function getTipo1()
     {
-        return $this->hasMany(Hamburger::className(), ['ingrediente8' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getHamburgers13()
-    {
-        return $this->hasMany(Hamburger::className(), ['ingrediente9' => 'id']);
+        return $this->hasOne(Categoria::className(), ['id' => 'tipo']);
     }
 }

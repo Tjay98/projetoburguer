@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Ingrediente;
+use app\models\Categoria;
 
 /**
- * IngredienteSearch represents the model behind the search form of `app\models\Ingrediente`.
+ * CategoriaSearch represents the model behind the search form of `app\models\Categoria`.
  */
-class IngredienteSearch extends Ingrediente
+class CategoriaSearch extends Categoria
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,7 @@ class IngredienteSearch extends Ingrediente
     {
         return [
             [['id'], 'integer'],
-            [['nome', 'tipo'], 'safe'],
-            [['preco'], 'number'],
+            [['nome'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class IngredienteSearch extends Ingrediente
      */
     public function search($params)
     {
-        $query = Ingrediente::find();
+        $query = Categoria::find();
 
         // add conditions that should always apply here
 
@@ -60,11 +59,9 @@ class IngredienteSearch extends Ingrediente
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'preco' => $this->preco,
         ]);
 
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'tipo', $this->tipo]);
+        $query->andFilterWhere(['like', 'nome', $this->nome]);
 
         return $dataProvider;
     }

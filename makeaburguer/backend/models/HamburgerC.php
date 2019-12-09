@@ -5,36 +5,31 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "hamburger".
+ * This is the model class for table "hamburger_c".
  *
  * @property int $id
- * @property string $nome
- * @property string $imagem
- * @property string $descricao
  * @property int $pao
  * @property int $molho
  * @property int $carne
  * @property int $vegetais
  * @property int $queijo
- * @property int $complemento
- * @property int $extra
- * @property int $preco
+ * @property int $complementos
  *
  * @property Ingrediente $pao0
  * @property Ingrediente $molho0
  * @property Ingrediente $carne0
  * @property Ingrediente $vegetais0
  * @property Ingrediente $queijo0
- * @property Ingrediente $complemento0
+ * @property Ingrediente $complementos0
  */
-class Hamburger extends \yii\db\ActiveRecord
+class HamburgerC extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'hamburger';
+        return 'hamburger_c';
     }
 
     /**
@@ -43,17 +38,15 @@ class Hamburger extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'imagem', 'descricao', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'extra', 'preco'], 'required'],
-            [['descricao'], 'string'],
-            [['pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'extra', 'preco'], 'integer'],
-            [['nome'], 'string', 'max' => 30],
-            [['imagem'], 'string', 'max' => 150],
+            [['id', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos'], 'required'],
+            [['id', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos'], 'integer'],
+            [['id'], 'unique'],
             [['pao'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['pao' => 'id']],
             [['molho'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['molho' => 'id']],
             [['carne'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['carne' => 'id']],
             [['vegetais'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['vegetais' => 'id']],
             [['queijo'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['queijo' => 'id']],
-            [['complemento'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['complemento' => 'id']],
+            [['complementos'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['complementos' => 'id']],
         ];
     }
 
@@ -64,17 +57,12 @@ class Hamburger extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nome' => 'Nome',
-            'imagem' => 'Imagem',
-            'descricao' => 'Descricao',
             'pao' => 'Pao',
             'molho' => 'Molho',
             'carne' => 'Carne',
             'vegetais' => 'Vegetais',
             'queijo' => 'Queijo',
-            'complemento' => 'Complemento',
-            'extra' => 'Extra',
-            'preco' => 'Preco',
+            'complementos' => 'Complementos',
         ];
     }
 
@@ -121,8 +109,8 @@ class Hamburger extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getComplemento0()
+    public function getComplementos0()
     {
-        return $this->hasOne(Ingrediente::className(), ['id' => 'complemento']);
+        return $this->hasOne(Ingrediente::className(), ['id' => 'complementos']);
     }
 }

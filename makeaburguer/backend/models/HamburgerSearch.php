@@ -17,7 +17,7 @@ class HamburgerSearch extends Hamburger
     public function rules()
     {
         return [
-            [['id', 'ingrediente1', 'ingrediente2', 'ingrediente3', 'ingrediente4', 'ingrediente5', 'ingrediente6', 'ingrediente7', 'ingrediente8', 'ingrediente9', 'ingrediente10', 'ingrediente_extra1', 'ingrediente_extra2', 'ingrediente_extra3', 'ingrediente_extra4', 'ingrediente_extra5'], 'integer'],
+            [['id', 'pao', 'molho','carne','vegetais','queijo','complemento'], 'integer'],
             [['nome', 'descricao'], 'safe'],
             [['preco'], 'number'],
         ];
@@ -61,21 +61,14 @@ class HamburgerSearch extends Hamburger
         $query->andFilterWhere([
             'id' => $this->id,
             'preco' => $this->preco,
-            'ingrediente1' => $this->ingrediente1,
-            'ingrediente2' => $this->ingrediente2,
-            'ingrediente3' => $this->ingrediente3,
-            'ingrediente4' => $this->ingrediente4,
-            'ingrediente5' => $this->ingrediente5,
-            'ingrediente6' => $this->ingrediente6,
-            'ingrediente7' => $this->ingrediente7,
-            'ingrediente8' => $this->ingrediente8,
-            'ingrediente9' => $this->ingrediente9,
-            'ingrediente10' => $this->ingrediente10,
-            'ingrediente_extra1' => $this->ingrediente_extra1,
-            'ingrediente_extra2' => $this->ingrediente_extra2,
-            'ingrediente_extra3' => $this->ingrediente_extra3,
-            'ingrediente_extra4' => $this->ingrediente_extra4,
-            'ingrediente_extra5' => $this->ingrediente_extra5,
+            'pao' => $this->pao,
+            'molho' => $this->molho,
+            'carne' => $this->carne,
+            'vegetais' => $this->vegetais,
+            'queijo' => $this->queijo,
+            'complemento' => $this->complemento,
+
+
         ]);
 
         $query->andFilterWhere(['like', 'nome', $this->nome])

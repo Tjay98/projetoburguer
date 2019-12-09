@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Ingrediente;
+use app\models\Hamburgerc;
 
 /**
- * IngredienteSearch represents the model behind the search form of `app\models\Ingrediente`.
+ * HamburgercSearch represents the model behind the search form of `app\models\Hamburgerc`.
  */
-class IngredienteSearch extends Ingrediente
+class HamburgercSearch extends Hamburgerc
 {
     /**
      * {@inheritdoc}
@@ -17,9 +17,7 @@ class IngredienteSearch extends Ingrediente
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['nome', 'tipo'], 'safe'],
-            [['preco'], 'number'],
+            [['id', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos'], 'integer'],
         ];
     }
 
@@ -41,7 +39,7 @@ class IngredienteSearch extends Ingrediente
      */
     public function search($params)
     {
-        $query = Ingrediente::find();
+        $query = Hamburgerc::find();
 
         // add conditions that should always apply here
 
@@ -60,11 +58,13 @@ class IngredienteSearch extends Ingrediente
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'preco' => $this->preco,
+            'pao' => $this->pao,
+            'molho' => $this->molho,
+            'carne' => $this->carne,
+            'vegetais' => $this->vegetais,
+            'queijo' => $this->queijo,
+            'complementos' => $this->complementos,
         ]);
-
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'tipo', $this->tipo]);
 
         return $dataProvider;
     }
