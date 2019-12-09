@@ -14,12 +14,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tipo')->dropDownList(['Bebida' => 'Bebida', 'Sobremesa' => 'Sobremesa', 'Complementos' => 'Complementos']) ?>
+    <?= $form->field($model, 'tipo')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

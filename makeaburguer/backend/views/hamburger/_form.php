@@ -14,26 +14,26 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'imagem')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'descricao')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'pao')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'pao')->textInput() ?>
 
-    <?= $form->field($model, 'molho')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'molho')->textInput() ?>
 
-    <?= $form->field($model, 'carne')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'carne')->textInput() ?>
 
-    <?= $form->field($model, 'vegetais')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'vegetais')->textInput() ?>
 
-    <?= $form->field($model, 'queijo')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'queijo')->textInput() ?>
 
-    <?= $form->field($model, 'complemento')->dropDownList($getI,['prompt'=>'']) ?>
+    <?= $form->field($model, 'complemento')->textInput() ?>
 
-
+    <?= $form->field($model, 'extra')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

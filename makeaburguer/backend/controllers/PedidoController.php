@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use app\models\Menu;
+
+use app\models\User;
 use Yii;
 use app\models\Pedido;
 use backend\models\PedidoSearch;
@@ -86,6 +88,8 @@ class PedidoController extends Controller
             $model = new Pedido();
 
             $getM = Menu::find()->all();
+            $getU = User::find()->all();
+            $data = date('Y-m-d H:i:s');
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -94,6 +98,8 @@ class PedidoController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'getM' => ArrayHelper::map($getM, 'id','id'),
+                'getU' => ArrayHelper::map($getU, 'id','username'),
+                //'data' => $data,
             ]);
         }
         else
@@ -115,6 +121,7 @@ class PedidoController extends Controller
             $model = $this->findModel($id);
 
             $getM = Menu::find()->all();
+            $getU = User::find()->all();
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -123,6 +130,7 @@ class PedidoController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'getM' => ArrayHelper::map($getM, 'id','id'),
+                'getU' => ArrayHelper::map($getU, 'id','username'),
             ]);
         }
         else

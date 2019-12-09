@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use app\models\Pedido;
 use Yii;
 use app\models\User;
 use backend\models\UserSearch;
@@ -143,7 +144,7 @@ class UserController extends Controller
                 }
 
                 $this->findModel($id)->delete();
-
+                return $this->redirect(['index']);
             }
             else{
                 $model = $this->findModel($id);

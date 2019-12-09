@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\HamburgerSearch */
+/* @var $searchModel backend\models\HamburgerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Hamburgers';
@@ -12,13 +12,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hamburger-index">
 
+    <h1><?= Html::encode($this->title) ?></h1>
 
-    <?Php if(Yii::$app->user->can('admin')){?>
     <p>
-        <?= Html::a('Criar Hamburger', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Hamburger', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php }?>
 
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -28,23 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'nome',
-            'preco',
-            'descricao',
+            'imagem',
+            'descricao:ntext',
             'pao',
-            //'ingrediente2',
-            //'ingrediente3',
-            //'ingrediente4',
-            //'ingrediente5',
-            //'ingrediente6',
-            //'ingrediente7',
-            //'ingrediente8',
-            //'ingrediente9',
-            //'ingrediente10',
-            //'ingrediente_extra1',
-            //'ingrediente_extra2',
-            //'ingrediente_extra3',
-            //'ingrediente_extra4',
-            //'ingrediente_extra5',
+            //'molho',
+            //'carne',
+            //'vegetais',
+            //'queijo',
+            //'complemento',
+            //'extra',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

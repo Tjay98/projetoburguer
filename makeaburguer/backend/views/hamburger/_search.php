@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\HamburgerSearch */
+/* @var $model backend\models\HamburgerSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -19,15 +19,27 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nome') ?>
 
-    <?= $form->field($model, 'preco') ?>
+    <?= $form->field($model, 'imagem') ?>
 
     <?= $form->field($model, 'descricao') ?>
 
- >
+    <?= $form->field($model, 'pao') ?>
+
+    <?php // echo $form->field($model, 'molho') ?>
+
+    <?php // echo $form->field($model, 'carne') ?>
+
+    <?php // echo $form->field($model, 'vegetais') ?>
+
+    <?php // echo $form->field($model, 'queijo') ?>
+
+    <?php // echo $form->field($model, 'complemento') ?>
+
+    <?php // echo $form->field($model, 'extra') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Procurar', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Limpar', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

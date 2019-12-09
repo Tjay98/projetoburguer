@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = 'Atualizar';
     <?= $this->render('_form', [
         'model' => $model,
         'getM' => $getM,
+        'getU' => $getU,
     ]) ?>
 
 </div>

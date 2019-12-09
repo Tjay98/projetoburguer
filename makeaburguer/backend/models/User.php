@@ -17,7 +17,7 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  * @property string $verification_token
- * @property string $nif
+ * @property int $nif
  * @property string $telemovel
  *
  * @property Pedido[] $pedidos
@@ -39,10 +39,9 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'nif', 'telemovel'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'nif'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
-            [['nif'], 'string', 'max' => 9],
             [['telemovel'], 'string', 'max' => 12],
             [['username'], 'unique'],
             [['email'], 'unique'],

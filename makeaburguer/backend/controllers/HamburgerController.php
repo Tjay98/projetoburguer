@@ -2,14 +2,10 @@
 
 namespace backend\controllers;
 
-use app\models\Menu;
-use yii\helpers\ArrayHelper;
-use app\models\Ingrediente;
 use Yii;
 use app\models\Hamburger;
-use app\models\HamburgerSearch;
+use backend\models\HamburgerSearch;
 use yii\web\Controller;
-use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -39,19 +35,13 @@ class HamburgerController extends Controller
      */
     public function actionIndex()
     {
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
-            $searchModel = new HamburgerSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new HamburgerSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-            return $this->render('index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-            ]);
-        }
-        else
-        {
-            throw new ForbiddenHttpException();
-        }
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
@@ -62,20 +52,9 @@ class HamburgerController extends Controller
      */
     public function actionView($id)
     {
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
-
-            //Ingrediente::find()->select(nome) selecionar ingredien nome pelo hamburger id
-            $model = $this->findModel($id);
-            $getI = Ingrediente::find()->all();
-
-            return $this->render('view', [
-                'model' => $model,
-                'getI' => ArrayHelper::map($getI, 'id', 'nome'),
-            ]);
-        }
-        else{
-            throw new ForbiddenHttpException();
-        }
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
     }
 
     /**
@@ -85,24 +64,15 @@ class HamburgerController extends Controller
      */
     public function actionCreate()
     {
-        if(Yii::$app->user->can('create-admin')) {
-            $model = new Hamburger();
+        $model = new Hamburger();
 
-            $getI = Ingrediente::find()->all();
-
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-
-            return $this->render('create', [
-                'model' => $model,
-                'getI' => ArrayHelper::map($getI, 'id', 'nome'),
-            ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
-        else
-        {
-            throw new ForbiddenHttpException();
-        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -114,25 +84,15 @@ class HamburgerController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(Yii::$app->user->can('update-detalhes-admin')) {
+        $model = $this->findModel($id);
 
-            $model = $this->findModel($id);
-
-            $getI = Ingrediente::find()->all();
-
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-
-            return $this->render('update', [
-                'model' => $model,
-                'getI' => ArrayHelper::map($getI, 'id', 'nome'),
-            ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
-        else
-        {
-            throw new ForbiddenHttpException();
-        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -144,26 +104,9 @@ class HamburgerController extends Controller
      */
     public function actionDelete($id)
     {
-        if (Yii::$app->user->can('delete-admin')) {
+        $this->findModel($id)->delete();
 
-            $verifica = Menu::find()
-                ->select('id')
-                ->where(['id_hamburger' => $id])
-                ->one();
-
-            if( $verifica !== null ) {
-
-                return $this->redirect(['menu/view','id' => $verifica->id]);
-            }
-            else{
-                $this->findModel($id)->delete();
-                return $this->redirect(['index']);
-            }
-        }
-        else
-        {
-            throw new ForbiddenHttpException();
-        }
+        return $this->redirect(['index']);
     }
 
     /**
@@ -181,7 +124,4 @@ class HamburgerController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-
-
 }

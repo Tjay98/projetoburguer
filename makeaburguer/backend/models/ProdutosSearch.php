@@ -17,8 +17,8 @@ class ProdutosSearch extends Produtos
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['nome', 'tipo'], 'safe'],
+            [['id', 'categoria'], 'integer'],
+            [['nome', 'imagem'], 'safe'],
             [['preco'], 'number'],
         ];
     }
@@ -60,11 +60,12 @@ class ProdutosSearch extends Produtos
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'categoria' => $this->categoria,
             'preco' => $this->preco,
         ]);
 
         $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'tipo', $this->tipo]);
+            ->andFilterWhere(['like', 'imagem', $this->imagem]);
 
         return $dataProvider;
     }

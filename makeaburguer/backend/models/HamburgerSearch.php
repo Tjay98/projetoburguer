@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -17,9 +17,8 @@ class HamburgerSearch extends Hamburger
     public function rules()
     {
         return [
-            [['id', 'pao', 'molho','carne','vegetais','queijo','complemento'], 'integer'],
-            [['nome', 'descricao'], 'safe'],
-            [['preco'], 'number'],
+            [['id', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'extra'], 'integer'],
+            [['nome', 'imagem', 'descricao'], 'safe'],
         ];
     }
 
@@ -60,18 +59,17 @@ class HamburgerSearch extends Hamburger
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'preco' => $this->preco,
             'pao' => $this->pao,
             'molho' => $this->molho,
             'carne' => $this->carne,
             'vegetais' => $this->vegetais,
             'queijo' => $this->queijo,
             'complemento' => $this->complemento,
-
-
+            'extra' => $this->extra,
         ]);
 
         $query->andFilterWhere(['like', 'nome', $this->nome])
+            ->andFilterWhere(['like', 'imagem', $this->imagem])
             ->andFilterWhere(['like', 'descricao', $this->descricao]);
 
         return $dataProvider;

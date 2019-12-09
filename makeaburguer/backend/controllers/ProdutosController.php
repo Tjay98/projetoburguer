@@ -2,12 +2,10 @@
 
 namespace backend\controllers;
 
-use app\models\Menu;
 use Yii;
 use app\models\Produtos;
 use backend\models\ProdutosSearch;
 use yii\web\Controller;
-use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -37,19 +35,13 @@ class ProdutosController extends Controller
      */
     public function actionIndex()
     {
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
-            $searchModel = new ProdutosSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new ProdutosSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-            return $this->render('index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-            ]);
-        }
-        else
-        {
-            throw new ForbiddenHttpException();
-        }
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
@@ -60,15 +52,9 @@ class ProdutosController extends Controller
      */
     public function actionView($id)
     {
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
-            return $this->render('view', [
-                'model' => $this->findModel($id),
-            ]);
-        }
-        else
-        {
-            throw new ForbiddenHttpException();
-        }
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
     }
 
     /**
@@ -78,21 +64,15 @@ class ProdutosController extends Controller
      */
     public function actionCreate()
     {
-        if(Yii::$app->user->can('create-admin')) {
-            $model = new Produtos();
+        $model = new Produtos();
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
 
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-        else
-        {
-            throw new ForbiddenHttpException();
-        }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -104,21 +84,15 @@ class ProdutosController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(Yii::$app->user->can('update-detalhes-admin')) {
-            $model = $this->findModel($id);
+        $model = $this->findModel($id);
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
 
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-        else
-        {
-            throw new ForbiddenHttpException();
-        }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -130,28 +104,9 @@ class ProdutosController extends Controller
      */
     public function actionDelete($id)
     {
-        if(Yii::$app->user->can('delete-admin')) {
+        $this->findModel($id)->delete();
 
-            $verifica = Menu::find()
-                ->where(['id_bebida' => $id])
-                ->orWhere(['id_complemento' => $id])
-                ->orWhere(['id_sobremesa' => $id])
-                ->orWhere(['id_extra' => $id])
-                ->one();
-
-            if($verifica != null) {
-                return $this->redirect(['Menu/view','id' => $verifica->id]);
-
-            }
-            else{
-                $this->findModel($id)->delete();
-                return $this->redirect(['index']);
-            }
-        }
-        else
-        {
-            throw new ForbiddenHttpException();
-        }
+        return $this->redirect(['index']);
     }
 
     /**
