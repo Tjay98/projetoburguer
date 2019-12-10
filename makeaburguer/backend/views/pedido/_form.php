@@ -19,8 +19,6 @@ use dosamigos\datetimepicker\DateTimePicker;
 
     <?= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
 
-<!--    <?//= $form->field($model, 'data')->textInput(['maxlength' => true]) ?>-->
-
     <?= $form->field($model, 'compra')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

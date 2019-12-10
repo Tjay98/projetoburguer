@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="hamburgerc-index">
 
     <p>
-        <?= Html::a('Create Hamburgerc', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Hamburgerc', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_bebida')->dropDownList($Bebida,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'id_complemento')->dropDownList($Complemento,['prompt'=>'']) ?>
+    <?= $form->field($model, 'id_complemento')->dropDownList($complemento,['prompt'=>'']) ?>
 
     <?= $form->field($model, 'id_sobremesa')->dropDownList($Sobremesa,['prompt'=>'']) ?>
 

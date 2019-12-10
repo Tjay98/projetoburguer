@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use app\models\Produtos;
 use Yii;
 use app\models\Hamburgerc;
 use backend\models\HamburgercSearch;
@@ -112,6 +113,11 @@ class HamburgercController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'pao' => ArrayHelper::map($pao, 'id', 'nome'),
+                'molho' => ArrayHelper::map($molho, 'id', 'nome'),
+                'carne' => ArrayHelper::map($carne, 'id', 'nome'),
+                'vegetais' => ArrayHelper::map($vegetais, 'id', 'nome'),
+                'queijo' => ArrayHelper::map($queijo, 'id', 'nome'),
+                'complemento' => ArrayHelper::map($complemento, 'id', 'nome'),
 
             ]);
         }
@@ -138,8 +144,38 @@ class HamburgercController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
+            $pao = Produtos::find()
+                ->where(['categoria' => 1])
+                ->all();
+
+            $molho = Produtos::find()
+                ->where(['categoria' => 2])
+                ->all();
+
+            $carne = Produtos::find()
+                ->where(['categoria' => 3])
+                ->all();
+
+            $vegetais = Produtos::find()
+                ->where(['categoria' => 4])
+                ->all();
+
+            $queijo = Produtos::find()
+                ->where(['categoria' => 5])
+                ->all();
+
+            $complemento = Produtos::find()
+                ->where(['categoria' => 6])
+                ->all();
+
             return $this->render('update', [
                 'model' => $model,
+                'pao' => ArrayHelper::map($pao, 'id', 'nome'),
+                'molho' => ArrayHelper::map($molho, 'id', 'nome'),
+                'carne' => ArrayHelper::map($carne, 'id', 'nome'),
+                'vegetais' => ArrayHelper::map($vegetais, 'id', 'nome'),
+                'queijo' => ArrayHelper::map($queijo, 'id', 'nome'),
+                'complemento' => ArrayHelper::map($complemento, 'id', 'nome'),
             ]);
         }
         else

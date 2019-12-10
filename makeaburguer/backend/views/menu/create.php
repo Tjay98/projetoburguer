@@ -11,11 +11,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="menu-create">
 
-
-
     <?= $this->render('_form', [
         'model' => $model,
-
+        'getH'=> $getH,
+        'Bebida'=>$Bebida,
+        'complemento'=>$complemento,
+        'Sobremesa'=>$Sobremesa,
     ]) ?>
 
 </div>

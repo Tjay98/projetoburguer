@@ -94,7 +94,7 @@ class MenuController extends Controller
                 ->where(['categoria' => 8])
                 ->all();
 
-            $Complemento = Produtos::find()
+            $complemento = Produtos::find()
                 ->where(['categoria' => 9])
                 ->all();
 
@@ -107,8 +107,8 @@ class MenuController extends Controller
                 'model' => $model,
                 'getH' => ArrayHelper::map($getH, 'id', 'nome'),
                 'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
+                'complemento' => ArrayHelper::map($complemento , 'id', 'nome'),
                 'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
-                'Complemento' => ArrayHelper::map($Complemento, 'id', 'nome'),
             ]);
         }
         else
@@ -139,7 +139,7 @@ class MenuController extends Controller
                 ->where(['categoria' => 8])
                 ->all();
 
-            $Complemento = Produtos::find()
+            $complemento = Produtos::find()
                 ->where(['categoria' => 9])
                 ->all();
 
@@ -151,8 +151,8 @@ class MenuController extends Controller
                 'model' => $model,
                 'getH' => ArrayHelper::map($getH, 'id', 'nome'),
                 'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
+                'complemento' => ArrayHelper::map($complemento , 'id', 'nome'),
                 'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
-                'Complemento' => ArrayHelper::map($Complemento, 'id', 'nome'),
             ]);
         }
         else
