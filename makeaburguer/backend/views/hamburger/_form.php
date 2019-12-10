@@ -29,8 +29,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'queijo')->textInput() ?>
 
     <?= $form->field($model, 'complemento')->textInput() ?>
-    
-    <?= $form->field($model, 'extra')->textInput() ?>
 
 
     <div class="form-group">
