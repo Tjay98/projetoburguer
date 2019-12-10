@@ -19,7 +19,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nome') ?>
 
-    <?= $form->field($model, 'tipo') ?>
+    <?= $form->field($model, 'imagem') ?>
+
+    <?= $form->field($model, 'categoria') ?>
 
     <?= $form->field($model, 'preco') ?>
 

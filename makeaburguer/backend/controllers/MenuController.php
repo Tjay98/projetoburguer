@@ -87,18 +87,17 @@ class MenuController extends Controller
             $getH = Hamburger::find()->all();
 
             $Bebida = Produtos::find()
-                ->where(['tipo' => 'Bebida'])
+                ->where(['categoria' => 7])
                 ->all();
 
             $Sobremesa = Produtos::find()
-                ->where(['tipo' => 'Sobremesa'])
+                ->where(['categoria' => 8])
                 ->all();
 
             $Complemento = Produtos::find()
-                ->where(['tipo' => 'Complementos'])
+                ->where(['categoria' => 9])
                 ->all();
 
-            $extra =Produtos::find()->all();
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -110,7 +109,6 @@ class MenuController extends Controller
                 'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
                 'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
                 'Complemento' => ArrayHelper::map($Complemento, 'id', 'nome'),
-                'extra'=> ArrayHelper::map($extra, 'id', 'nome'),
             ]);
         }
         else
@@ -134,18 +132,16 @@ class MenuController extends Controller
             $getH = Hamburger::find()->all();
 
             $Bebida = Produtos::find()
-                ->where(['tipo' => 'Bebida'])
+                ->where(['categoria' => 7])
                 ->all();
 
             $Sobremesa = Produtos::find()
-                ->where(['tipo' => 'Sobremesa'])
+                ->where(['categoria' => 8])
                 ->all();
 
             $Complemento = Produtos::find()
-                ->where(['tipo' => 'Complementos'])
+                ->where(['categoria' => 9])
                 ->all();
-
-            $extra =Produtos::find()->all();
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -157,7 +153,6 @@ class MenuController extends Controller
                 'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
                 'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
                 'Complemento' => ArrayHelper::map($Complemento, 'id', 'nome'),
-                'extra'=> ArrayHelper::map($extra, 'id', 'nome'),
             ]);
         }
         else

@@ -9,13 +9,11 @@ use Yii;
  *
  * @property int $id
  * @property string $nome
- * @property string $tipo
+ * @property string $imagem
+ * @property int $categoria
  * @property string $preco
  *
- * @property Menu[] $menus
- * @property Menu[] $menus0
- * @property Menu[] $menus1
- * @property Menu[] $menus2
+ * @property Categoria $categoria0
  */
 class Produtos extends \yii\db\ActiveRecord
 {
@@ -33,9 +31,13 @@ class Produtos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'tipo', 'preco'], 'required'],
+            [['id', 'nome', 'imagem', 'categoria', 'preco'], 'required'],
+            [['id', 'categoria'], 'integer'],
             [['preco'], 'number'],
-            [['nome', 'tipo'], 'string', 'max' => 50],
+            [['nome'], 'string', 'max' => 50],
+            [['imagem'], 'string', 'max' => 150],
+            [['id'], 'unique'],
+            [['categoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::className(), 'targetAttribute' => ['categoria' => 'id']],
         ];
     }
 
@@ -47,7 +49,8 @@ class Produtos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nome' => 'Nome',
-            'tipo' => 'Tipo',
+            'imagem' => 'Imagem',
+            'categoria' => 'Categoria',
             'preco' => 'Preco',
         ];
     }
@@ -55,32 +58,8 @@ class Produtos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMenus()
+    public function getCategoria0()
     {
-        return $this->hasMany(Menu::className(), ['id_bebida' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMenus0()
-    {
-        return $this->hasMany(Menu::className(), ['id_complemento' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMenus1()
-    {
-        return $this->hasMany(Menu::className(), ['id_sobremesa' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMenus2()
-    {
-        return $this->hasMany(Menu::className(), ['id_extra' => 'id']);
+        return $this->hasOne(Categoria::className(), ['id' => 'categoria']);
     }
 }

@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use app\models\Hamburgerc;
 use backend\models\HamburgercSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -84,8 +85,34 @@ class HamburgercController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
+            $pao = Produtos::find()
+                ->where(['categoria' => 1])
+                ->all();
+
+            $molho = Produtos::find()
+                ->where(['categoria' => 2])
+                ->all();
+
+            $carne = Produtos::find()
+                ->where(['categoria' => 3])
+                ->all();
+
+            $vegetais = Produtos::find()
+                ->where(['categoria' => 4])
+                ->all();
+
+            $queijo = Produtos::find()
+                ->where(['categoria' => 5])
+                ->all();
+
+            $complemento = Produtos::find()
+                ->where(['categoria' => 6])
+                ->all();
+
             return $this->render('create', [
                 'model' => $model,
+                'pao' => ArrayHelper::map($pao, 'id', 'nome'),
+
             ]);
         }
         else

@@ -18,17 +18,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descricao')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'pao')->textInput() ?>
+    <?= $form->field($model, 'pao')->dropDownList($pao,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'molho')->textInput() ?>
+    <?= $form->field($model, 'molho')->dropDownList($molho,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'carne')->textInput() ?>
+    <?= $form->field($model, 'carne')->dropDownList($carne,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'vegetais')->textInput() ?>
+    <?= $form->field($model, 'vegetais')->dropDownList($vegetais,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'queijo')->textInput() ?>
+    <?= $form->field($model, 'queijo')->dropDownList($queijo,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'complemento')->textInput() ?>
+    <?= $form->field($model, 'complemento')->dropDownList($complemento,['prompt'=>'']) ?>
 
 
     <div class="form-group">
