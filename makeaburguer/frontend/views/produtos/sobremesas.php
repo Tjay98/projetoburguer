@@ -12,15 +12,20 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Bem Vindo!</h1>
+        <div class="col-lg-12">
+            <?php foreach ($sobremesas as $sobremesa): ?>
+                <div class="col-lg-4">
+                    <div class="container" id="hamburguercontainer">
+                        <h2><?= $sobremesa->nome ?></h2>
 
-        <p class="lead">Projeto Make A Burguer</p>
+                        <div><?php echo Html::img('@web/imagens/hamburgers/hamburger_bacon.jpg')?></div>
+                        <hr>
+                        <h4>Ver hamburguer:</h4>
 
+                    </div>
+                </div>
 
-
-        <?php echo Html::img('@web/menutemp.jpg')?>
-
-
+            <?php endforeach; ?>
 
 
     </div>

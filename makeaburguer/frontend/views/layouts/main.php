@@ -30,7 +30,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
 
-        'brandLabel' => Html::img('@web/hamburgers/logo_makeaburguer1.png',['id'=>'logo']),
+        'brandLabel' => Html::img('@web/imagens/hamburgers/logo_makeaburguer1.png',['id'=>'logo']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -41,7 +41,7 @@ AppAsset::register($this);
 //                          '<li class="dropdown-header">Produtos</li>',
             ['label'=>'Hamburguers','url'=>['produtos/hamburguers']],
             '<li class="divider"></li>',
-            ['label'=>'Complementos','url'=>['produtos/complementos']],
+            ['label'=>'Acompanhamentos','url'=>['produtos/acompanhamentos']],
             '<li class="divider"></li>',
             ['label'=>'Bebidas','url'=>['produtos/bebidas']],
             '<li class="divider"></li>',

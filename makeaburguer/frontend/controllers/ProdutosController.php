@@ -1,8 +1,11 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Hamburger;
+use app\models\Produtos;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\helpers\ArrayHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -20,19 +23,52 @@ class ProdutosController extends Controller
 
     public function actionHamburguers()
     {
-        return $this->render('hamburguers');
+        $query = Hamburger::find();
+
+
+        $hamburguers = $query->orderBy('id')
+            ->all();
+
+        return $this->render('hamburguers', [
+            'hamburguers' => $hamburguers,
+
+        ]);
+
     }
-    public function actionComplementos()
+    public function actionAcompanhamentos()
     {
-        return $this->render('complementos');
+        $acompanhamentos=Produtos::find()
+        ->where (['categoria'=>9])
+        ->all();
+
+
+        return $this->render('acompanhamentos',[
+            'acompanhamentos'=>$acompanhamentos
+        ]);
     }
     public function actionBebidas()
     {
-        return $this->render('bebidas');
+        $bebidas=Produtos::find()
+            ->where (['categoria'=>7])
+            ->orderBy('id')
+            ->all();
+
+
+        return $this->render('bebidas',[
+            'bebidas'=>$bebidas
+        ]);
     }
     public function actionSobremesas()
     {
-        return $this->render('sobremesas');
+        $sobremesas=Produtos::find()
+            ->where (['categoria'=>8])
+            ->orderBy('id')
+            ->all();
+
+
+        return $this->render('sobremesas',[
+            'sobremesas'=>$sobremesas
+        ]);
     }
 
 }

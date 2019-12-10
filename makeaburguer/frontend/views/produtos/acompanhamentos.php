@@ -13,10 +13,10 @@ $this->title = 'My Yii Application';
 
     <div class="jumbotron">
         <div class="col-lg-12">
-            <?php foreach ($bebidas as $bebida): ?>
+            <?php foreach ($acompanhamentos as $acompanhamento): ?>
                 <div class="col-lg-4">
                     <div class="container" id="hamburguercontainer">
-                        <h2><?= $bebida->nome ?></h2>
+                        <h2><?= $acompanhamento->nome ?></h2>
 
                         <div><?php echo Html::img('@web/hamburgers/hamburger_bacon.jpg')?></div>
                         <hr>
@@ -29,10 +29,6 @@ $this->title = 'My Yii Application';
 
 
         </div>
-
-
-
-
 
     </div>
 

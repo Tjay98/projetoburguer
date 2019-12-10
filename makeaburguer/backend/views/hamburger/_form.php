@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'imagem')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'descricao')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'descricao')->textarea(['rows  ' => 6]) ?>
 
     <?= $form->field($model, 'pao')->dropDownList($pao,['prompt'=>'']) ?>
 
