@@ -23,7 +23,7 @@ $this->title = 'My Yii Application';
             <div class="carousel-inner">
                 <div class="item active">
 
-                    <center><a href="#" id="imagem1"><?php echo Html::img('@web/hamburgers/hamburger_bacon.jpg')?></a></center>
+                    <center><a href="#" id="imagem1"><?php echo Html::img('@web/hamburguers/hamburger_bacon.jpg')?></a></center>
                     <div class="carousel-caption">
                         <h4>Hamburguer de bacon</h4>
                         <p>Hamburguer suculento de carne de vaca com queijo, alface, tomate, bacon e cebola</p>
@@ -31,7 +31,7 @@ $this->title = 'My Yii Application';
                 </div>
 
                 <div class="item">
-                    <center><a href="#"><?php echo Html::img('@web/hamburgers/hamburger_double_cheese.jpg')?></a></center>
+                    <center><a href="#"><?php echo Html::img('@web/hamburguers/hamburger_double_cheese.jpg')?></a></center>
                     <div class="carousel-caption">
                         <h4>Double Cheese de bacon</h4>
                         <p>Hamburguer suculento com 2 hamburguers carne de vaca, com queijo, alface, tomate, bacon e cebola</p>
@@ -39,7 +39,7 @@ $this->title = 'My Yii Application';
                 </div>
 
                 <div class="item">
-                    <center><a href="#"><?php echo Html::img('@web/hamburgers/hamburger_simples.jpg')?></a></center>
+                    <center><a href="#"><?php echo Html::img('@web/hamburguers/hamburger_simples.jpg')?></a></center>
                     <div class="carousel-caption">
                         <h4>Hamburguer simples</h4>
                         <p>Hamburguer com carne de vaca, queijo, tomate e alface</p>

@@ -58,20 +58,43 @@ class SignupForm extends Model
      */
     public function signup()
     {
-        if (!$this->validate()) {
-            return null;
+//        if (!$this->validate()) {
+//            return null;
+//        }
+//
+//        $user = new User();
+//        $user->username = $this->username;
+//        $user->email = $this->email;
+//        $user->nif=$this->nif;
+//        $user->telemovel=$this->telemovel;
+//        $user->setPassword($this->password);
+//        $user->generateAuthKey();
+//        $user->generateEmailVerificationToken();
+//
+//        $auth = \Yii::$app->authManager;
+//        $authorRole = $auth->getRole('utilizador');
+//        $auth->assign($authorRole, $user->getId());
+//        return $user->save();
+        if ($this->validate()) {
+            $user = new User();
+            $user->username = $this->username;
+            $user->email = $this->email;
+            $user->nif=$this->nif;
+            $user->telemovel=$this->telemovel;
+            $user->setPassword($this->password);
+            $user->generateAuthKey();
+            $user->generateEmailVerificationToken();
+            $user->save(false);
+
+            // the following three lines were added:
+            $auth = Yii::$app->authManager;
+            $utilizador = $auth->getRole('utilizador');
+            $auth->assign($utilizador, $user->id);
+
+            return $user;
         }
 
-        $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
-        $user->nif=$this->nif;
-        $user->telemovel=$this->telemovel;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-        $user->generateEmailVerificationToken();
-
-        return $user->save();
+        return null;
 
     }
 

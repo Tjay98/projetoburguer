@@ -30,7 +30,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
 
-        'brandLabel' => Html::img('@web/imagens/hamburgers/logo_makeaburguer1.png',['id'=>'logo']),
+        'brandLabel' => Html::img('@web/imagens/hamburguers/logo_makeaburguer1.png',['id'=>'logo']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',

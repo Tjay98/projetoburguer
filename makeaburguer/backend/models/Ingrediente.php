@@ -12,7 +12,7 @@ use Yii;
  * @property string $preco
  * @property int $tipo
  *
- * @property Hamburger[] $hamburgers
+ * @property Hamburger[] $hamburguers
  * @property Hamburger[] $hamburgers0
  * @property Hamburger[] $hamburgers1
  * @property Hamburger[] $hamburgers2

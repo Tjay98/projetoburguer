@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -140,7 +141,12 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+        $idutilizador= User::find()
+            ->where (['id'=>$user->id]);
+
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+
+
             Yii::$app->session->setFlash('success', 'Registro efetuado');
 
             return $this->goHome();
@@ -248,8 +254,8 @@ class SiteController extends Controller
     public function actionMenu(){
         return $this->render('menu.php');
     }
-    public function actionContactos(){
-        return $this->render('contactos.php');
-    }
+//    public function actionContactos(){
+//        return $this->render('contactos.php');
+//    }
 
 }
