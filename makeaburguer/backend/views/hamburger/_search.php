@@ -35,7 +35,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'complemento') ?>
 
-    <?php // echo $form->field($model, 'extra') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

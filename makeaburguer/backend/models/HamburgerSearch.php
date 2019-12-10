@@ -17,7 +17,7 @@ class HamburgerSearch extends Hamburger
     public function rules()
     {
         return [
-            [['id', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'extra'], 'integer'],
+            [['id', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento'], 'integer'],
             [['nome', 'imagem', 'descricao'], 'safe'],
         ];
     }
@@ -65,7 +65,6 @@ class HamburgerSearch extends Hamburger
             'vegetais' => $this->vegetais,
             'queijo' => $this->queijo,
             'complemento' => $this->complemento,
-            'extra' => $this->extra,
         ]);
 
         $query->andFilterWhere(['like', 'nome', $this->nome])

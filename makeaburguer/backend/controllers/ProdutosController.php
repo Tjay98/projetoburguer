@@ -6,6 +6,7 @@ use Yii;
 use app\models\Produtos;
 use backend\models\ProdutosSearch;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -35,13 +36,18 @@ class ProdutosController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ProdutosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(Yii::$app->user->can('view-admin')) {
+            $searchModel = new ProdutosSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+        else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -52,9 +58,15 @@ class ProdutosController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if(Yii::$app->user->can('view-admin')) {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -64,15 +76,21 @@ class ProdutosController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Produtos();
+        if(Yii::$app->user->can('create-admin')) {
+            $model = new Produtos();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -84,15 +102,21 @@ class ProdutosController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if(Yii::$app->user->can('update-detalhes-admin')) {
+            $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -104,9 +128,16 @@ class ProdutosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if(Yii::$app->user->can('view-admin')) {
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+
+            return $this->redirect(['index']);
+        }
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**

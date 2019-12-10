@@ -30,7 +30,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'complemento')->textInput() ?>
 
-    <?= $form->field($model, 'extra')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

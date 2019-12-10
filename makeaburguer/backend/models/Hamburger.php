@@ -17,7 +17,6 @@ use Yii;
  * @property int $vegetais
  * @property int $queijo
  * @property int $complemento
- * @property int $extra
  * @property int $preco
  *
  * @property Ingrediente $pao0
@@ -43,9 +42,9 @@ class Hamburger extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'imagem', 'descricao', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'extra', 'preco'], 'required'],
+            [['nome', 'imagem', 'descricao', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'preco'], 'required'],
             [['descricao'], 'string'],
-            [['pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'extra', 'preco'], 'integer'],
+            [['pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'preco'], 'integer'],
             [['nome'], 'string', 'max' => 30],
             [['imagem'], 'string', 'max' => 150],
             [['pao'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['pao' => 'id']],
@@ -73,7 +72,6 @@ class Hamburger extends \yii\db\ActiveRecord
             'vegetais' => 'Vegetais',
             'queijo' => 'Queijo',
             'complemento' => 'Complemento',
-            'extra' => 'Extra',
             'preco' => 'Preco',
         ];
     }
