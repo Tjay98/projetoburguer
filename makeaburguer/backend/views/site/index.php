@@ -75,7 +75,7 @@ $this->title = 'Make a burger';
             <div class="icon">
                 <i class="fa fa-user""></i>
             </div>
-            <a> <?= Html::a('Redirect', ['cliente/index'], ['class' => 'small-box-footer']) ?></a>
+            <a> <?= Html::a('Redirect', ['user/index'], ['class' => 'small-box-footer']) ?></a>
         </div>
     </div>
     <?php }?>
