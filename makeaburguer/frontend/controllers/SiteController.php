@@ -2,6 +2,8 @@
 namespace frontend\controllers;
 
 use app\models\User;
+use backend\models\AuthAssignment;
+use backend\models\AuthItem;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -88,7 +90,7 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
+        $authItems=AuthItem::find()->all();
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
@@ -97,6 +99,7 @@ class SiteController extends Controller
 
             return $this->render('login', [
                 'model' => $model,
+                'authItems'=>$authItems,
             ]);
         }
     }
@@ -141,8 +144,7 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
-        $idutilizador= User::find()
-            ->where (['id'=>$user->id]);
+
 
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
 

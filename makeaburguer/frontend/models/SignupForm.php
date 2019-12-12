@@ -2,6 +2,7 @@
 namespace frontend\models;
 
 use Yii;
+use backend\models\AuthAssignment;
 use yii\base\Model;
 use common\models\User;
 
@@ -58,23 +59,6 @@ class SignupForm extends Model
      */
     public function signup()
     {
-//        if (!$this->validate()) {
-//            return null;
-//        }
-//
-//        $user = new User();
-//        $user->username = $this->username;
-//        $user->email = $this->email;
-//        $user->nif=$this->nif;
-//        $user->telemovel=$this->telemovel;
-//        $user->setPassword($this->password);
-//        $user->generateAuthKey();
-//        $user->generateEmailVerificationToken();
-//
-//        $auth = \Yii::$app->authManager;
-//        $authorRole = $auth->getRole('utilizador');
-//        $auth->assign($authorRole, $user->getId());
-//        return $user->save();
         if ($this->validate()) {
             $user = new User();
             $user->username = $this->username;
@@ -84,17 +68,19 @@ class SignupForm extends Model
             $user->setPassword($this->password);
             $user->generateAuthKey();
             $user->generateEmailVerificationToken();
-            $user->save(false);
-
-            // the following three lines were added:
-            $auth = Yii::$app->authManager;
-            $utilizador = $auth->getRole('utilizador');
-            $auth->assign($utilizador, $user->id);
+            $user->save();
+            //dar a permissao de utilizador
+            $permission="utilizador";
+            $newpermission = new AuthAssignment();
+            $newpermission->user_id = $user->id;
+            $newpermission->item_name = $permission;
+            $newpermission->save();
 
             return $user;
         }
-
         return null;
+
+
 
     }
 

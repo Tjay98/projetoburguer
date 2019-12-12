@@ -20,7 +20,7 @@ $this->title = 'My Yii Application';
 
                     <div><?php echo Html::img('@web/imagens/hamburguers/hamburger_bacon.jpg')?></div>
                     <hr>
-                    <h4>Ver hamburguer:</h4>
+                    <h4>Ver Hamburguer:</h4>
 
                 </div>
             </div>
