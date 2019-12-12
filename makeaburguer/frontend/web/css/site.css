@@ -16,9 +16,10 @@ body {
     height:auto;
 
 }
-/*#hamburguercontainer{*/
-/*    border-style:solid !important;*/
-/*    border:5px;*/
+/*#w0{*/
+/*    background-color:darkorange;*/
+/*    border-color:transparent !important;*/
+/*    color:white!important;*/
 
 
 /*}*/
@@ -36,8 +37,7 @@ body {
 
 .footer {
     height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
+    background-color: transparent;
     padding-top: 20px;
 }
 
@@ -144,4 +144,58 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+/*novos css para pagina de login*/
+
+
+
+.card-container.card {
+    max-width: 800px;
+    
+}
+
+
+.card {
+
+    padding: 20px;
+    margin: 0 auto 25px;
+    margin-top: 30px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+
+.form-signin #inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+
+.form-signin button {
+    width: 100%;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
