@@ -10,11 +10,11 @@ use yii\widgets\ActiveForm;
 
 <div class="hamburger-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'imagem')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'imagem')->fileInput() ?>
 
     <?= $form->field($model, 'descricao')->textarea(['rows  ' => 6]) ?>
 

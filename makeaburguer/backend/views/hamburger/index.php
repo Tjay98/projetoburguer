@@ -26,7 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'nome',
-            'imagem',
+            [
+                    'label'=>'imagem',
+                    'attribute'=>'imagem',
+                    'format'=>'html',
+                    'value'=>function($model){
+                        return yii\bootstrap\Html::img($model->imagem,['width'=>'150']);
+                    }
+            ],
             'descricao:ntext',
             'pao',
             //'molho',

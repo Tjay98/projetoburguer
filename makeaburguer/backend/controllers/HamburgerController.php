@@ -11,6 +11,7 @@ use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * HamburgerController implements the CRUD actions for Hamburger model.
@@ -80,7 +81,15 @@ class HamburgerController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Hamburger();
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+
+                $model->imagem=UploadedFile::getInstance($model,'imagem');
+                $imagem=$model->nome.'.'.$model->imagem->extension;
+                $image_path='imagens/hamburguers/'.$imagem;
+                $model->imagem->saveAs($image_path);
+                $model->imagem=$image_path;
+
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
