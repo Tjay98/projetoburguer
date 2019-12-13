@@ -2,8 +2,10 @@
 
 namespace backend\controllers;
 
+use app\models\Hamburger;
 use app\models\Menu;
 
+use app\models\Produtos;
 use app\models\User;
 use Yii;
 use app\models\Pedido;
@@ -87,18 +89,45 @@ class PedidoController extends Controller
     {
         if(Yii::$app->user->can('create-admin')) {
             $model = new Pedido();
+            $model2 = new Menu();
+
+            if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
+
+                $model2->save(false);
+
+                $model->id_menu = $model2->id;
+
+                $model->save(false);
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
 
             $getM = Menu::find()->all();
             $getU = User::find()->all();
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+            $getH = Hamburger::find()->all();
+
+            $Bebida = Produtos::find()
+                ->where(['categoria' => 7])
+                ->all();
+
+            $Sobremesa = Produtos::find()
+                ->where(['categoria' => 8])
+                ->all();
+
+            $complemento = Produtos::find()
+                ->where(['categoria' => 9])
+                ->all();
 
             return $this->render('create', [
                 'model' => $model,
                 'getM' => ArrayHelper::map($getM, 'id','id'),
                 'getU' => ArrayHelper::map($getU, 'id','username'),
+                'model2'=> $model2,
+                'getH' => ArrayHelper::map($getH, 'id', 'nome'),
+                'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
+                'complemento' => ArrayHelper::map($complemento , 'id', 'nome'),
+                'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
             ]);
         }
         else

@@ -16,6 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'getM' => $getM,
         'getU' => $getU,
+        'model2' => $model2,
+        'getH'=>$getH,
+        'Bebida'=>$Bebida,
+        'complemento'=>$complemento,
+        'Sobremesa'=>$Sobremesa,
     ]);?>
 
 </div>
