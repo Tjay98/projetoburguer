@@ -2,9 +2,11 @@
 
 namespace backend\controllers;
 
+use app\models\Categoria;
 use Yii;
 use app\models\Produtos;
 use backend\models\ProdutosSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -83,8 +85,15 @@ class ProdutosController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
+            $categoria = Categoria::find()
+                ->where(['id' => 7])
+                ->where(['id' => 8])
+                ->where(['id' => 9])
+                ->all();
+
             return $this->render('create', [
                 'model' => $model,
+                'categoria' => ArrayHelper::map($categoria, 'id', 'nome'),
             ]);
         }
         else
