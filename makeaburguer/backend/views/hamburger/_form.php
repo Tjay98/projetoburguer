@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'imagem')->fileInput() ?>
 
-    <?= $form->field($model, 'descricao')->textarea(['rows  ' => 6]) ?>
+    <?= $form->field($model, 'descricao')->textarea(['rows  ' => 6])->label('Descrição') ?>
 
     <?= $form->field($model, 'pao')->dropDownList($pao,['prompt'=>'']) ?>
 
@@ -30,6 +30,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'complemento')->dropDownList($complemento,['prompt'=>'']) ?>
 
+    <?= $form->field($model, 'preco')->textInput(['maxlength' => true])->label('Preço') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

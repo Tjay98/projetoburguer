@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\HamburgerC */
 
-$this->title = 'Criar Hamburger C';
+$this->title = 'Criar Hamburger Customizado';
 $this->params['breadcrumbs'][] = ['label' => 'Hamburger Cs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
