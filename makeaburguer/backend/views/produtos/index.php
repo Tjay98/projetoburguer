@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="produtos-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Create Produtos', ['create'], ['class' => 'btn btn-success']) ?>
@@ -29,6 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'nome',
             'imagem',
+            [
+                'label'=>'imagem',
+                'attribute'=>'imagem',
+                'format'=>'html',
+                'value'=>function($model){
+                    return \yii\bootstrap\Html::img('@web/'.$model->imagem,['width'=>'50']);
+                }
+            ],
             'categoria',
             'preco',
 

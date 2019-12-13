@@ -18,14 +18,20 @@ $this->title = 'My Yii Application';
                     <div class="container" id="hamburguercontainer">
                         <h2><?= $sobremesa->nome ?></h2>
 
-                        <div><?php echo Html::img('@web/imagens/hamburguers/hamburger_bacon.jpg')?></div>
+                        <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$sobremesa->imagem)?></div>
                         <hr>
-                        <h4>Ver hamburguer:</h4>
+                        <h4>Ver Bebida:</h4>
 
                     </div>
                 </div>
 
             <?php endforeach; ?>
+
+
+        </div>
+
+
+
 
 
     </div>

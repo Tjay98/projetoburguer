@@ -12,6 +12,7 @@ use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProdutosController implements the CRUD actions for Produtos model.
@@ -82,7 +83,16 @@ class ProdutosController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Produtos();
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+
+                $model->imagem=UploadedFile::getInstance($model,'imagem');
+                $imagem=$model->nome.'.'.$model->imagem->extension;
+                $image_path='imagens/produtos/'.$imagem;
+                $model->imagem->saveAs($image_path);
+                $model->imagem=$image_path;
+
+                $model->save(false);
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
@@ -115,12 +125,27 @@ class ProdutosController extends Controller
         if(Yii::$app->user->can('update-detalhes-admin')) {
             $model = $this->findModel($id);
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+
+                $model->imagem=UploadedFile::getInstance($model,'imagem');
+                $imagem=$model->nome.rand(1,400).'.'.$model->imagem->extension;
+                $image_path='imagens/produtos/'.$imagem;
+                $model->imagem->saveAs($image_path);
+                $model->imagem=$image_path;
+
+                $model->save(false);
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
+            $categoria = Categoria::find()
+                ->where(['id' => 7])
+                ->orWhere(['id' => 8])
+                ->orWhere(['id' => 9])
+                ->all();
 
             return $this->render('update', [
                 'model' => $model,
+                'categoria' => ArrayHelper::map($categoria, 'id', 'nome'),
             ]);
         }
         else

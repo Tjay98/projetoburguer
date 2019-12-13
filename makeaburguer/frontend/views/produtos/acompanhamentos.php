@@ -18,7 +18,7 @@ $this->title = 'My Yii Application';
                     <div class="container" id="hamburguercontainer">
                         <h2><?= $acompanhamento->nome ?></h2>
 
-                        <div><?php echo Html::img('@web/hamburguers/hamburger_bacon.jpg')?></div>
+                        <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$acompanhamento->imagem)?></div>
                         <hr>
                         <h4>Ver Acompanhamento:</h4>
 
