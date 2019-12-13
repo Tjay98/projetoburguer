@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use app\models\Categoria;
+use app\models\Menu;
 use Yii;
 use app\models\Produtos;
 use backend\models\ProdutosSearch;
@@ -87,8 +88,8 @@ class ProdutosController extends Controller
 
             $categoria = Categoria::find()
                 ->where(['id' => 7])
-                ->where(['id' => 8])
-                ->where(['id' => 9])
+                ->orWhere(['id' => 8])
+                ->orWhere(['id' => 9])
                 ->all();
 
             return $this->render('create', [
