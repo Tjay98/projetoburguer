@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use app\models\Produtos;
+use app\models\Ingrediente;
 use Yii;
 use app\models\Hamburgerc;
 use backend\models\HamburgercSearch;
@@ -86,29 +86,30 @@ class HamburgercController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
-            $pao = Produtos::find()
-                ->where(['categoria' => 1])
+            $pao = Ingrediente::find()
+                ->where(['tipo' => 1])
                 ->all();
 
-            $molho = Produtos::find()
-                ->where(['categoria' => 2])
+            $molho = Ingrediente::find()
+                ->where(['tipo' => 2])
                 ->all();
 
-            $carne = Produtos::find()
-                ->where(['categoria' => 3])
+            $carne = Ingrediente::find()
+                ->where(['tipo' => 3])
                 ->all();
 
-            $vegetais = Produtos::find()
-                ->where(['categoria' => 4])
+            $vegetais = Ingrediente::find()
+                ->where(['tipo' => 4])
                 ->all();
 
-            $queijo = Produtos::find()
-                ->where(['categoria' => 5])
+            $queijo = Ingrediente::find()
+                ->where(['tipo' => 5])
                 ->all();
 
-            $complemento = Produtos::find()
-                ->where(['categoria' => 6])
+            $complemento = Ingrediente::find()
+                ->where(['tipo' => 6])
                 ->all();
+
 
             return $this->render('create', [
                 'model' => $model,

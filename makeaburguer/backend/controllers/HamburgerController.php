@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use app\models\Produtos;
+use app\models\ingrediente;
 use Yii;
 use app\models\Hamburger;
 use backend\models\HamburgerSearch;
@@ -81,7 +81,7 @@ class HamburgerController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Hamburger();
 
-            if ($model->load(Yii::$app->request->post())) {
+            if (($model->load(Yii::$app->request->post()))) {
 
                 $model->imagem=UploadedFile::getInstance($model,'imagem');
                 $imagem=$model->nome.'.'.$model->imagem->extension;
@@ -89,32 +89,32 @@ class HamburgerController extends Controller
                 $model->imagem->saveAs($image_path);
                 $model->imagem=$image_path;
 
-                $model->save();
-                return $this->redirect(['view', 'id' => $model->id]);
+                $model->save(false);
+                return $this->redirect(['index']);
             }
 
-            $pao = Produtos::find()
-                ->where(['categoria' => 1])
+            $pao = Ingrediente::find()
+                ->where(['tipo' => 1])
                 ->all();
 
-            $molho = Produtos::find()
-                ->where(['categoria' => 2])
+            $molho = Ingrediente::find()
+                ->where(['tipo' => 2])
                 ->all();
 
-            $carne = Produtos::find()
-                ->where(['categoria' => 3])
+            $carne = Ingrediente::find()
+                ->where(['tipo' => 3])
                 ->all();
 
-            $vegetais = Produtos::find()
-                ->where(['categoria' => 4])
+            $vegetais = Ingrediente::find()
+                ->where(['tipo' => 4])
                 ->all();
 
-            $queijo = Produtos::find()
-                ->where(['categoria' => 5])
+            $queijo = Ingrediente::find()
+                ->where(['tipo' => 5])
                 ->all();
 
-            $complemento = Produtos::find()
-                ->where(['categoria' => 6])
+            $complemento = Ingrediente::find()
+                ->where(['tipo' => 6])
                 ->all();
 
             return $this->render('create', [
