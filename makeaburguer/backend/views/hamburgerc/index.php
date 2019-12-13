@@ -7,13 +7,15 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\HamburgercSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Hamburgercs';
+$this->title = 'Hamburger Cs';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="hamburgerc-index">
+<div class="hamburger-c-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Criar Hamburgerc', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Hamburger C', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

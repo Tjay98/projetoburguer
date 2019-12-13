@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="hamburgerc-search">
+<div class="hamburger-c-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -30,8 +30,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'complementos') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Limpar', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

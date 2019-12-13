@@ -3,17 +3,23 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Hamburgerc */
+/* @var $model app\models\HamburgerC */
 
-$this->title = 'Criar Hamburgerc';
-$this->params['breadcrumbs'][] = ['label' => 'Hamburgercs', 'url' => ['index']];
+$this->title = 'Criar Hamburger C';
+$this->params['breadcrumbs'][] = ['label' => 'Hamburger Cs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="hamburgerc-create">
+<div class="hamburger-c-create">
 
 
     <?= $this->render('_form', [
         'model' => $model,
+        'pao'=>$pao,
+        'molho'=>$molho,
+        'carne'=>$carne,
+        'vegetais'=>$vegetais,
+        'queijo'=>$queijo,
+        'complemento'=>$complemento,
     ]) ?>
 
 </div>
