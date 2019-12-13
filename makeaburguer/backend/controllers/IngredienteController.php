@@ -2,10 +2,12 @@
 
 namespace backend\controllers;
 
+use app\models\Categoria;
 use Yii;
 use app\models\Hamburger;
 use app\models\Ingrediente;
 use app\models\IngredienteSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -81,12 +83,22 @@ class IngredienteController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Ingrediente();
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
+            $tipo = Categoria::find()
+                ->where(['id' => 1])
+                ->orWhere(['id' => 2])
+                ->orWhere(['id' => 3])
+                ->orWhere(['id' => 4])
+                ->orWhere(['id' => 5])
+                ->orWhere(['id' => 6])
+                ->all();
+
             return $this->render('create', [
                 'model' => $model,
+                'tipo' => ArrayHelper::map($tipo, 'id', 'nome'),
             ]);
         }
         else
@@ -111,8 +123,18 @@ class IngredienteController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
+            $tipo = Categoria::find()
+                ->where(['id' => 1])
+                ->orWhere(['id' => 2])
+                ->orWhere(['id' => 3])
+                ->orWhere(['id' => 4])
+                ->orWhere(['id' => 5])
+                ->orWhere(['id' => 6])
+                ->all();
+
             return $this->render('update', [
                 'model' => $model,
+                'tipo' => ArrayHelper::map($tipo, 'id', 'nome'),
             ]);
         }
         else

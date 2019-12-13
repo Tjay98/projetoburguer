@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tipo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tipo')->dropDownList($tipo,['prompt'=>'']) ?>
 
     <?= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
 
