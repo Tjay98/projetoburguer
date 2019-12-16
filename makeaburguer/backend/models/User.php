@@ -42,10 +42,12 @@ class User extends \yii\db\ActiveRecord
             [['status', 'created_at', 'updated_at', 'nif'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
-            [['telemovel'], 'string', 'max' => 12],
+//            [['telemovel'], 'intenger', 'max' => 9],
+//            [['nif','intenger','max'=>9],
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
+
         ];
     }
 

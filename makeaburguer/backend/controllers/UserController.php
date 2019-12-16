@@ -3,6 +3,8 @@
 namespace backend\controllers;
 
 use app\models\Pedido;
+use backend\models\AuthAssignment;
+use frontend\models\SignupForm;
 use Yii;
 use app\models\User;
 use backend\models\UserSearch;
@@ -78,10 +80,16 @@ class UserController extends Controller
     public function actionCreate()
     {
         if(Yii::$app->user->can('create-admin')) {
-            $model = new User();
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            $model = new SignupForm();
+
+
+            if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+
+
+                Yii::$app->session->setFlash('success', 'Registro efetuado');
+
+                return $this->goHome();
             }
 
             return $this->render('create', [
