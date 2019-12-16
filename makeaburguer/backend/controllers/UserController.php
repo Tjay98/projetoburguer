@@ -87,7 +87,6 @@ class UserController extends Controller
             if ($model->load(Yii::$app->request->post()) && $model->signup()) {
 
 
-                Yii::$app->session->setFlash('success', 'Registro efetuado');
 
                 return $this->goHome();
             }

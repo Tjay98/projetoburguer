@@ -22,9 +22,10 @@ $this->title = 'Registo';
                         <?= $form->field($model,'nif') ?>
                     </div>
                     <div class="col-lg-6">
+                        <?= $form->field($model,'telemovel')->label('Telemóvel')?>
                         <?= $form->field($model, 'password')->passwordInput() ?>
                         <?= $form->field($model, 'password_repeat')->passwordInput()->label('Repetir a password') ?>
-                        <?= $form->field($model,'telemovel')->label('Telemóvel')?>
+
                     </div>
                 <div class="form-group">
                     <?= Html::submitButton('Registo', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>

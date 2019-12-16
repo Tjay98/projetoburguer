@@ -1,8 +1,8 @@
 <?php
-namespace frontend\models;
+namespace backend\models;
 
 use Yii;
-use backend\models\AuthAssignment;
+use app\models\AuthAssignment;
 use yii\base\Model;
 use common\models\User;
 
