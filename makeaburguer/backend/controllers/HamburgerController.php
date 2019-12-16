@@ -145,7 +145,14 @@ class HamburgerController extends Controller
         if(Yii::$app->user->can('update-detalhes-admin')) {
             $model = $this->findModel($id);
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+
+                $model->imagem=UploadedFile::getInstance($model,'imagem');
+                $imagem=$model->nome.rand(1,4000).'.'.$model->imagem->extension;
+                $image_path='imagens/hamburguers/'.$imagem;
+                $model->imagem->saveAs($image_path);
+                $model->imagem=$image_path;
+                $model->save(false);
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 

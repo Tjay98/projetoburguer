@@ -67,11 +67,11 @@ class SiteController extends Controller
      * @return string
      */
 
-    //vais á base de dados e conta os campos abaixo para mostrar no index do backend
+
     public function actionIndex()
     {
         if(Yii::$app->user->can('login-backoffice')) {
-
+            //vais á base de dados e conta os campos abaixo para mostrar no index do backend
             $Hamburger = Hamburger::find()->count();
             $Cliente = User::find()->count();
             $Produtos = Produtos::find()->count();
