@@ -1,6 +1,6 @@
 <?php
 
-use app\models\Cliente;
+//use app\models\Cliente;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\DetailView;
@@ -10,17 +10,12 @@ use yii\widgets\DetailView;
 
 $this->title = $model->username;
 
-$this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
 ?>
 <div class="cliente-view">
 
+    <div class="card card-container">
+    <center><H1 id="idperfil">Perfil</H1></center>
 
-    <H1>Perfil</H1>
-    <p >
-        <?= Html::a('Editar informações', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-
-    </p>
 
 
     <?= DetailView::widget([
@@ -33,5 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
         ],
     ]) ?>
+    <p >
+        <center><?= Html::a('Editar informações', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?></center>
 
+    </p>
+    </div>
 </div>

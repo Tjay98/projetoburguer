@@ -57,7 +57,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => 'Nome de utilizador',
             'auth_key' => 'Auth Key',
             'password_hash' => 'Password Hash',
             'password_reset_token' => 'Password Reset Token',
@@ -67,7 +67,7 @@ class User extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'verification_token' => 'Verification Token',
             'nif' => 'Nif',
-            'telemovel' => 'Telemovel',
+            'telemovel' => 'Telemóvel',
         ];
     }
 

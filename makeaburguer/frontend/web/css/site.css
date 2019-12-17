@@ -4,25 +4,61 @@ body {
 }
 
 
-.carousel{
-    width:33% !important;
-    height:300px !important;
-    align-content: center;
-    background-color: transparent;
 
-}
 #logo{
     width:165px !important;
     height:auto;
 
 }
-/*#w0{*/
-/*    background-color:darkorange;*/
-/*    border-color:transparent !important;*/
-/*    color:white!important;*/
 
+/*mudar a cor do navbar*/
+#w0{
+    background-color:darkorange;
+    border-color:transparent !important;
+    color:white!important;
+}
+#w1{
+    background-color:darkorange;
+    border-color:transparent !important;
+    color:white!important;
+}
+#idperfil{
+    color:darkorange;
+}
 
-/*}*/
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: orange;
+}
+
+/*botao ativo cor laranja*/
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+
+    background-color: orange !important;
+}
+/*transparencia nos botoes da navbar*/
+.nav > li > a {
+    background-color: transparent !important;
+}
+/*mudar a cor da letra*/
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+.navbar-inverse .btn-link {
+    color: white;
+}
+
+/*Mudar a cor dos botoes*/
+.btn-primary {
+    color: #fff;
+    background-color: darkorange;
+    border-color: transparent;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: orangered;
+    border-color: transparent;
+}
 
 .wrap {
     min-height: 100%;
@@ -44,6 +80,10 @@ body {
 .jumbotron {
     text-align: center;
     background-color: transparent;
+}
+/*define o tamanho da imagem dos varios produtos*/
+.imagemproduto{
+    height:150px
 }
 
 .jumbotron .btn {
@@ -199,3 +239,38 @@ a.desc:after {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+.pagination > li > a, .pagination > li > span {
+    color: white;
+    background-color: orange!important;
+
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    color: white;
+    cursor: default;
+    background-color: orange;
+    border-color: transparent;
+}
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
+    color: white;
+    cursor: not-allowed;
+    background-color: orange;
+    border-color: transparent;
+}
+.pagination > li > a:focus,
+ .pagination > li > a:hover,
+ .pagination > li > span:focus,
+ .pagination > li > span:hover {
+     color: white!important;
+     background-color: orangered!important;
+     border-color: transparent!important;
+ }
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid #ddd;
+    background-color:white;
+    color:black;
+}
+
+
+/*teste*/

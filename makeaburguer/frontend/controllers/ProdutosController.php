@@ -5,6 +5,7 @@ use app\models\Hamburger;
 use app\models\Produtos;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -24,13 +25,19 @@ class ProdutosController extends Controller
     public function actionHamburguers()
     {
         $query = Hamburger::find();
-
+        $pagination = new Pagination([
+            'defaultPageSize' => 3,
+            'totalCount' => $query->count(),
+        ]);
 
         $hamburguers = $query->orderBy('id')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
             ->all();
 
         return $this->render('hamburguers', [
             'hamburguers' => $hamburguers,
+            'pagination'=>$pagination
 
         ]);
 
