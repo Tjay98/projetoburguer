@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'complemento')->dropDownList($complemento,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'preco')->textInput(['maxlength' => true])->label('Preço') ?>
+<!--    --><?//= $form->field($model, 'preco')->textInput(['maxlength' => true])->label('Preço') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

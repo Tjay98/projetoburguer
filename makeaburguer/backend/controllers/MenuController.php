@@ -99,7 +99,32 @@ class MenuController extends Controller
                 ->all();
 
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())){
+
+                $precoH= Hamburger::find('preco')
+                    ->where(['id'=> $model->id_hamburger])
+                    ->one();
+
+                $precoB= Produtos::find('preco')
+                    ->where(['id'=> $model->id_bebida])
+                    //->andWhere(['categoria'=>7])
+                    ->one();
+
+                $precoS= Produtos::find('preco')
+                    ->where(['id'=> $model->id_sobremesa])
+                    ->one();
+
+                $precoC= Produtos::find('preco')
+                    ->where(['id'=> $model->id_complemento])
+                    ->one();
+
+                if($model->id_extra!=0){
+                    $precoE= Produtos::find('preco')
+                        ->where(['id'=> $model->id_extra])
+                        ->one();
+                }
+
+                 $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 

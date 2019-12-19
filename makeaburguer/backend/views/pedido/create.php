@@ -23,4 +23,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'Sobremesa'=>$Sobremesa,
     ]);?>
 
+<!--    <script type="text/javascript">-->
+<!---->
+<!--        $(document).ready(function(){-->
+<!--            $('div').click(function(){-->
+<!--                $(this).hide()-->
+<!--            });-->
+<!--        });-->
+<!--    </script >-->
+
 </div>
