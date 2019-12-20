@@ -15,7 +15,7 @@ $this->title = 'Registo';
             <div class="form-signin">
                 <center> <h1><?= Html::encode($this->title) ?></h1><br><p>Preencha os campos para efetuar registo de uma conta:</p></center>
                 <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-                <div class="col-lg-12">
+
                     <div class="col-lg-6">
                         <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Nome') ?>
                         <?= $form->field($model, 'email') ?>
@@ -32,7 +32,7 @@ $this->title = 'Registo';
                 </div>
 
                 <?php ActiveForm::end(); ?>
-                </div>
+
             </div>
 
         </div>

@@ -16,6 +16,7 @@ $this->title = 'Hamburguers';
     <hr>
     <div class="jumbotron">
         <div class="col-lg-12">
+
             <?php Pjax::begin() ?>
             <?php  foreach ($hamburguers as $hamburguer): ?>
                 <div class="col-lg-4 col-md-6">
