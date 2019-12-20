@@ -112,57 +112,15 @@ class HamburgerController extends Controller
                 if(empty($model->queijo)){
                     $model->queijo=0;
                 }
+
                 if(empty($model->complemento)){
                     $model->complemento=0;
                 }
 
-//                if(empty($model->carne)){
-//                    $model->carne=0;
-//                }
-//                $precoA=[];
-//                $precoA[0]= Ingrediente::find('preco')
-//                    ->where(['id'=> $model->pao])
-//                    ->one();
-//
-//                $precoA[1]= Ingrediente::find('preco')
-//                    ->where(['id'=> $model->carne])
-//                    ->one();
-//
-//
-//                if($model->molho!=0){
-//                    $precoA[2]= Ingrediente::find('preco')
-//                        ->where(['id'=> $model->molho])
-//                        ->one();
-//                }
-//
-//                if($model->vegetais!=0){
-//                    $precoA[3]= Ingrediente::find('preco')
-//                        ->where(['id'=> $model->vegetais])
-//                        ->one();
-//                }
-//
-//                if($model->queijo!=0) {
-//                    $precoA[4] = Ingrediente::find('preco')
-//                        ->where(['id' => $model->queijo])
-//                        ->one();
-//                }
-//
-//                if($model->complemento!=0) {
-//                    $precoA[5] = Ingrediente::find('preco')
-//                        ->where(['id' => $model->complemento])
-//                        ->one();
-//                }
-//
-//                $preco=0;
-//
-//                foreach ($precoA as $row) {
-//                    $preco += $row;
-//                }
-
                 $model->preco= $precoteste;
 
                 $model->save(false);
-                return $this->redirect(['index']);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
 
             $pao = Ingrediente::find()
