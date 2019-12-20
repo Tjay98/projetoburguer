@@ -56,7 +56,7 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
 
-        $menuItems[]=['label'=>'Perfil',
+        $menuItems[]=['label'=>'Perfil ('.Yii::$app->user->identity->username.')',
                     'items'=>[
                         ['label'=>'Ver Perfil','url'=>['cliente/info']],
                         '<li class="divider"></li>',
@@ -70,7 +70,7 @@ AppAsset::register($this);
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Logout',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()

@@ -24,6 +24,7 @@ $this->title = 'Hamburguers';
                         <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$hamburguer->imagem,['class'=>'imagemproduto'])?></div>
                         <hr>
                         <h4>Ver Hamburguer:</h4>
+                        <?= Html::a('Info', ['produtos/infohamburguer', 'id' => $hamburguer->id]) ?>
 
                     </div>
                 </div>

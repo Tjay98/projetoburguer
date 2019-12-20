@@ -24,13 +24,14 @@ class ProdutosController extends Controller
 
     public function actionHamburguers()
     {
-        $query = Hamburger::find();
+        $hamburguerlist = Hamburger::find();
+
         $pagination = new Pagination([
             'defaultPageSize' => 3,
-            'totalCount' => $query->count(),
+            'totalCount' => $hamburguerlist->count(),
         ]);
 
-        $hamburguers = $query->orderBy('id')
+        $hamburguers = $hamburguerlist->orderBy('id')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -42,39 +43,87 @@ class ProdutosController extends Controller
         ]);
 
     }
+
+    public function actionBebidas()
+    {
+        $bebidaslist=Produtos::find()
+            ->where (['categoria'=>7]);
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 3,
+            'totalCount' => $bebidaslist->count(),
+        ]);
+
+        $bebidas = $bebidaslist->orderBy('id')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('bebidas',[
+            'bebidas'=>$bebidas,
+            'pagination'=>$pagination,
+        ]);
+    }
+
+    public function actionSobremesas()
+    {
+        $sobremesaslist=Produtos::find()
+            ->where (['categoria'=>8]);
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 3,
+            'totalCount' => $sobremesaslist->count(),
+        ]);
+
+        $sobremesas = $sobremesaslist->orderBy('id')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('sobremesas',[
+            'sobremesas'=>$sobremesas,
+            'pagination'=>$pagination,
+        ]);
+    }
     public function actionAcompanhamentos()
     {
-        $acompanhamentos=Produtos::find()
-        ->where (['categoria'=>9])
-        ->all();
+
+        $acompanhamentoslist=Produtos::find()
+            ->where (['categoria'=>9]);
+
+        $pagination= new Pagination([
+            'defaultPageSize'=>3,
+            'totalCount'=>$acompanhamentoslist->count(),
+        ]);
+
+        $acompanhamentos=$acompanhamentoslist->orderBy('id')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
 
 
         return $this->render('acompanhamentos',[
-            'acompanhamentos'=>$acompanhamentos
+            'acompanhamentos'=>$acompanhamentos,
+            'pagination'=>$pagination,
         ]);
     }
-    public function actionBebidas()
-    {
-        $bebidas=Produtos::find()
-            ->where (['categoria'=>7])
-            ->orderBy('id')
+
+    public function actionInfoprodutos($id){
+        $produto=Produtos::find()
+            ->where(['id'=>$id])
             ->all();
 
-
-        return $this->render('bebidas',[
-            'bebidas'=>$bebidas
+        return $this->render('infoprodutos',[
+            'produto'=>$produto,
         ]);
     }
-    public function actionSobremesas()
-    {
-        $sobremesas=Produtos::find()
-            ->where (['categoria'=>8])
-            ->orderBy('id')
+    public function actionInfohamburguer($id){
+        $hamburguer=Hamburger::find()
+            ->where(['id'=>$id])
             ->all();
 
-
-        return $this->render('sobremesas',[
-            'sobremesas'=>$sobremesas
+        return $this->render('infohamburguer',[
+            'hamburguer'=>$hamburguer,
         ]);
     }
 

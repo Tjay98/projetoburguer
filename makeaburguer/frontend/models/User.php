@@ -44,8 +44,10 @@ class User extends \yii\db\ActiveRecord
             [['auth_key'], 'string', 'max' => 32],
             [['nif'], 'string', 'max' => 9],
             [['telemovel'], 'string', 'max' => 12],
-            [['username'], 'unique'],
-            [['email'], 'unique'],
+            [['username'], 'unique','message' => 'Este nome de utilizador já está registado.'],
+            [['email'], 'unique','message' => 'Este email já está registado.'],
+            [['nif'],'unique','message' => 'Este nif já está registado.'],
+            [['telemovel'],'unique','message' => 'Este telemóvel já está registado.'],
             [['password_reset_token'], 'unique'],
         ];
     }

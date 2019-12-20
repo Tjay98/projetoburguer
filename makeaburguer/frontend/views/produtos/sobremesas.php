@@ -21,10 +21,10 @@ $this->title = 'My Yii Application';
                     <div class="container" id="hamburguercontainer">
                         <h2><?= $sobremesa->nome ?></h2>
 
-                        <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$sobremesa->imagem)?></div>
+                        <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$sobremesa->imagem,['class'=>'imagemproduto'])?></div>
                         <hr>
                         <h4>Ver Bebida:</h4>
-
+                        <?= Html::a('Info', ['produtos/infoprodutos', 'id' => $sobremesa->id]) ?>
                     </div>
                 </div>
 

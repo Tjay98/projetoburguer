@@ -13,24 +13,27 @@ $this->title = $model->username;
 ?>
 <div class="cliente-view">
 
-    <div class="card card-container">
+
     <center><H1 id="idperfil">Perfil</H1></center>
 
+        <div class="card" style="width: 30rem;">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <div class="card-body">
+                <?= DetailView::widget([
+                    'model' => $model,
+                    'attributes' => [
+                        'username',
+                        'email',
+                        'nif',
+                        'telemovel'
+
+                    ],
+                ]) ?>
+                <center><?= Html::a('Editar informações', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?></center>
+            </div>
+        </div>
 
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'username',
-            'email',
-            'nif',
-            'telemovel'
 
-        ],
-    ]) ?>
-    <p >
-        <center><?= Html::a('Editar informações', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?></center>
 
-    </p>
-    </div>
 </div>

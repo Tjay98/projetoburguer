@@ -24,6 +24,7 @@ $this->title = 'My Yii Application';
                         <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$bebida->imagem,['class'=>'imagemproduto'])?></div>
                         <hr>
                         <h4>Ver Bebida:</h4>
+                        <?= Html::a('Info', ['produtos/infoprodutos', 'id' => $bebida->id]) ?>
 
                     </div>
                 </div>
