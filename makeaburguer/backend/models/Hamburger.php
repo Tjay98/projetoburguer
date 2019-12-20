@@ -42,9 +42,10 @@ class Hamburger extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'descricao', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'preco'], 'required'],
+            [['nome', 'descricao', 'pao', 'carne'], 'required'],
             [['descricao'], 'string'],
-            [['pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento', 'preco'], 'integer'],
+            [['pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento'], 'integer'],
+            [['preco'],'number'],
             [['nome'], 'string', 'max' => 30],
             [['imagem'], 'file','extensions'=>'jpg'],
             [['pao'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['pao' => 'id']],
