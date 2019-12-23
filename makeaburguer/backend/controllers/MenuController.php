@@ -101,30 +101,37 @@ class MenuController extends Controller
 
             if ($model->load(Yii::$app->request->post())){
 
-                $precoH= Hamburger::find('preco')
+                $precoH= Hamburger::find()
                     ->where(['id'=> $model->id_hamburger])
-                    ->one();
+                    ->one()
+                    ->sum('preco');
 
                 $precoB= Produtos::find('preco')
                     ->where(['id'=> $model->id_bebida])
-                    //->andWhere(['categoria'=>7])
-                    ->one();
+                    ->orWhere(['id'=> $model->id_sobremesa])
+                    ->orWhere(['id'=> $model->id_complemento])
+                    ->orWhere(['id'=> $model->id_extra])
+                    ->sum('preco');
 
-                $precoS= Produtos::find('preco')
-                    ->where(['id'=> $model->id_sobremesa])
-                    ->one();
+//                $precoS= Produtos::find('preco')
+//                    ->where(['id'=> $model->id_sobremesa]);
+//
+//
+//                $precoC= Produtos::find('preco')
+//                    ->where(['id'=> $model->id_complemento]);
+//
+//
+//                $precoE=0;
+//                if($model->id_extra!=0){
+//                    $precoE= Produtos::find('preco')
+//                        ->where(['id'=> $model->id_extra]);
+//
+//                }
 
-                $precoC= Produtos::find('preco')
-                    ->where(['id'=> $model->id_complemento])
-                    ->one();
+                $preco = $precoB+$precoH;
+                $model->preco=$preco;
 
-                if($model->id_extra!=0){
-                    $precoE= Produtos::find('preco')
-                        ->where(['id'=> $model->id_extra])
-                        ->one();
-                }
-
-                 $model->save();
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 

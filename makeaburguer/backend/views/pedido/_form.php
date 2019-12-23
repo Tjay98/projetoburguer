@@ -18,7 +18,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 
 <!--    --><?//= $form->field($model, 'id_menu')->dropDownList($getM,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
+<!--    --><?//= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'compra')->textInput(['maxlength' => true]) ?>
 
@@ -32,7 +32,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 
     <?= $form->field($model2, 'id_sobremesa')->dropDownList($Sobremesa,['prompt'=>'']) ?>
 
-    <?= $form->field($model2, 'preco')->textInput(['maxlength' => true]) ?>
+<!--    --><?//= $form->field($model2, 'preco')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model2, 'descricao')->textInput(['maxlength' => true]) ?>
 

@@ -93,33 +93,22 @@ class PedidoController extends Controller
 
             if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
 
-                $precoH= Hamburger::find('preco')
+                $precoH= Hamburger::find()
                     ->where(['id'=> $model2->id_hamburger])
-                    ->one();
+                    ->one()
+                    ->sum('preco');
 
-                $precoB= Produtos::find('preco')
+                $precoB= Produtos::find()
                     ->where(['id'=> $model2->id_bebida])
-                    //->andWhere(['categoria'=>7])
-                    ->one();
+                    ->orWhere(['id'=> $model2->id_sobremesa])
+                    ->orWhere(['id'=> $model2->id_complemento])
+                    ->orWhere(['id'=> $model2->id_extra])
+                    ->sum('preco');
 
-                $precoS= Produtos::find('preco')
-                    ->where(['id'=> $model2->id_sobremesa])
-                    ->one();
-
-                $precoC= Produtos::find('preco')
-                    ->where(['id'=> $model2->id_complemento])
-                    ->one();
-
-                if($model2->id_extra!=0){
-                    $precoE= Produtos::find('preco')
-                    ->where(['id'=> $model2->id_extra])
-                    ->one();
-                }
-
+                $preco = $precoB+$precoH;
+                $model2->preco=$preco;
 
                 $model2->save(false);
-
-
 
                 $model->id_menu = $model2->id;
 

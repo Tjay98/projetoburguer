@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_sobremesa')->dropDownList($Sobremesa,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
+<!--    --><?//= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
 

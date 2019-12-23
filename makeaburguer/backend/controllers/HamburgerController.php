@@ -101,21 +101,21 @@ class HamburgerController extends Controller
                     ->orWhere(['id' => $model->complemento])
                     ->sum('preco');
 
-                if(empty($model->molho)){
-                    $model->molho=0;
-                }
-
-                if(empty($model->vegetais)){
-                    $model->vegetais=0;
-                }
-
-                if(empty($model->queijo)){
-                    $model->queijo=0;
-                }
-
-                if(empty($model->complemento)){
-                    $model->complemento=0;
-                }
+//                if(empty($model->molho)){
+//                    $model->molho=0;
+//                }
+//
+//                if(empty($model->vegetais)){
+//                    $model->vegetais=0;
+//                }
+//
+//                if(empty($model->queijo)){
+//                    $model->queijo=0;
+//                }
+//
+//                if(empty($model->complemento)){
+//                    $model->complemento=0;
+//                }
 
                 $model->preco= $precoteste;
 
