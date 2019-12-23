@@ -141,7 +141,37 @@ class HamburgercController extends Controller
         if(Yii::$app->user->can('update-detalhes-admin')) {
             $model = $this->findModel($id);
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+
+                $precoteste= Ingrediente::find()
+                    ->where(['id'=> $model->pao])
+                    ->orWhere(['id'=> $model->carne])
+                    ->orWhere(['id'=> $model->molho])
+                    ->orWhere(['id'=> $model->vegetais])
+                    ->orWhere(['id' => $model->queijo])
+                    ->orWhere(['id' => $model->complemento])
+                    ->sum('preco');
+
+//                if(empty($model->molho)) {
+//                    $model->molho = 0;
+//                }
+//
+//                if(empty($model->vegetais)){
+//                    $model->vegetais=0;
+//                }
+//
+//                if(empty($model->queijo)){
+//                    $model->queijo=0;
+//                }
+//
+//                if(empty($model->complemento)){
+//                    $model->complemento=0;
+//                }
+
+                $model->preco= $precoteste;
+
+                $model->save(false);
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 

@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_bebida',
             'id_complemento',
             'id_sobremesa',
-            //'preco',
+            'preco',
             //'descricao',
 
             ['class' => 'yii\grid\ActionColumn'],

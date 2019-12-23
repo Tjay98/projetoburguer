@@ -63,10 +63,16 @@ class HamburgerController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
         if(Yii::$app->user->can('view-admin')) {
-            return $this->render('view', [
-                'model' => $this->findModel($id),
-            ]);
+
+            $pao = Ingrediente::find()
+                ->select('nome')
+                ->where(['id' => $model->pao])
+                ->orwhere(['id' => $model->carne])
+                ->all();
+
+            return $this->render('view', ['model' => $this->findModel($id),]);
         }
         else{
             throw new ForbiddenHttpException();

@@ -20,9 +20,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'pao')->dropDownList($pao,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'molho')->dropDownList($molho,['prompt'=>'']) ?>
-
     <?= $form->field($model, 'carne')->dropDownList($carne,['prompt'=>'']) ?>
+
+    <?= $form->field($model, 'molho')->dropDownList($molho,['prompt'=>'']) ?>
 
     <?= $form->field($model, 'vegetais')->dropDownList($vegetais,['prompt'=>'']) ?>
 
