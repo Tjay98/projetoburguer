@@ -25,39 +25,43 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'nome',
-            'imagem',
-            'descricao:ntext',
-            'pao',
-            'molho',
-            'carne',
-            'vegetais',
-            'queijo',
-            'complemento',
-            'preco',
-        ],
-    ]) ?>
-
 <?php
-foreach ($pao as $pae) {
-    echo $model->id;
+    echo 'ID - ',$model->id;
     echo "<br>";
     echo $model->nome;
     echo "<br>";
     echo $model->imagem;
     echo "<br>";
-    echo $pae->tipo;
+    echo $model->descricao;
     echo "<br>";
-    echo $model->id;
+    echo $pao->id;
     echo "<br>";
-    echo $model->id;
-}
-
-
+    echo $pao->nome;
+    echo "<br>";
+    echo $carne->id;
+    echo "<br>";
+    echo $carne->nome;
+    echo "<br>";
+    if($molho!=0) {
+        echo $molho->nome;
+        echo $molho->id;
+    }
+    echo "<br>";
+    if($vegetais!=0) {
+        echo $vegetais->nome;
+        echo $vegetais->id;
+    }
+    echo "<br>";
+    if($queijo!=0) {
+        echo $queijo->nome;
+        echo $queijo->id;
+    }
+    echo "<br>";
+    if($complemente!=0) {
+        echo $complemente->nome;
+        echo $complemente->id;
+    }
+    echo $model->preco;
 ?>
 
 </div>

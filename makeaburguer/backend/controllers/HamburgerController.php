@@ -63,16 +63,41 @@ class HamburgerController extends Controller
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
+       $model = $this->findModel($id);
+       $pao = $this->findModelI($model->pao);
+
         if(Yii::$app->user->can('view-admin')) {
+            
+            $molho = Ingrediente::find()
+                ->where(['id' => $model->molho])
+                ->one();
 
-            $pao = Ingrediente::find()
-                ->select('nome')
-                ->where(['id' => $model->pao])
-                ->orwhere(['id' => $model->carne])
-                ->all();
+            $carne = Ingrediente::find()
+                ->where(['id' => $model->carne])
+                ->one();
 
-            return $this->render('view', ['model' => $this->findModel($id),]);
+            $vegetais = Ingrediente::find()
+                ->where(['id' => $model->vegetais])
+                ->one();
+
+            $queijo = Ingrediente::find()
+                ->where(['id' => $model->queijo])
+                ->one();
+
+            $complemento = Ingrediente::find()
+                ->where(['id' => $model->complemento])
+                ->one();
+
+            return $this->render('view', [
+                'model' => $model,
+                'pao'=> $pao,
+                'carne'=> $carne,
+                'molho'=>$molho,
+                'vegetais'=> $vegetais,
+                'queijo'=>$queijo,
+                'complemente'=> $complemento,
+            ]);
+
         }
         else{
             throw new ForbiddenHttpException();
@@ -105,6 +130,7 @@ class HamburgerController extends Controller
                     ->orWhere(['id'=> $model->vegetais])
                     ->orWhere(['id' => $model->queijo])
                     ->orWhere(['id' => $model->complemento])
+                    ->asArray()
                     ->sum('preco');
 
 //                if(empty($model->molho)){
@@ -257,6 +283,16 @@ class HamburgerController extends Controller
     protected function findModel($id)
     {
         if (($model = Hamburger::findOne($id)) !== null) {
+
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    protected function findModelI($id)
+    {
+        if (($model = ingrediente::findOne($id)) !== null) {
+
             return $model;
         }
 
