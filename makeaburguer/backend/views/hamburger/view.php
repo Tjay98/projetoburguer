@@ -42,4 +42,22 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
+<?php
+foreach ($pao as $pae) {
+    echo $model->id;
+    echo "<br>";
+    echo $model->nome;
+    echo "<br>";
+    echo $model->imagem;
+    echo "<br>";
+    echo $pae->tipo;
+    echo "<br>";
+    echo $model->id;
+    echo "<br>";
+    echo $model->id;
+}
+
+
+?>
+
 </div>
