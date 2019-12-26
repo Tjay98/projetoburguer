@@ -84,34 +84,18 @@ class MenuController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Menu();
 
-            $getH = Hamburger::find()->all();
-
-            $Bebida = Produtos::find()
-                ->where(['categoria' => 7])
-                ->all();
-
-            $Sobremesa = Produtos::find()
-                ->where(['categoria' => 8])
-                ->all();
-
-            $complemento = Produtos::find()
-                ->where(['categoria' => 9])
-                ->all();
-
-
             if ($model->load(Yii::$app->request->post())){
 
-                $precoH= Hamburger::find()
-                    ->where(['id'=> $model->id_hamburger])
-                    ->one()
-                    ->sum('preco');
+            $precoH= Hamburger::find()
+                ->where(['id'=> $model->id_hamburger])
+                ->sum('preco');
 
-                $precoB= Produtos::find('preco')
-                    ->where(['id'=> $model->id_bebida])
-                    ->orWhere(['id'=> $model->id_sobremesa])
-                    ->orWhere(['id'=> $model->id_complemento])
-                    ->orWhere(['id'=> $model->id_extra])
-                    ->sum('preco');
+            $precoB= Produtos::find('preco')
+                ->where(['id'=> $model->id_bebida])
+                ->orWhere(['id'=> $model->id_sobremesa])
+                ->orWhere(['id'=> $model->id_complemento])
+                ->orWhere(['id'=> $model->id_extra])
+                ->sum('preco');
 
 //                $precoS= Produtos::find('preco')
 //                    ->where(['id'=> $model->id_sobremesa]);
@@ -128,12 +112,26 @@ class MenuController extends Controller
 //
 //                }
 
-                $preco = $precoB+$precoH;
-                $model->preco=$preco;
+            $preco = $precoB+$precoH;
+            $model->preco=$preco;
 
-                $model->save();
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+            $model->save(false);
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+            $getH = Hamburger::find()->all();
+
+            $Bebida = Produtos::find()
+                ->where(['categoria' => 7])
+                ->all();
+
+            $Sobremesa = Produtos::find()
+                ->where(['categoria' => 8])
+                ->all();
+
+            $complemento = Produtos::find()
+                ->where(['categoria' => 9])
+                ->all();
 
             return $this->render('create', [
                 'model' => $model,

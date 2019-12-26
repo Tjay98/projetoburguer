@@ -95,7 +95,6 @@ class PedidoController extends Controller
 
                 $precoH= Hamburger::find()
                     ->where(['id'=> $model2->id_hamburger])
-                    ->one()
                     ->sum('preco');
 
                 $precoB= Produtos::find()
@@ -105,8 +104,9 @@ class PedidoController extends Controller
                     ->orWhere(['id'=> $model2->id_extra])
                     ->sum('preco');
 
-                $preco = $precoB+$precoH;
+                $preco =$precoB+$precoH;
                 $model2->preco=$preco;
+                $model->preco=$preco;
 
                 $model2->save(false);
 
