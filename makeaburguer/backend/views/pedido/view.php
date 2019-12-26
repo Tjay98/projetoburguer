@@ -35,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_menu',
             'preco',
             'data',
-            'compra',
         ],
     ]) ?>
 

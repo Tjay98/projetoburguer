@@ -18,18 +18,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'getU' => $getU,
         'model2' => $model2,
         'getH'=>$getH,
-        'Bebida'=>$Bebida,
+        'bebida'=>$bebida,
         'complemento'=>$complemento,
-        'Sobremesa'=>$Sobremesa,
+        'sobremesa'=>$sobremesa,
     ]);?>
 
-<!--    <script type="text/javascript">-->
-<!---->
-<!--        $(document).ready(function(){-->
-<!--            $('div').click(function(){-->
-<!--                $(this).hide()-->
-<!--            });-->
-<!--        });-->
-<!--    </script >-->
 
 </div>

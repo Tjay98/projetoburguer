@@ -1,5 +1,6 @@
 <?php
 
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -16,7 +17,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'imagem')->fileInput() ?>
 
-    <?= $form->field($model, 'categoria')->dropDownList($categoria,['prompt'=>'']) ?>
+    <?=$form->field($model, 'categoria')->widget(Select2::classname(), [
+        'data' => $categoria,
+        'language' => 'pt',
+        'options' => ['placeholder' => 'Selecione a categoria'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);?>
 
     <?= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
 

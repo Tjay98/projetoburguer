@@ -122,11 +122,11 @@ class PedidoController extends Controller
 
             $getH = Hamburger::find()->all();
 
-            $Bebida = Produtos::find()
+            $bebida = Produtos::find()
                 ->where(['categoria' => 7])
                 ->all();
 
-            $Sobremesa = Produtos::find()
+            $sobremesa = Produtos::find()
                 ->where(['categoria' => 8])
                 ->all();
 
@@ -140,9 +140,9 @@ class PedidoController extends Controller
                 'getU' => ArrayHelper::map($getU, 'id','username'),
                 'model2'=> $model2,
                 'getH' => ArrayHelper::map($getH, 'id', 'nome'),
-                'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
+                'bebida' => ArrayHelper::map($bebida, 'id', 'nome'),
                 'complemento' => ArrayHelper::map($complemento , 'id', 'nome'),
-                'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
+                'sobremesa' => ArrayHelper::map($sobremesa, 'id', 'nome'),
             ]);
         }
         else
