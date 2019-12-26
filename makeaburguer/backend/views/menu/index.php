@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_bebida',
             'id_complemento',
             'id_sobremesa',
+            'id_extra',
             'preco',
             //'descricao',
 

@@ -52,6 +52,12 @@ $this->params['breadcrumbs'][] = $this->title;
         echo 'ID - ',$sobremesa->nome;
         echo "<br>";
     }
+    if(!empty($produtos)) {
+        echo 'ID - ', $model->id_extra;
+        echo "<br>";
+        echo 'ID - ',$produtos->nome;
+        echo "<br>";
+    }
     echo 'ID - ',$model->preco;
     echo "<br>";
     echo 'ID - ',$model->descricao;

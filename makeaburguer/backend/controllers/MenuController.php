@@ -82,12 +82,19 @@ class MenuController extends Controller
                 ->where(['id' => $model->id_sobremesa])
                 ->one();
 
+            $produtos = Produtos::find()
+                ->where(['id' => $model->id_extra])
+                ->one();
+
+
+
             return $this->render('view', [
                 'model' => $model,
                 'hamburger'=>$hamburger,
                 'bebida'=>$bebida,
                 'complemento'=>$complemento,
                 'sobremesa'=>$sobremesa,
+                'produtos' =>$produtos,
             ]);
         }
         else
@@ -119,21 +126,6 @@ class MenuController extends Controller
                 ->orWhere(['id'=> $model->id_extra])
                 ->sum('preco');
 
-//                $precoS= Produtos::find('preco')
-//                    ->where(['id'=> $model->id_sobremesa]);
-//
-//
-//                $precoC= Produtos::find('preco')
-//                    ->where(['id'=> $model->id_complemento]);
-//
-//
-//                $precoE=0;
-//                if($model->id_extra!=0){
-//                    $precoE= Produtos::find('preco')
-//                        ->where(['id'=> $model->id_extra]);
-//
-//                }
-
             $preco = $precoB+$precoH;
             $model->preco=$preco;
 
@@ -143,11 +135,11 @@ class MenuController extends Controller
 
             $getH = Hamburger::find()->all();
 
-            $Bebida = Produtos::find()
+            $bebida = Produtos::find()
                 ->where(['categoria' => 7])
                 ->all();
 
-            $Sobremesa = Produtos::find()
+            $sobremesa = Produtos::find()
                 ->where(['categoria' => 8])
                 ->all();
 
@@ -155,12 +147,15 @@ class MenuController extends Controller
                 ->where(['categoria' => 9])
                 ->all();
 
+            $produtos =Produtos::find()->all();
+
             return $this->render('create', [
                 'model' => $model,
                 'getH' => ArrayHelper::map($getH, 'id', 'nome'),
-                'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
+                'bebida' => ArrayHelper::map($bebida, 'id', 'nome'),
                 'complemento' => ArrayHelper::map($complemento , 'id', 'nome'),
-                'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
+                'sobremesa' => ArrayHelper::map($sobremesa, 'id', 'nome'),
+                'produtos' =>ArrayHelper::map($produtos, 'id', 'nome'),
             ]);
         }
         else
@@ -183,11 +178,11 @@ class MenuController extends Controller
 
             $getH = Hamburger::find()->all();
 
-            $Bebida = Produtos::find()
+            $bebida = Produtos::find()
                 ->where(['categoria' => 7])
                 ->all();
 
-            $Sobremesa = Produtos::find()
+            $sobremesa = Produtos::find()
                 ->where(['categoria' => 8])
                 ->all();
 
@@ -195,6 +190,7 @@ class MenuController extends Controller
                 ->where(['categoria' => 9])
                 ->all();
 
+            $produtos =Produtos::find()->all();
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -202,9 +198,10 @@ class MenuController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'getH' => ArrayHelper::map($getH, 'id', 'nome'),
-                'Bebida' => ArrayHelper::map($Bebida, 'id', 'nome'),
+                'bebida' => ArrayHelper::map($bebida, 'id', 'nome'),
                 'complemento' => ArrayHelper::map($complemento , 'id', 'nome'),
-                'Sobremesa' => ArrayHelper::map($Sobremesa, 'id', 'nome'),
+                'sobremesa' => ArrayHelper::map($sobremesa, 'id', 'nome'),
+                'produtos' =>ArrayHelper::map($produtos, 'id', 'nome'),
             ]);
         }
         else

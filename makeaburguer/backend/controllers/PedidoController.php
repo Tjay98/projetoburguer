@@ -141,6 +141,8 @@ class PedidoController extends Controller
                 ->where(['categoria' => 9])
                 ->all();
 
+            $produtos =Produtos::find()->all();
+
             return $this->render('create', [
                 'model' => $model,
                 'getM' => ArrayHelper::map($getM, 'id','id'),
@@ -150,6 +152,7 @@ class PedidoController extends Controller
                 'bebida' => ArrayHelper::map($bebida, 'id', 'nome'),
                 'complemento' => ArrayHelper::map($complemento , 'id', 'nome'),
                 'sobremesa' => ArrayHelper::map($sobremesa, 'id', 'nome'),
+                'produtos' =>ArrayHelper::map($produtos, 'id', 'nome'),
             ]);
         }
         else

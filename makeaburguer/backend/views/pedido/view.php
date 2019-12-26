@@ -41,7 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
     echo "<br>";
     echo $model->compra;
     echo "<br>";
-
       ?>
 
 

@@ -14,11 +14,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_hamburger')->dropDownList($getH,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'id_bebida')->dropDownList($Bebida,['prompt'=>'']) ?>
+    <?= $form->field($model, 'id_bebida')->dropDownList($bebida,['prompt'=>'']) ?>
 
     <?= $form->field($model, 'id_complemento')->dropDownList($complemento,['prompt'=>'']) ?>
 
-    <?= $form->field($model, 'id_sobremesa')->dropDownList($Sobremesa,['prompt'=>'']) ?>
+    <?= $form->field($model, 'id_sobremesa')->dropDownList($sobremesa,['prompt'=>'']) ?>
+
+    <?= $form->field($model, 'id_extra')->dropDownList($produtos,['prompt'=>'']) ?>
 
 <!--    --><?//= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
 
