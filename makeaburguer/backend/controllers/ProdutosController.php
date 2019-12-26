@@ -40,7 +40,7 @@ class ProdutosController extends Controller
      */
     public function actionIndex()
     {
-        if(Yii::$app->user->can('view-admin')) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
             $searchModel = new ProdutosSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class ProdutosController extends Controller
      */
     public function actionView($id)
     {
-        if(Yii::$app->user->can('view-admin')) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
             return $this->render('view', [
                 'model' => $this->findModel($id),
             ]);

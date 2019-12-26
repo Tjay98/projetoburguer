@@ -52,9 +52,9 @@ class Pedido extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_user' => 'Id User',
-            'id_menu' => 'Id Menu',
-            'preco' => 'Preco',
+            'id_user' => 'User',
+            'id_menu' => 'Menu',
+            'preco' => 'Preço',
             'data' => 'Data',
             'compra' => 'Compra',
         ];

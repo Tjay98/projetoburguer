@@ -47,13 +47,13 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_hamburger' => 'Id Hamburger',
-            'id_bebida' => 'Id Bebida',
-            'id_complemento' => 'Id Complemento',
-            'id_sobremesa' => 'Id Sobremesa',
-            'id_extra' => 'Id Extra',
-            'preco' => 'Preco',
-            'descricao' => 'Descricao',
+            'id_hamburger' => 'Hamburguer',
+            'id_bebida' => 'Bebida',
+            'id_complemento' => 'Complemento',
+            'id_sobremesa' => 'Sobremesa',
+            'id_extra' => 'Extra',
+            'preco' => 'Preço',
+            'descricao' => 'Descrição',
         ];
     }
 }

@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="pedido-view">
 
 
-
+    <?Php if(Yii::$app->user->can('admin')){?>
     <p>
         <?= Html::a('Atualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Apagar', ['delete', 'id' => $model->id], [
@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+<?php }?>
 
     <?php
     echo 'ID - ',$model->id;

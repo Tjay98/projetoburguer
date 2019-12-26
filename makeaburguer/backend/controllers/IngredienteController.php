@@ -39,7 +39,7 @@ class IngredienteController extends Controller
      */
     public function actionIndex()
     {
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
             $searchModel = new IngredienteSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -63,7 +63,7 @@ class IngredienteController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
 
             $cate = Categoria::find()
                 ->where(['id' => $model->tipo])

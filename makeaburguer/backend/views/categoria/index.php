@@ -12,12 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="categoria-index">
 
-
+    <?Php if(Yii::$app->user->can('admin')){?>
     <p>
         <?= Html::a('Criar Categoria', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php }?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
