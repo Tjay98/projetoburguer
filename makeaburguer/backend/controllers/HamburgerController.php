@@ -67,7 +67,7 @@ class HamburgerController extends Controller
        $pao = $this->findModelI($model->pao);
 
         if(Yii::$app->user->can('view-admin')) {
-            
+
             $molho = Ingrediente::find()
                 ->where(['id' => $model->molho])
                 ->one();

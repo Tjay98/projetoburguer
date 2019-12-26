@@ -63,9 +63,31 @@ class MenuController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+
         if(Yii::$app->user->can('view-admin')) {
+            $hamburger = Hamburger::find()
+                ->where(['id' => $model->id_hamburger])
+                ->one();
+
+            $bebida = Produtos::find()
+                ->where(['id' => $model->id_bebida])
+                ->one();
+
+            $complemento = Produtos::find()
+                ->where(['id' => $model->id_complemento])
+                ->one();
+
+            $sobremesa = Produtos::find()
+                ->where(['id' => $model->id_sobremesa])
+                ->one();
+
             return $this->render('view', [
-                'model' => $this->findModel($id),
+                'model' => $model,
+                'hamburger'=>$hamburger,
+                'bebida'=>$bebida,
+                'complemento'=>$complemento,
+                'sobremesa'=>$sobremesa,
             ]);
         }
         else

@@ -25,17 +25,38 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
         </p>
     <?php }?>
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'id_hamburger',
-            'id_bebida',
-            'id_complemento',
-            'id_sobremesa',
-            'preco',
-            'descricao',
-        ],
-    ]) ?>
+    <?php
+    echo 'ID - ',$model->id;
+    echo "<br>";
+    if(!empty($hamburger)) {
+        echo 'ID - ', $model->id_hamburger;
+        echo "<br>";
+        echo 'ID - ', $hamburger->nome;
+        echo "<br>";
+    }
+    if(!empty($bebida)) {
+        echo 'ID - ', $model->id_bebida;
+        echo "<br>";
+        echo 'ID - ', $bebida->nome;
+        echo "<br>";
+    }
+    if(!empty($complemento)) {
+        echo 'ID - ', $model->id_complemento;
+        echo "<br>";
+        echo 'ID - ', $complemento->nome;
+        echo "<br>";
+    }
+    if(!empty($sobremesa)) {
+        echo 'ID - ', $model->id_sobremesa;
+        echo "<br>";
+        echo 'ID - ',$sobremesa->nome;
+        echo "<br>";
+    }
+    echo 'ID - ',$model->preco;
+    echo "<br>";
+    echo 'ID - ',$model->descricao;
+    echo "<br>";
+
+    ?>
 
 </div>

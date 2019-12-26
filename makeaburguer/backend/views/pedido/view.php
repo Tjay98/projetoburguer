@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pedido-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+
 
     <p>
         <?= Html::a('Atualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -27,16 +27,22 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'id_user',
-            'id_menu',
-            'preco',
-            'data',
-            'compra',
-        ],
-    ]) ?>
+    <?php
+    echo 'ID - ',$model->id;
+    echo "<br>";
+    echo $model->id_user;
+    echo "<br>";
+    echo $user->username;
+    echo "<br>";
+    echo $model->id_menu;
+    echo "<br>";
+    echo $model->preco;
+    echo "<br>";
+    echo $model->data;
+    echo "<br>";
+    echo $model->compra;
+    echo "<br>";
+
+      ?>
 
 </div>

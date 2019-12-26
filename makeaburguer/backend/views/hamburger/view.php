@@ -42,22 +42,22 @@ $this->params['breadcrumbs'][] = $this->title;
     echo "<br>";
     echo $carne->nome;
     echo "<br>";
-    if($molho!=0) {
+    if(!empty($molho)){
         echo $molho->nome;
         echo $molho->id;
     }
     echo "<br>";
-    if($vegetais!=0) {
+    if(!empty($vegetais)) {
         echo $vegetais->nome;
         echo $vegetais->id;
     }
     echo "<br>";
-    if($queijo!=0) {
+    if(!empty($queijo)) {
         echo $queijo->nome;
         echo $queijo->id;
     }
     echo "<br>";
-    if($complemente!=0) {
+    if(!empty($complemente)) {
         echo $complemente->nome;
         echo $complemente->id;
     }

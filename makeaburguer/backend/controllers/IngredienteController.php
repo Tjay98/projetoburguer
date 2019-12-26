@@ -62,9 +62,16 @@ class IngredienteController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
         if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
+
+            $cate = Categoria::find()
+                ->where(['id' => $model->tipo])
+                ->one();
+
             return $this->render('view', [
-                'model' => $this->findModel($id),
+                'model' => $model,
+                'cate'=> $cate,
             ]);
         }
         else
