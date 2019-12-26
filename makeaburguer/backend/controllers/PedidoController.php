@@ -43,7 +43,7 @@ class PedidoController extends Controller
      */
     public function actionIndex()
     {
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
             $searchModel = new PedidoSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -67,7 +67,7 @@ class PedidoController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
 
             $user= User::find()
                 ->where(['id'=>$model->id_user])

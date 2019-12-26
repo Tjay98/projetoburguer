@@ -54,7 +54,7 @@ class Pedido extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_user' => 'User',
             'id_menu' => 'Menu',
-            'preco' => 'Preco',
+            'preco' => 'Preço',
             'data' => 'Data',
 
         ];

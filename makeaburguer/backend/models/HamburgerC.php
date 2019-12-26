@@ -43,7 +43,7 @@ class HamburgerC extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'pao' => 'Pao',
+            'pao' => 'Pão',
             'molho' => 'Molho',
             'carne' => 'Carne',
             'vegetais' => 'Vegetais',

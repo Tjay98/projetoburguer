@@ -66,14 +66,14 @@ class Hamburger extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nome' => 'Nome',
             'imagem' => 'Imagem',
-            'descricao' => 'Descricao',
+            'descricao' => 'Descrição',
             'pao' => 'Pao',
             'molho' => 'Molho',
             'carne' => 'Carne',
             'vegetais' => 'Vegetais',
             'queijo' => 'Queijo',
             'complemento' => 'Complemento',
-            'preco' => 'Preco',
+            'preco' => 'Preço',
         ];
     }
 

@@ -26,6 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
         </p>
     <?php }?>
+
+
     <?php
     echo 'ID - ',$model->id;
     echo "<br>";

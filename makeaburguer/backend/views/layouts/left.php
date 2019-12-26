@@ -42,8 +42,8 @@
                 'items' => [
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
                     ['label' => 'User', 'url' => ['user/index']],
-                    ['label' => 'Hamburger', 'url' => ['hamburger/index']],
-                    ['label' => 'Hamburger customizado', 'url' => ['hamburgerc/index']],
+                    ['label' => 'Hamburguer', 'url' => ['hamburger/index']],
+                    ['label' => 'Hamburguer customizado', 'url' => ['hamburgerc/index']],
                     ['label' => 'Categoria', 'url' => ['categoria/index']],
                     ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
                     ['label' => 'Produtos', 'url' => ['produtos/index']],
@@ -61,7 +61,8 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
-                    ['label' => 'Hamburger', 'url' => ['hamburger/index']],
+                    ['label' => 'Hamburguer', 'url' => ['hamburger/index']],
+                    ['label' => 'Categoria', 'url' => ['categoria/index']],
                     ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
                     ['label' => 'Produtos', 'url' => ['produtos/index']],
                     ['label' => 'Pedido', 'url' => ['pedido/index']],

@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hamburger-view">
 
-
+   <?php if(Yii::$app->user->can('view-admin')) { ?>
     <p>
         <?= Html::a('Atualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Apagar', ['delete', 'id' => $model->id], [
@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+<?php }?>
 
 <?php
     echo 'ID - ',$model->id;
