@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-
     <?php
     echo 'ID - ',$model->id;
     echo "<br>";
@@ -44,5 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
     echo "<br>";
 
       ?>
+
 
 </div>

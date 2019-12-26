@@ -66,9 +66,16 @@ class PedidoController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
         if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-pedidos-funcionario'))) {
+
+            $user= User::find()
+                ->where(['id'=>$model->id_user])
+                ->one();
+
             return $this->render('view', [
-                'model' => $this->findModel($id),
+                'model' => $model,
+                'user'=> $user,
             ]);
         }
         else
