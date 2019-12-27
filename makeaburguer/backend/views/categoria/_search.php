@@ -2,28 +2,29 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\CategoriaSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="categoria-search">
+    <div class="categoria-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+            <?php Pjax::begin(); ?>
+                <?php $form = ActiveForm::begin([
+                    'action' => ['index'],
+                    'method' => 'get',
+                ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+                    <?= $form->field($model, 'globalSearch')->label('')->textInput()->input('pesquisar',['placeholder'=>'Pesquisar']) ?>
 
-    <?= $form->field($model, 'nome') ?>
+                <br>
+                    <div class="form-group">
+                        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
+                    </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Limpar', ['class' => 'btn btn-outline-secondary']) ?>
+                <?php ActiveForm::end(); ?>
+            <?php Pjax::end();?>
+
     </div>
-
-    <?php ActiveForm::end(); ?>
-
-</div>

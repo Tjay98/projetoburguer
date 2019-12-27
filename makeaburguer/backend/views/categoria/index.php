@@ -11,16 +11,26 @@ $this->title = 'Categorias';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="categoria-index">
+    <div class="col-lg-12">
 
-    <?Php if(Yii::$app->user->can('admin')){?>
-    <p>
-        <?= Html::a('Criar Categoria', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?php  if(Yii::$app->user->can('admin')){?>
+                <br>
+                    <?= Html::a('Criar Categoria', ['create'], ['class' => 'btn btn-success']) ?>
+
+
     <?php }?>
+
+                <div class="searchbar">
+                    <input class="search_input" type="text" name="" placeholder="Search...">
+                    <a href="" class="search_icon"><i class="fa fa-search"></i></a>
+                </div>
+
+        <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+    </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
