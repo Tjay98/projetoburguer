@@ -9,16 +9,19 @@ use app\models\Produtos;
 /**
  * ProdutosSearch represents the model behind the search form of `app\models\Produtos`.
  */
+
 class ProdutosSearch extends Produtos
 {
     /**
      * {@inheritdoc}
      */
+    public $globalSearch;
+
     public function rules()
     {
         return [
             [['id', 'categoria'], 'integer'],
-            [['nome', 'imagem'], 'safe'],
+            [['nome', 'imagem','globalSearch'], 'safe'],
             [['preco'], 'number'],
         ];
     }
@@ -58,14 +61,16 @@ class ProdutosSearch extends Produtos
         }
 
         // grid filtering conditions
+        /*
         $query->andFilterWhere([
             'id' => $this->id,
             'categoria' => $this->categoria,
             'preco' => $this->preco,
         ]);
-
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'imagem', $this->imagem]);
+            */
+        $query->orFilterWhere(['like', 'nome', $this->globalSearch])
+            ->orFilterWhere(['like', 'imagem', $this->globalSearch])
+            ->orFilterWhere(['like','preco',$this->globalSearch]);
 
         return $dataProvider;
     }

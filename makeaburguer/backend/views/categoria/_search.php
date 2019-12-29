@@ -16,7 +16,7 @@ use yii\widgets\Pjax;
                     'action' => ['index'],
                     'method' => 'get',
                 ]); ?>
-
+                
                     <div class="col-lg-3 col-md-4">
                     <?= $form->field($model, 'globalSearch')->label('')->textInput()->input('pesquisar',['placeholder'=>'Pesquisar']) ?>
                     </div>

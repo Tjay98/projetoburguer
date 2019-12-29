@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\IngredienteSearch */
@@ -10,24 +11,21 @@ use yii\widgets\ActiveForm;
 
 <div class="ingrediente-search">
 
+<?php Pjax::begin(); ?>
+
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-    ]); ?>
-
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'nome') ?>
-
-    <?= $form->field($model, 'tipo') ?>
-
-    <?= $form->field($model, 'preco') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Limpar', ['class' => 'btn btn-outline-secondary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+            ]); ?>
+                
+            <div class="col-lg-3 col-md-4">
+                <?= $form->field($model, 'globalSearch')->label('')->textInput()->input('pesquisar',['placeholder'=>'Pesquisar']) ?>
+            </div>
+            <div class="col-lg-5 col-md-4">
+                <br>
+                <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
+            </div>                   
+            <?php ActiveForm::end(); ?>
+    <?php Pjax::end();?>
 
 </div>

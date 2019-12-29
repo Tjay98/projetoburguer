@@ -16,18 +16,17 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="categoria-index">
     <div class="container">
 
-        <div class="col-lg-12">
+
         <?php  if(Yii::$app->user->can('admin')){?>
-            <div class="col-lg-3 col-md-4">
-            <br>
+
                         <?= Html::a('Criar Categoria', ['create'], ['class' => 'btn btn-success']) ?>
-            </div>
+
 
         <?php }?>
 
             <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-        </div>
 
+    <br><br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
 //        'filterModel' => $searchModel,

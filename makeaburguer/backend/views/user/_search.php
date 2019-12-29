@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\UserSearch */
@@ -10,40 +11,23 @@ use yii\widgets\ActiveForm;
 
 <div class="user-search">
 
+<?php Pjax::begin(); ?>
+
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-    ]); ?>
-
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'username') ?>
-
-    <?= $form->field($model, 'auth_key') ?>
-
-    <?= $form->field($model, 'password_hash') ?>
-
-    <?= $form->field($model, 'password_reset_token') ?>
-
-    <?php // echo $form->field($model, 'email') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
-    <?php // echo $form->field($model, 'verification_token') ?>
-
-    <?php // echo $form->field($model, 'nif') ?>
-
-    <?php // echo $form->field($model, 'telemovel') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Limpar', ['class' => 'btn btn-outline-secondary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+            ]); ?>
+                
+            <div class="col-lg-3 col-md-4">
+                <?= $form->field($model, 'globalSearch')->label('')->textInput()->input('pesquisar',['placeholder'=>'Pesquisar']) ?>
+            </div>
+            <div class="col-lg-5 col-md-4">
+                <br>
+                        
+                    
+                <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
+            </div>                   
+            <?php ActiveForm::end(); ?>
+    <?php Pjax::end();?>
 
 </div>
