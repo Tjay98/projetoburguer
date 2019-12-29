@@ -14,7 +14,7 @@ $this->title = 'Categorias';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="categoria-index">
-    <div class="container">
+
 
 
         <?php  if(Yii::$app->user->can('admin')){?>
