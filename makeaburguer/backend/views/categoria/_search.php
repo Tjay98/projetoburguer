@@ -17,13 +17,15 @@ use yii\widgets\Pjax;
                     'method' => 'get',
                 ]); ?>
 
+                    <div class="col-lg-3 col-md-4">
                     <?= $form->field($model, 'globalSearch')->label('')->textInput()->input('pesquisar',['placeholder'=>'Pesquisar']) ?>
-
-                <br>
-                    <div class="form-group">
-                        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
                     </div>
-
+                    <div class="col-lg-5 col-md-4">
+                        <br>
+                        
+                    
+                        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
+                    </div>                   
                 <?php ActiveForm::end(); ?>
             <?php Pjax::end();?>
 
