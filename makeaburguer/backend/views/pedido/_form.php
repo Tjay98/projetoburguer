@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?=$form->field($model, 'user')->widget(Select2::classname(), [
+    <?=$form->field($model, 'id_user')->widget(Select2::classname(), [
         'data' => $getU,
         'language' => 'pt',
         'options' => ['placeholder' => 'Selecione o cliente'],

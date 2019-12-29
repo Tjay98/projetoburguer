@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Pedido */
 
-$this->title = $model->id;
+$this->title = $model->id."-".$user->username;
 $this->params['breadcrumbs'][] = ['label' => 'Pedidos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -27,22 +27,18 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 <?php }?>
 
-    <?php
-    echo 'ID - ',$model->id;
-    echo "<br>";
-    echo $model->id_user;
-    echo "<br>";
-    echo $user->username;
-    echo "<br>";
-    echo $model->id_menu;
-    echo "<br>";
-    echo $model->preco;
-    echo "<br>";
-    echo $model->data;
-    echo "<br>";
-    echo $model->compra;
-    echo "<br>";
-      ?>
-
 
 </div>
+<table class="table table-striped table-bordered detail-view">
+    <tbody>
+        <tr><th>Id do pedido</th><td><?php echo $model->id; ?></td></tr>
+        <tr><th>Id do Utilizador</th><td><?php echo $model->id_user?></td></tr>
+        <tr><th>Nome do Utilizador</th><td><?php echo $user->username?></td></tr>
+        <tr><th>Id do Menu</th><td><?php echo $model->id_menu?></td></tr>
+        <tr><th>Data de compra</th><td><?php echo $model->data?></td></tr>
+        <tr><th>Preço</th><td><?php echo $model->preco?>€</td></tr>
+       
+        
+
+    </tbody>
+</table>
