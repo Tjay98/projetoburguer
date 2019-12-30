@@ -2,12 +2,14 @@
 
 namespace backend\controllers;
 
-
+use app\models\Pedido;
 use backend\models\AuthAssignment;
 use backend\models\AuthItem;
 use backend\models\AuthItemChild;
+use frontend\models\SignupForm;
 use Yii;
 use app\models\User;
+use backend\models\UserSearch;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -16,7 +18,7 @@ use yii\filters\VerbFilter;
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends Controller
+class PermissoesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -54,7 +56,13 @@ class UserController extends Controller
         }
     }
 
-   /* public function actionView()
+    /**
+     * Displays a single User model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($id)
     {
         if(Yii::$app->user->can('view-admin')) {
             return $this->render('view', [
@@ -66,8 +74,11 @@ class UserController extends Controller
             throw new ForbiddenHttpException();
         }
     }
-    */
-
+    /**
+     * Creates a new User model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
     public function actionCreate()
     {
         if(Yii::$app->user->can('create-admin')) {

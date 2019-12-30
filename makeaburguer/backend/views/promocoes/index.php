@@ -18,6 +18,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <?php   $hoje = date('d-M-Y'); 
+            $promocao='29-Dec-2019'; //colocar $promocao igual a um valor do finder
+            $hojed=strtotime($hoje);
+            $promocaod=strtotime($promocao);
+            echo "Hoje em datetime:".$hojed;
+            echo "<br>";
+            echo "Data final da promoçao em datetime:".$promocaod;
+            echo"<br>";
+            if(($promocaod<$hojed) ){
+                echo"A promoção expirou no dia:".$promocao;
+            }
+            /*elseif(($promocaod=$hojed)){
+                echo"expiro";
+            }*/
+            else{
+                echo"valiido";
+            }
+           /* if(strcmp($hoje,$promocao)==0){
+                echo"Promoção acabou";
+            }*/
+                    
+    ?>
+
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
