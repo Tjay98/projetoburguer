@@ -7,13 +7,13 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\PromocoesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Promocoes';
+$this->title = 'Promoções';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="promocoes-index">
 
     <p>
-        <?= Html::a('Create Promocoes', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Promoção', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
