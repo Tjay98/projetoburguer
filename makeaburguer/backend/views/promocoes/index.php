@@ -4,33 +4,31 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\IngredienteSearch */
+/* @var $searchModel backend\models\PromocoesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ingredientes';
+$this->title = 'Promocoes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ingrediente-index">
+<div class="promocoes-index">
 
-    <?Php if(Yii::$app->user->can('admin')){?>
     <p>
-        <?= Html::a('Criar Ingrediente', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Promocoes', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php }?>
 
-    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
-    <br>
-    <br>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'nome',
-            'tipo',
-            'preco',
+            'valor',
+            'data_inicio',
+            'data_fim',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

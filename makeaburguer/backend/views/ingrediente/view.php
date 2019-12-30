@@ -26,16 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
         </p>
     <?php }?>
-
-
-    <?php
-    echo 'ID - ',$model->id;
-    echo "<br>";
-    echo 'ID - ',$model->nome;
-    echo "<br>";
-    echo 'ID - ',$cate->nome;
-    echo "<br>";
-    echo 'ID - ',$model->preco;
-    echo "<br>";?>
-
+    
 </div>
+<table class="table table-striped table-bordered detail-view">
+    <tbody>
+        <tr><th>ID</th><td><?php echo $model->id; ?></td></tr>
+        <tr><th>Nome</th><td><?php echo $model->nome?></td></tr>
+        <tr><th>Tipo</th><td><?php echo $cate->nome?></td></tr>
+        <tr><th>Preço</th><td><?php echo $model->preco?></td></tr>
+    </tbody>
+</table>

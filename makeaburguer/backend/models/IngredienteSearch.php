@@ -14,11 +14,12 @@ class IngredienteSearch extends Ingrediente
     /**
      * {@inheritdoc}
      */
+    public $globalSearch;
     public function rules()
     {
         return [
             [['id'], 'integer'],
-            [['nome', 'tipo'], 'safe'],
+            [['nome', 'tipo','globalSearch'], 'safe'],
             [['preco'], 'number'],
         ];
     }
@@ -58,13 +59,14 @@ class IngredienteSearch extends Ingrediente
         }
 
         // grid filtering conditions
+        /*
         $query->andFilterWhere([
             'id' => $this->id,
             'preco' => $this->preco,
         ]);
-
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'tipo', $this->tipo]);
+        */
+        $query->orFilterWhere(['like', 'nome', $this->globalSearch])
+            ->orFilterWhere(['like', 'tipo', $this->globalSearch]);
 
         return $dataProvider;
     }

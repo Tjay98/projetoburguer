@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\HamburgerSearch */
@@ -10,37 +11,23 @@ use yii\widgets\ActiveForm;
 
 <div class="hamburger-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+        <?php Pjax::begin(); ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'nome') ?>
-
-    <?= $form->field($model, 'imagem') ?>
-
-    <?= $form->field($model, 'descricao') ?>
-
-    <?= $form->field($model, 'pao') ?>
-
-    <?php // echo $form->field($model, 'molho') ?>
-
-    <?php // echo $form->field($model, 'carne') ?>
-
-    <?php // echo $form->field($model, 'vegetais') ?>
-
-    <?php // echo $form->field($model, 'queijo') ?>
-
-    <?php // echo $form->field($model, 'complemento') ?>
-
-
-    <div class="form-group">
-        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Limpar', ['class' => 'btn btn-outline-secondary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+            <?php $form = ActiveForm::begin([
+                    'action' => ['index'],
+                    'method' => 'get',
+                ]); ?>
+                
+                    <div class="col-lg-3 col-md-4">
+                    <?= $form->field($model, 'globalSearch')->label('')->textInput()->input('pesquisar',['placeholder'=>'Pesquisar']) ?>
+                    </div>
+                    <div class="col-lg-5 col-md-4">
+                        <br>
+                        
+                    
+                        <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
+                    </div>                   
+            <?php ActiveForm::end(); ?>
+        <?php Pjax::end();?>
 
 </div>

@@ -61,7 +61,7 @@ class Ingrediente extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nome' => 'Nome',
-            'preco' => 'Preco',
+            'preco' => 'Preço',
             'tipo' => 'Tipo',
         ];
     }

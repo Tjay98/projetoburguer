@@ -25,14 +25,15 @@ use yii\helpers\Html;
             <?php if((Yii::$app->user->can('admin'))||(Yii::$app->user->can('funcionario'))) {?>
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?= $directoryAsset ?>/img/user-icon-white.png" class="user-image" alt="User Image"/>
+                    <?php echo Html::img('@web/imagens/user-icon-white.png',['class'=>'user-image']) ?>
+                        
                         <span class="hidden-xs"><?= \Yii::$app->user->identity->username ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?= $directoryAsset ?>/img/user-icon-white.png" class="img-circle"
-                                 alt="User Image"/>
+                        <?php echo Html::img('@web/imagens/user-icon-white.png',['class'=>'img-circle']) ?>
+
 
                             <p>
                                 <?= \Yii::$app->user->identity->username ?>

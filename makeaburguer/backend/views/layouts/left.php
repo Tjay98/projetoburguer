@@ -1,3 +1,7 @@
+<?php use yii\helpers\Html;
+
+use yii\helpers\Url;
+?>
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -5,7 +9,8 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/user-icon-white.png" class="img-circle" alt="User Image"/>
+            <?php echo Html::img('@web/imagens/user-icon-white.png') ?>
+                
             </div>
             <div class="pull-left info">
                 <h4><?= \Yii::$app->user->identity->username ?></h4>
@@ -15,7 +20,7 @@
             <?php }else{ ?>
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?= $directoryAsset ?>/img/user-icon-white.png" class="img-circle" alt="User Image"/>
+                    <?php echo Html::img('@web/imagens/user-icon-white.png"') ?>
                 </div>
                 <div class="pull-left info">
                     <h4>Guest</h4>
@@ -42,12 +47,14 @@
                 'items' => [
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
                     ['label' => 'User', 'url' => ['user/index']],
+                    ['label' => 'Permissões', 'url' => ['permissoes/index']],
                     ['label' => 'Hamburguer', 'url' => ['hamburger/index']],
-                    ['label' => 'Hamburguer customizado', 'url' => ['hamburgerc/index']],
+                    ['label' => 'Hamburguer costumizado', 'url' => ['hamburgerc/index']],
+                    ['label' => 'Promoções', 'url' => ['promocoes/index']],
                     ['label' => 'Categoria', 'url' => ['categoria/index']],
                     ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
                     ['label' => 'Produtos', 'url' => ['produtos/index']],
-                    ['label' => 'Pedido', 'url' => ['pedido/index']],
+                    ['label' => 'Pedidos', 'url' => ['pedido/index']],
                     ['label' => 'Menus', 'url' => ['menu/index']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
@@ -65,7 +72,7 @@
                     ['label' => 'Categoria', 'url' => ['categoria/index']],
                     ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
                     ['label' => 'Produtos', 'url' => ['produtos/index']],
-                    ['label' => 'Pedido', 'url' => ['pedido/index']],
+                    ['label' => 'Pedidos', 'url' => ['pedido/index']],
                     ['label' => 'Menus', 'url' => ['menu/index']],
 
 

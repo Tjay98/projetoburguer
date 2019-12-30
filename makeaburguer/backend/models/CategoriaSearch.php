@@ -14,11 +14,13 @@ class CategoriaSearch extends Categoria
     /**
      * {@inheritdoc}
      */
+    public $globalSearch;
+
     public function rules()
     {
         return [
             [['id'], 'integer'],
-            [['nome'], 'safe'],
+            [['nome','globalSearch'], 'safe'],
         ];
     }
 
@@ -57,11 +59,11 @@ class CategoriaSearch extends Categoria
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-        ]);
+//        $query->andFilterWhere([
+//            'id' => $this->id,
+//        ]);
 
-        $query->andFilterWhere(['like', 'nome', $this->nome]);
+        $query->orFilterWhere(['like', 'nome', $this->globalSearch]);
 
         return $dataProvider;
     }

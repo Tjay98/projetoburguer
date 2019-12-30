@@ -14,11 +14,13 @@ class HamburgerSearch extends Hamburger
     /**
      * {@inheritdoc}
      */
+    public $globalSearch;
+
     public function rules()
     {
         return [
             [['id', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento'], 'integer'],
-            [['nome', 'imagem', 'descricao'], 'safe'],
+            [['nome', 'imagem', 'descricao','globalSearch'], 'safe'],
         ];
     }
 
@@ -57,6 +59,7 @@ class HamburgerSearch extends Hamburger
         }
 
         // grid filtering conditions
+       /* 
         $query->andFilterWhere([
             'id' => $this->id,
             'pao' => $this->pao,
@@ -66,10 +69,11 @@ class HamburgerSearch extends Hamburger
             'queijo' => $this->queijo,
             'complemento' => $this->complemento,
         ]);
+        */
 
-        $query->andFilterWhere(['like', 'nome', $this->nome])
-            ->andFilterWhere(['like', 'imagem', $this->imagem])
-            ->andFilterWhere(['like', 'descricao', $this->descricao]);
+        $query->orFilterWhere(['like', 'nome', $this->globalSearch])
+            ->orFilterWhere(['like', 'imagem', $this->globalSearch])
+            ->orFilterWhere(['like', 'descricao', $this->globalSearch]);
 
         return $dataProvider;
     }

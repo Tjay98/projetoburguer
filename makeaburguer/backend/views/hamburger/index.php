@@ -16,19 +16,23 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Criar Hamburger', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php }?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+    <br>
+    <br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'nome',
-            'imagem',
             [
-                    'label'=>'imagem',
+                'label'=>"Caminho da imagem",
+                'attribute'=>'imagem',
+            ],
+            [
+                    'label'=>'Imagem',
                     'attribute'=>'imagem',
                     'format'=>'html',
                     'value'=>function($model){

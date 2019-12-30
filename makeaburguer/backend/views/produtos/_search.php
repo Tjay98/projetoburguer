@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\ProdutosSearch */
@@ -10,26 +11,23 @@ use yii\widgets\ActiveForm;
 
 <div class="produtos-search">
 
+    <?php Pjax::begin(); ?>
+
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
-
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'nome') ?>
-
-    <?= $form->field($model, 'imagem') ?>
-
-    <?= $form->field($model, 'categoria') ?>
-
-    <?= $form->field($model, 'preco') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
-    </div>
-
+            'action' => ['index'],
+            'method' => 'get',
+        ]); ?>
+        
+            <div class="col-lg-3 col-md-4">
+            <?= $form->field($model, 'globalSearch')->label('')->textInput()->input('pesquisar',['placeholder'=>'Pesquisar']) ?>
+            </div>
+            <div class="col-lg-5 col-md-4">
+                <br>
+                
+            
+                <?= Html::submitButton('Pesquisar', ['class' => 'btn btn-primary']) ?>
+            </div>                   
     <?php ActiveForm::end(); ?>
+    <?php Pjax::end();?>
 
 </div>

@@ -4,25 +4,22 @@ namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Produtos;
+use backend\models\Promocoes;
 
 /**
- * ProdutosSearch represents the model behind the search form of `app\models\Produtos`.
+ * PromocoesSearch represents the model behind the search form of `backend\models\Promocoes`.
  */
-
-class ProdutosSearch extends Produtos
+class PromocoesSearch extends Promocoes
 {
     /**
      * {@inheritdoc}
      */
-    public $globalSearch;
-
     public function rules()
     {
         return [
-            [['id', 'categoria'], 'integer'],
-            [['nome', 'imagem','globalSearch'], 'safe'],
-            [['preco'], 'number'],
+            [['id'], 'integer'],
+            [['nome', 'data_inicio', 'data_fim'], 'safe'],
+            [['valor'], 'number'],
         ];
     }
 
@@ -44,7 +41,7 @@ class ProdutosSearch extends Produtos
      */
     public function search($params)
     {
-        $query = Produtos::find();
+        $query = Promocoes::find();
 
         // add conditions that should always apply here
 
@@ -61,16 +58,14 @@ class ProdutosSearch extends Produtos
         }
 
         // grid filtering conditions
-        /*
         $query->andFilterWhere([
             'id' => $this->id,
-            'categoria' => $this->categoria,
-            'preco' => $this->preco,
+            'valor' => $this->valor,
         ]);
-            */
-        $query->orFilterWhere(['like', 'nome', $this->globalSearch])
-            ->orFilterWhere(['like', 'imagem', $this->globalSearch])
-            ->orFilterWhere(['like','preco',$this->globalSearch]);
+
+        $query->andFilterWhere(['like', 'nome', $this->nome])
+            ->andFilterWhere(['like', 'data_inicio', $this->data_inicio])
+            ->andFilterWhere(['like', 'data_fim', $this->data_fim]);
 
         return $dataProvider;
     }

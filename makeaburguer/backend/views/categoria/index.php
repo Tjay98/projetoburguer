@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+use yii\widgets\ActiveForm;
+
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\CategoriaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -12,15 +15,21 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="categoria-index">
 
-    <?Php if(Yii::$app->user->can('admin')){?>
-    <p>
-        <?= Html::a('Criar Categoria', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?php }?>
 
+
+        <?php  if(Yii::$app->user->can('admin')){?>
+
+                        <?= Html::a('Criar Categoria', ['create'], ['class' => 'btn btn-success']) ?>
+
+
+        <?php }?>
+
+            <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <br><br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
