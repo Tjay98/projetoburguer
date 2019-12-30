@@ -47,12 +47,13 @@ use yii\helpers\Url;
                 'items' => [
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
                     ['label' => 'User', 'url' => ['user/index']],
+                    ['label' => 'Permissões', 'url' => ['permissoes/index']],
                     ['label' => 'Hamburguer', 'url' => ['hamburger/index']],
                     ['label' => 'Hamburguer customizado', 'url' => ['hamburgerc/index']],
                     ['label' => 'Categoria', 'url' => ['categoria/index']],
                     ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
                     ['label' => 'Produtos', 'url' => ['produtos/index']],
-                    ['label' => 'Pedido', 'url' => ['pedido/index']],
+                    ['label' => 'Pedidos', 'url' => ['pedido/index']],
                     ['label' => 'Menus', 'url' => ['menu/index']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
@@ -70,7 +71,7 @@ use yii\helpers\Url;
                     ['label' => 'Categoria', 'url' => ['categoria/index']],
                     ['label' => 'Ingrediente', 'url' => ['ingrediente/index']],
                     ['label' => 'Produtos', 'url' => ['produtos/index']],
-                    ['label' => 'Pedido', 'url' => ['pedido/index']],
+                    ['label' => 'Pedidos', 'url' => ['pedido/index']],
                     ['label' => 'Menus', 'url' => ['menu/index']],
 
 
