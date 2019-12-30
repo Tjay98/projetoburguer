@@ -22,7 +22,8 @@
         "yidas/yii2-adminlte": "^2.2",
         "almasaeed2010/adminlte": "~2.4",
         "2amigos/yii2-date-picker-widget": "~1.0",
-        "2amigos/yii2-date-time-picker-widget": "~1.0"
+        "2amigos/yii2-date-time-picker-widget": "~1.0",
+        "kartik-v/yii2-widget-select2": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
