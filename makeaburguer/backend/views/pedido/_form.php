@@ -24,7 +24,6 @@ use yii\widgets\ActiveForm;
 
 
 
-    <?= $form->field($model, 'compra')->textInput(['maxlength' => true]) ?>
 
     <h3>Menus</h3>
     <?=$form->field($model2, 'id_hamburger')->widget(Select2::classname(), [
@@ -70,7 +69,8 @@ use yii\widgets\ActiveForm;
             'allowClear' => true
         ],
     ]);?>
-
+    <h3>Código Promocional</h3>
+    <?= $form->field($getP, 'nome')->textInput()->label('') ?>
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>

@@ -17,16 +17,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Criar Pedido', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+    <br>
+    <br>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_user',
+            'username',
             'id_menu',
             'preco',
             'data',

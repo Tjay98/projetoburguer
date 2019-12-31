@@ -14,12 +14,15 @@ class PedidoSearch extends Pedido
     /**
      * {@inheritdoc}
      */
+    public $username;
+    public $globalSearch;
+
     public function rules()
     {
         return [
             [['id', 'id_user', 'id_menu'], 'integer'],
             [['preco'], 'number'],
-            [['data', 'compra'], 'safe'],
+            [['data','username','globalSearch'], 'safe'],
         ];
     }
 
@@ -43,11 +46,18 @@ class PedidoSearch extends Pedido
     {
         $query = Pedido::find();
 
+        $query->joinWith(['user']);
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes=[
+            'asc'=>['username'=>SORT_ASC],
+            'desc'=>['username'=>SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -58,15 +68,18 @@ class PedidoSearch extends Pedido
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
+        /*$query->andFilterWhere([
             'id' => $this->id,
             'id_user' => $this->id_user,
             'id_menu' => $this->id_menu,
             'preco' => $this->preco,
         ]);
+        */
 
-        $query->andFilterWhere(['like', 'data', $this->data])
-            ->andFilterWhere(['like', 'compra', $this->compra]);
+        $query->orFilterWhere(['like', 'data', $this->globalSearch])
+            ->orFilterWhere(['like','username',$this->globalSearch]);
+
+            //->andFilterWhere(['like', 'compra', $this->compra]);
 
         return $dataProvider;
     }

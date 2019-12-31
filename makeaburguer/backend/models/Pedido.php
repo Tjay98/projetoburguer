@@ -23,6 +23,8 @@ class Pedido extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    
+
     public static function tableName()
     {
         return 'pedido';
@@ -51,8 +53,9 @@ class Pedido extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'id_user' => 'User',
+            'id' => 'Id',
+            'id_user' => 'Id do Utilizador',
+            'username'=>'Nome do Utilizador',
             'id_menu' => 'Menu',
             'preco' => 'Preço',
             'data' => 'Data',
@@ -67,7 +70,10 @@ class Pedido extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
-
+    public function getUsername()
+    {
+        return $this->user->username;
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

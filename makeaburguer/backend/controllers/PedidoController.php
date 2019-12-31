@@ -10,6 +10,7 @@ use app\models\User;
 use Yii;
 use app\models\Pedido;
 use backend\models\PedidoSearch;
+use backend\models\Promocoes;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -97,8 +98,31 @@ class PedidoController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Pedido();
             $model2 = new Menu();
+            //$model3= new Promocoes();
 
             if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
+                $listaPromocao=Promocoes::find()
+                    ->all();
+                
+                    $hoje = date('d-M-Y'); 
+                    $hojed=strtotime($hoje);
+                    //$i=0;
+                    /*foreach($listaPromocao as $listaPromocoes){
+                        $i++;
+                        
+                        $nPromocao=$listaPromocao->data_fim;
+                        $validade=strtotime($nPromocao);
+
+                        if ($hoje>$validade){
+                            
+                        }
+                        else{
+
+                        }
+
+                    }*/
+
+                //$promocao=
 
                 $precoH= Hamburger::find()
                     ->where(['id'=> $model2->id_hamburger])
@@ -123,6 +147,7 @@ class PedidoController extends Controller
 
                 return $this->redirect(['view', 'id' => $model->id]);
             }
+            $getP=Promocoes::find()->all();
 
             $getM = Menu::find()->all();
             $getU = User::find()->all();
@@ -145,6 +170,7 @@ class PedidoController extends Controller
 
             return $this->render('create', [
                 'model' => $model,
+                'getP'=>$getP,
                 'getM' => ArrayHelper::map($getM, 'id','id'),
                 'getU' => ArrayHelper::map($getU, 'id','username'),
                 'model2'=> $model2,
