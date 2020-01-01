@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\db\Expression;
 
 /**
  * This is the model class for table "pedido".
@@ -11,20 +10,19 @@ use yii\db\Expression;
  * @property int $id
  * @property int $id_user
  * @property int $id_menu
+ * @property int $promocao
  * @property string $preco
  * @property string $data
- * @property string $compra
  *
- * @property User $user
  * @property Menu $menu
+ * @property User $user
+ * @property Promocoes $promocao0
  */
 class Pedido extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
-    
-
     public static function tableName()
     {
         return 'pedido';
@@ -36,16 +34,15 @@ class Pedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'id_menu', 'preco', 'data', 'compra'], 'required'],
-            [['id_user', 'id_menu'], 'integer'],
+            [['id_user', 'id_menu', 'preco'], 'required'],
+            [['id_user', 'id_menu', 'promocao'], 'integer'],
             [['preco'], 'number'],
-            [['data'], 'string', 'max' => 255],
-            [['compra'], 'string', 'max' => 1],
-            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
+            [['data'], 'safe'],
             [['id_menu'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['id_menu' => 'id']],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
+            [['promocao'], 'exist', 'skipOnError' => true, 'targetClass' => Promocoes::className(), 'targetAttribute' => ['promocao' => 'id']],
         ];
     }
-
 
     /**
      * {@inheritdoc}
@@ -53,14 +50,21 @@ class Pedido extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Id',
-            'id_user' => 'Id do Utilizador',
-            'username'=>'Nome do Utilizador',
-            'id_menu' => 'Menu',
-            'preco' => 'Preço',
+            'id' => 'ID',
+            'id_user' => 'Id User',
+            'id_menu' => 'Id Menu',
+            'promocao' => 'Promocao',
+            'preco' => 'Preco',
             'data' => 'Data',
-
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMenu()
+    {
+        return $this->hasOne(Menu::className(), ['id' => 'id_menu']);
     }
 
     /**
@@ -74,11 +78,12 @@ class Pedido extends \yii\db\ActiveRecord
     {
         return $this->user->username;
     }
+
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMenu()
+    public function getPromocao0()
     {
-        return $this->hasOne(Menu::className(), ['id' => 'id_menu']);
+        return $this->hasOne(Promocoes::className(), ['id' => 'promocao']);
     }
 }

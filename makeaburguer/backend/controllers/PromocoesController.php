@@ -66,8 +66,15 @@ class PromocoesController extends Controller
     {
         $model = new Promocoes();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $inicio=strtotime($model->data_inicio);
+            $model->data_inicio=$inicio;
+            $hoje = date('d-M-Y');
+            $hojed=strtotime($hoje); 
+            $model->data_fim=$hojed;
+            $model->save(false);
+            return $this->redirect(['index']);
+
         }
 
         return $this->render('create', [

@@ -3,7 +3,7 @@
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $model app\models\Pedido */
 /* @var $form yii\widgets\ActiveForm */
@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 
     <h3>Menus</h3>
     <?=$form->field($model2, 'id_hamburger')->widget(Select2::classname(), [
-        'data' => $getH,
+        'data' => $hamburguer,
         'language' => 'pt',
         'options' => ['placeholder' => 'Selecione o Hamburguer'],
         'pluginOptions' => [
@@ -69,12 +69,17 @@ use yii\widgets\ActiveForm;
             'allowClear' => true
         ],
     ]);?>
-    <h3>Código Promocional</h3>
-    <?= $form->field($getP, 'nome')->textInput()->label('') ?>
-    <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
-    </div>
 
+    <?=$form->field($model, 'promocao')->widget(Select2::classname(), [
+        'data' => $promocao,
+        'language' => 'pt',
+        'options' => ['placeholder' => 'Selecione um complemento'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);?>
+
+    <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     <?php ActiveForm::end(); ?>
 
 </div>
