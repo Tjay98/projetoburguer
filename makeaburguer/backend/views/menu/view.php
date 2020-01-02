@@ -25,44 +25,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
         </p>
     <?php }?>
-    <?php
-    echo 'ID - ',$model->id;
-    echo "<br>";
-    if(!empty($hamburger)) {
-        echo 'ID - ', $model->id_hamburger;
-        echo "<br>";
-        echo 'ID - ', $hamburger->nome;
-        echo "<br>";
-    }
-    if(!empty($bebida)) {
-        echo 'ID - ', $model->id_bebida;
-        echo "<br>";
-        echo 'ID - ', $bebida->nome;
-        echo "<br>";
-    }
-    if(!empty($complemento)) {
-        echo 'ID - ', $model->id_complemento;
-        echo "<br>";
-        echo 'ID - ', $complemento->nome;
-        echo "<br>";
-    }
-    if(!empty($sobremesa)) {
-        echo 'ID - ', $model->id_sobremesa;
-        echo "<br>";
-        echo 'ID - ',$sobremesa->nome;
-        echo "<br>";
-    }
-    if(!empty($produtos)) {
-        echo 'ID - ', $model->id_extra;
-        echo "<br>";
-        echo 'ID - ',$produtos->nome;
-        echo "<br>";
-    }
-    echo 'ID - ',$model->preco;
-    echo "<br>";
-    echo 'ID - ',$model->descricao;
-    echo "<br>";
 
-    ?>
 
 </div>
+<table class="table table-striped table-bordered detail-view">
+    <tbody>
+        <tr><th>ID</th><td><?php echo $model->id; ?></td></tr>
+        <?php if(!empty($hamburger->nome)){
+            echo "<tr><th>Hamburguer</th><td>".$hamburger->nome."</td></tr>";
+        }?>
+        <?php if(!empty($bebida->nome)){
+            echo "<tr><th>Bebida</th><td>".$bebida->nome."</td></tr>";
+        }?>
+        <?php if(!empty($complemento->nome)){
+            echo "<tr><th>Complemento</th><td>".$complemento->nome."</td></tr>";
+        }?>
+        <?php if(!empty($sobremesa->nome)){
+            echo "<tr><th>Sobremesa</th><td>".$sobremesa->nome."</td></tr>";
+        }?>
+        <?php if(!empty($produtos->nome)){
+            echo "<tr><th>Extra</th><td>".$produtos->nome."</td></tr>";
+        }?>
+        <tr><th>Preço</th><td><?php echo $model->preco?></td></tr>
+
+    </tbody>
+</table>
