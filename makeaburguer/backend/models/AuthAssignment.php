@@ -40,8 +40,8 @@ class AuthAssignment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'item_name' => 'Item Name',
-            'user_id' => 'User ID',
+            'item_name' => 'Permissão',
+            'user_id' => 'Utilizador',
             'created_at' => 'Created At',
         ];
     }

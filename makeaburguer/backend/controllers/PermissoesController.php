@@ -8,6 +8,8 @@ use backend\models\PermissoesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\User;
+use yii\helpers\ArrayHelper;
 
 /**
  * PermissoesController implements the CRUD actions for AuthAssignment model.
@@ -71,8 +73,14 @@ class PermissoesController extends Controller
             return $this->redirect(['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]);
         }
 
+
+        $utilizador = User::find()->all();
+
+
         return $this->render('create', [
             'model' => $model,
+            'utilizador' => ArrayHelper::map($utilizador, 'id','username'),
+
         ]);
     }
 

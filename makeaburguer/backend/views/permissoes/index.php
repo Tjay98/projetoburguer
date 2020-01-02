@@ -7,15 +7,13 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\PermissoesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Auth Assignments';
+$this->title = 'Permissões RBAC';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="auth-assignment-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
-        <?= Html::a('Create Auth Assignment', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Atribuir Permissão', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
