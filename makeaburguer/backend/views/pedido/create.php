@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'complemento'=>$complemento,
         'sobremesa'=>$sobremesa,
         'produtos'=>$produtos,
-        'promocao'=>$promocao
+        'promocao'=>$promocao,
     ]);?>
 
 

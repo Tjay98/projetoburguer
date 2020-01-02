@@ -9,8 +9,7 @@ use app\models\User;
 use Yii;
 use app\models\Pedido;
 use backend\models\PedidoSearch;
-use backend\models\PedidoForm;
-use backend\models\Promocoes;
+use app\models\Promocoes;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -133,6 +132,7 @@ class PedidoController extends Controller
             $hojed=strtotime($hoje);
             $promocao=Promocoes::find()
             ->where('data_fim'>$hojed)
+            ->where('data_inicio'<$hojed)
             ->all();
             
             

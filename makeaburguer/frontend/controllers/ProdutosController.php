@@ -35,12 +35,20 @@ class ProdutosController extends Controller
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
+        if (Yii::$app->request->isPjax) {    
 
-        return $this->render('hamburguers', [
-            'hamburguers' => $hamburguers,
-            'pagination'=>$pagination
-
-        ]);
+                return $this->renderPartial('hamburguers',[
+                    'hamburguers' => $hamburguers,
+                    'pagination'=>$pagination]);
+    
+            } else {
+    
+                return $this->render('hamburguers', [
+                    'hamburguers' => $hamburguers,
+                    'pagination'=>$pagination,]);
+    
+            }
+        
 
     }
 
@@ -59,10 +67,19 @@ class ProdutosController extends Controller
             ->limit($pagination->limit)
             ->all();
 
-        return $this->render('bebidas',[
-            'bebidas'=>$bebidas,
-            'pagination'=>$pagination,
-        ]);
+            if (Yii::$app->request->isPjax) {    
+
+                return $this->renderPartial('bebidas',[
+                    'bebidas' => $bebidas,
+                    'pagination'=>$pagination]);
+        
+            } else {
+    
+                return $this->render('bebidas', [
+                    'bebidas' => $bebidas,
+                    'pagination'=>$pagination,]);
+    
+            }
     }
 
     public function actionSobremesas()
@@ -79,11 +96,21 @@ class ProdutosController extends Controller
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
+        
+            if (Yii::$app->request->isPjax) {    
 
-        return $this->render('sobremesas',[
-            'sobremesas'=>$sobremesas,
-            'pagination'=>$pagination,
-        ]);
+                return $this->renderPartial('sobremesas',[
+                    'sobremesas' => $sobremesas,
+                    'pagination'=>$pagination]);
+    
+            } else {
+    
+                return $this->render('sobremesas', [
+                    'sobremesas' => $sobremesas,
+                    'pagination'=>$pagination,]);
+    
+            }
+
     }
     public function actionAcompanhamentos()
     {
@@ -101,7 +128,19 @@ class ProdutosController extends Controller
             ->limit($pagination->limit)
             ->all();
 
+            if (Yii::$app->request->isPjax) {    
 
+                return $this->renderPartial('acompanhamentos',[
+                    'acompanhamentos' => $acompanhamentos,
+                    'pagination'=>$pagination]);
+    
+            } else {
+    
+                return $this->render('acompanhamentos', [
+                    'acompanhamentos' => $acompanhamentos,
+                    'pagination'=>$pagination,]);
+    
+            }
         return $this->render('acompanhamentos',[
             'acompanhamentos'=>$acompanhamentos,
             'pagination'=>$pagination,

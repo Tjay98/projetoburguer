@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Promocoes;
+use app\models\Promocoes;
 use backend\models\PromocoesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace app\models;
 
 use Yii;
 
@@ -12,6 +12,8 @@ use Yii;
  * @property string $valor
  * @property string $data_inicio
  * @property string $data_fim
+ *
+ * @property Pedido[] $pedidos
  */
 class Promocoes extends \yii\db\ActiveRecord
 {
@@ -47,5 +49,13 @@ class Promocoes extends \yii\db\ActiveRecord
             'data_inicio' => 'Data Inicio',
             'data_fim' => 'Data Fim',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPedidos()
+    {
+        return $this->hasMany(Pedido::className(), ['promocao' => 'id']);
     }
 }

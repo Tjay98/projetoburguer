@@ -28,6 +28,7 @@ use dosamigos\datepicker\DatePicker;
         <div class="col-lg-4 col-md-4">
             <?= $form->field($model, 'data_inicio')->widget(DatePicker::className(), [
                 'inline' => false, 
+                'language' => 'pt',
                 'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
                 'clientOptions' => [
                     'autoclose' => true,
@@ -38,6 +39,7 @@ use dosamigos\datepicker\DatePicker;
         <div class="col-lg-4 col-md-4">
             <?= $form->field($model, 'data_fim')->widget(DatePicker::className(), [
                 'inline' => false, 
+                'language' => 'pt',
                 'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
                 'clientOptions' => [
                     'autoclose' => true,
