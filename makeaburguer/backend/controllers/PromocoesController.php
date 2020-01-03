@@ -8,6 +8,7 @@ use backend\models\PromocoesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
  * PromocoesController implements the CRUD actions for Promocoes model.
@@ -35,13 +36,18 @@ class PromocoesController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PromocoesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(Yii::$app->user->can('view-admin')) {
+            $searchModel = new PromocoesSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+        else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -52,9 +58,15 @@ class PromocoesController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if(Yii::$app->user->can('view-admin')) {
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }
+        else{
+            throw new ForbiddenHttpException();
+        }
+
     }
 
     /**
@@ -64,22 +76,27 @@ class PromocoesController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Promocoes();
+        if(Yii::$app->user->can('view-admin')) {
+            $model = new Promocoes();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $inicio=strtotime($model->data_inicio);
-            $model->data_inicio=$inicio;
-            $hoje = date('d-M-Y');
-            $hojed=strtotime($hoje); 
-            $model->data_fim=$hojed;
-            $model->save(false);
-            return $this->redirect(['index']);
+            if ($model->load(Yii::$app->request->post())) {
+                $inicio=strtotime($model->data_inicio);
+                $model->data_inicio=$inicio;
+                $hoje = date('d-M-Y');
+                $hojed=strtotime($hoje); 
+                $model->data_fim=$hojed;
+                $model->save(false);
+                return $this->redirect(['index']);
 
+            }
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -91,15 +108,20 @@ class PromocoesController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if(Yii::$app->user->can('view-admin')) {
+            $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -111,9 +133,14 @@ class PromocoesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if(Yii::$app->user->can('view-admin')) {
+            $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        }
+        else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**

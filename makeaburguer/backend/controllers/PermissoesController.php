@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\User;
 use yii\helpers\ArrayHelper;
+use yii\web\ForbiddenHttpException;
 
 /**
  * PermissoesController implements the CRUD actions for AuthAssignment model.
@@ -36,14 +37,18 @@ class PermissoesController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-        $searchModel = new PermissoesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    {   if(Yii::$app->user->can('view-admin')) {
+            $searchModel = new PermissoesSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+        else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -55,9 +60,14 @@ class PermissoesController extends Controller
      */
     public function actionView($item_name, $user_id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($item_name, $user_id),
-        ]);
+        if(Yii::$app->user->can('view-admin')) {
+            return $this->render('view', [
+                'model' => $this->findModel($item_name, $user_id),
+            ]);
+            }
+            else{
+                throw new ForbiddenHttpException();
+            }
     }
 
     /**
@@ -66,22 +76,26 @@ class PermissoesController extends Controller
      * @return mixed
      */
     public function actionCreate()
-    {
-        $model = new AuthAssignment();
+    {   if(Yii::$app->user->can('view-admin')) {
+            $model = new AuthAssignment();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]);
+            }
+
+
+            $utilizador = User::find()->all();
+
+
+            return $this->render('create', [
+                'model' => $model,
+                'utilizador' => ArrayHelper::map($utilizador, 'id','username'),
+
+            ]);
         }
-
-
-        $utilizador = User::find()->all();
-
-
-        return $this->render('create', [
-            'model' => $model,
-            'utilizador' => ArrayHelper::map($utilizador, 'id','username'),
-
-        ]);
+        else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -94,6 +108,7 @@ class PermissoesController extends Controller
      */
     public function actionUpdate($item_name, $user_id)
     {
+        if(Yii::$app->user->can('view-admin')) {
         $model = $this->findModel($item_name, $user_id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -103,6 +118,10 @@ class PermissoesController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+        }
+        else{
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
@@ -115,9 +134,15 @@ class PermissoesController extends Controller
      */
     public function actionDelete($item_name, $user_id)
     {
-        $this->findModel($item_name, $user_id)->delete();
+        if(Yii::$app->user->can('view-admin')) {
+            $this->findModel($item_name, $user_id)->delete();
 
-        return $this->redirect(['index']);
+            return $this->redirect(['index']);
+        }
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
     /**
