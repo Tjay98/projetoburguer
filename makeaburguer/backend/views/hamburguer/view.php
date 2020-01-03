@@ -7,11 +7,11 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Hamburger */
 
 $this->title = $model->nome;
-$this->params['breadcrumbs'][] = ['label' => 'Hamburgers', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Hamburguers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="hamburger-view">
+<div class="hamburguer-view">
 
    <?php if(Yii::$app->user->can('view-admin')) { ?>
     <p>

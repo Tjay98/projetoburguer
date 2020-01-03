@@ -4,8 +4,8 @@ namespace backend\controllers;
 
 use app\models\Ingrediente;
 use Yii;
-use app\models\Hamburgerc;
-use backend\models\HamburgercSearch;
+use app\models\Hamburguerc;
+use backend\models\HamburguercSearch;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
@@ -15,7 +15,7 @@ use yii\filters\VerbFilter;
 /**
  * HamburgercController implements the CRUD actions for Hamburgerc model.
  */
-class HamburgercController extends Controller
+class HamburguercController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -39,7 +39,7 @@ class HamburgercController extends Controller
     public function actionIndex()
     {
         if(Yii::$app->user->can('view-admin')) {
-            $searchModel = new HamburgercSearch();
+            $searchModel = new HamburguercSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
             return $this->render('index', [
@@ -80,7 +80,7 @@ class HamburgercController extends Controller
     public function actionCreate()
     {
         if(Yii::$app->user->can('create-admin')) {
-            $model = new Hamburgerc();
+            $model = new Hamburguerc();
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -245,7 +245,7 @@ class HamburgercController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Hamburgerc::findOne($id)) !== null) {
+        if (($model = Hamburguerc::findOne($id)) !== null) {
             return $model;
         }
 

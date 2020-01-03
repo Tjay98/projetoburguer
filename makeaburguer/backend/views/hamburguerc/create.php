@@ -5,12 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\HamburgerC */
 
-$this->title = 'Atualizar Hamburguer customizado ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Hamburger Cs', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Criar Hambúrguer Costumizado';
+$this->params['breadcrumbs'][] = ['label' => 'Hambúrguers Costumizados', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="hamburger-c-update">
+<div class="hamburguer-c-create">
+
 
     <?= $this->render('_form', [
         'model' => $model,

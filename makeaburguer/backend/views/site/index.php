@@ -8,13 +8,13 @@ $this->title = 'Make a burger';
     <div class="col-lg-2 col-xs-6">
         <div class="small-box bg-red">
             <div class="inner">
-                <h3><?= $Hamburger ?> </h3>
+                <h3><?= $Hamburguer ?> </h3>
                 <p>Hamburguers</p>
             </div>
 <!--            <div class="icon">-->
 <!--                <i class="fa fa-user""></i>-->
 <!--            </div>-->
-            <a> <?= Html::a('Redirect', ['hamburger/index'], ['class' => 'small-box-footer']) ?></a>
+            <a> <?= Html::a('Redirect', ['hamburguer/index'], ['class' => 'small-box-footer']) ?></a>
         </div>
     </div>
     <div class="col-lg-2 col-xs-6">

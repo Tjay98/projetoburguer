@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use app\models\Categoria;
 use Yii;
-use app\models\Hamburger;
+use app\models\Hamburguer;
 use app\models\Ingrediente;
 use app\models\IngredienteSearch;
 use yii\helpers\ArrayHelper;
@@ -162,7 +162,7 @@ class IngredienteController extends Controller
 
         if(Yii::$app->user->can('delete-admin')) {
 
-            $verifica = Hamburger::find()
+            $verifica = Hamburguer::find()
                 ->select('id')
                 ->where(['ingrediente1' => $id])
                 ->orWhere(['ingrediente2' => $id])
@@ -182,7 +182,7 @@ class IngredienteController extends Controller
                 ->one();
             if( $verifica !== null ) {
 
-                return $this->redirect(['hamburger/view','id' => $verifica->id]);
+                return $this->redirect(['hamburguer/view','id' => $verifica->id]);
             }
             else{
                 $this->findModel($id)->delete();

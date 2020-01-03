@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use app\models\Hamburger;
+use app\models\Hamburguer;
 use app\models\Menu;
 use app\models\Produtos;
 use app\models\User;
@@ -103,8 +103,8 @@ class PedidoController extends Controller
                 
 
 
-                $precoH= Hamburger::find()
-                    ->where(['id'=> $model2->id_hamburger])
+                $precoH= Hamburguer::find()
+                    ->where(['id'=> $model2->id_hamburguer])
                     ->sum('preco');
 
                 $precoB= Produtos::find()
@@ -140,7 +140,7 @@ class PedidoController extends Controller
             $getM = Menu::find()->all();
             $getU = User::find()->all();
 
-            $hamburguer = Hamburger::find()->all();
+            $hamburguer = Hamburguer::find()->all();
 
             $bebida = Produtos::find()
                 ->where(['categoria' => 7])

@@ -4,20 +4,23 @@ namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Hamburgerc;
+use app\models\Hamburguer;
 
 /**
- * HamburgercSearch represents the model behind the search form of `app\models\Hamburgerc`.
+ * HamburgerSearch represents the model behind the search form of `app\models\Hamburger`.
  */
-class HamburgercSearch extends Hamburgerc
+class HamburguerSearch extends Hamburguer
 {
     /**
      * {@inheritdoc}
      */
+    public $globalSearch;
+
     public function rules()
     {
         return [
-            [['id', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos'], 'integer'],
+            [['id', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento'], 'integer'],
+            [['nome', 'imagem', 'descricao','globalSearch'], 'safe'],
         ];
     }
 
@@ -39,7 +42,7 @@ class HamburgercSearch extends Hamburgerc
      */
     public function search($params)
     {
-        $query = Hamburgerc::find();
+        $query = Hamburguer::find();
 
         // add conditions that should always apply here
 
@@ -56,6 +59,7 @@ class HamburgercSearch extends Hamburgerc
         }
 
         // grid filtering conditions
+       /* 
         $query->andFilterWhere([
             'id' => $this->id,
             'pao' => $this->pao,
@@ -63,8 +67,13 @@ class HamburgercSearch extends Hamburgerc
             'carne' => $this->carne,
             'vegetais' => $this->vegetais,
             'queijo' => $this->queijo,
-            'complementos' => $this->complementos,
+            'complemento' => $this->complemento,
         ]);
+        */
+
+        $query->orFilterWhere(['like', 'nome', $this->globalSearch])
+            ->orFilterWhere(['like', 'imagem', $this->globalSearch])
+            ->orFilterWhere(['like', 'descricao', $this->globalSearch]);
 
         return $dataProvider;
     }

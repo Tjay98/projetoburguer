@@ -33,7 +33,7 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'required'],
-            [['id', 'id_hamburger', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
+            [['id', 'id_hamburguer', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
             [['preco'], 'number'],
             [['descricao'], 'string', 'max' => 255],
             [['id'], 'unique'],
@@ -47,7 +47,7 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_hamburger' => 'Hamburguer',
+            'id_hamburguer' => 'Hamburguer',
             'id_bebida' => 'Bebida',
             'id_complemento' => 'Complemento',
             'id_sobremesa' => 'Sobremesa',

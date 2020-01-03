@@ -17,7 +17,7 @@ class MenuSearch extends Menu
     public function rules()
     {
         return [
-            [['id', 'id_hamburger', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
+            [['id', 'id_hamburguer', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
             [['preco'], 'number'],
             [['descricao'], 'safe'],
         ];
@@ -60,7 +60,7 @@ class MenuSearch extends Menu
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_hamburger' => $this->id_hamburger,
+            'id_hamburguer' => $this->id_hamburguer,
             'id_bebida' => $this->id_bebida,
             'id_complemento' => $this->id_complemento,
             'id_sobremesa' => $this->id_sobremesa,

@@ -15,14 +15,14 @@ use Yii;
  * @property int $queijo
  * @property int $complementos
  */
-class HamburgerC extends \yii\db\ActiveRecord
+class HamburguerC extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'hamburger_c';
+        return 'hamburguer_c';
     }
 
     /**

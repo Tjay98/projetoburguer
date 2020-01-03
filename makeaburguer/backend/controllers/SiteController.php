@@ -1,7 +1,7 @@
 <?php
 namespace backend\controllers;
 
-use app\models\Hamburger;
+use app\models\Hamburguer;
 use app\models\Cliente;
 use app\models\Ingrediente;
 use app\models\Pedido;
@@ -72,7 +72,7 @@ class SiteController extends Controller
     {
         if(Yii::$app->user->can('login-backoffice')) {
             //vais á base de dados e conta os campos abaixo para mostrar no index do backend
-            $Hamburger = Hamburger::find()->count();
+            $Hamburguer = Hamburguer::find()->count();
             $Cliente = User::find()->count();
             $Produtos = Produtos::find()->count();
             $Ingredientes = Ingrediente::find()->count();
@@ -81,7 +81,7 @@ class SiteController extends Controller
 
             return $this->render('index',
                 [
-                    'Hamburger' => $Hamburger,
+                    'Hamburguer' => $Hamburguer,
                     'Cliente' => $Cliente,
                     'Produtos' => $Produtos,
                     'Ingredientes' => $Ingredientes,

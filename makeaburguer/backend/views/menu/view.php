@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <table class="table table-striped table-bordered detail-view">
     <tbody>
         <tr><th>ID</th><td><?php echo $model->id; ?></td></tr>
-        <?php if(!empty($hamburger->nome)){
-            echo "<tr><th>Hamburguer</th><td>".$hamburger->nome."</td></tr>";
+        <?php if(!empty($hamburguer->nome)){
+            echo "<tr><th>Hamburguer</th><td>".$hamburguer->nome."</td></tr>";
         }?>
         <?php if(!empty($bebida->nome)){
             echo "<tr><th>Bebida</th><td>".$bebida->nome."</td></tr>";

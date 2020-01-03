@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\AuthAssignment;
+use backend\models\AuthItem;
 use backend\models\PermissoesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -86,10 +87,14 @@ class PermissoesController extends Controller
 
             $utilizador = User::find()->all();
 
+            $role=AuthItem::find()
+            ->where(['type'=>1])
+            ->all();
 
             return $this->render('create', [
                 'model' => $model,
                 'utilizador' => ArrayHelper::map($utilizador, 'id','username'),
+                'role'=>ArrayHelper::map($role, 'name','name'),
 
             ]);
         }

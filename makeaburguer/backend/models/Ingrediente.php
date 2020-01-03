@@ -69,97 +69,97 @@ class Ingrediente extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers()
+    public function getHamburguers()
     {
-        return $this->hasMany(Hamburger::className(), ['pao' => 'id']);
+        return $this->hasMany(Hamburguer::className(), ['pao' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers0()
+    public function getHamburguers0()
     {
-        return $this->hasMany(Hamburger::className(), ['molho' => 'id']);
+        return $this->hasMany(Hamburguer::className(), ['molho' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers1()
+    public function getHamburguers1()
     {
-        return $this->hasMany(Hamburger::className(), ['carne' => 'id']);
+        return $this->hasMany(Hamburguer::className(), ['carne' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers2()
+    public function getHamburguers2()
     {
-        return $this->hasMany(Hamburger::className(), ['vegetais' => 'id']);
+        return $this->hasMany(Hamburguer::className(), ['vegetais' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers3()
+    public function getHamburguers3()
     {
-        return $this->hasMany(Hamburger::className(), ['queijo' => 'id']);
+        return $this->hasMany(Hamburguer::className(), ['queijo' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgers4()
+    public function getHamburguers4()
     {
-        return $this->hasMany(Hamburger::className(), ['complemento' => 'id']);
+        return $this->hasMany(Hamburguer::className(), ['complemento' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgerCs()
+    public function getHamburguerCs()
     {
-        return $this->hasMany(HamburgerC::className(), ['pao' => 'id']);
+        return $this->hasMany(HamburguerC::className(), ['pao' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgerCs0()
+    public function getHamburguerCs0()
     {
-        return $this->hasMany(HamburgerC::className(), ['molho' => 'id']);
+        return $this->hasMany(HamburguerC::className(), ['molho' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgerCs1()
+    public function getHamburguerCs1()
     {
-        return $this->hasMany(HamburgerC::className(), ['carne' => 'id']);
+        return $this->hasMany(HamburguerC::className(), ['carne' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgerCs2()
+    public function getHamburguerCs2()
     {
-        return $this->hasMany(HamburgerC::className(), ['vegetais' => 'id']);
+        return $this->hasMany(HamburguerC::className(), ['vegetais' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgerCs3()
+    public function getHamburguerCs3()
     {
-        return $this->hasMany(HamburgerC::className(), ['queijo' => 'id']);
+        return $this->hasMany(HamburguerC::className(), ['queijo' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHamburgerCs4()
+    public function getHamburguerCs4()
     {
-        return $this->hasMany(HamburgerC::className(), ['complementos' => 'id']);
+        return $this->hasMany(HamburguerC::className(), ['complementos' => 'id']);
     }
 
     /**

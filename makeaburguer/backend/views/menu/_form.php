@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_hamburger')->dropDownList($getH,['prompt'=>'']) ?>
+    <?= $form->field($model, 'id_hamburguer')->dropDownList($getH,['prompt'=>'']) ?>
 
     <?= $form->field($model, 'id_bebida')->dropDownList($bebida,['prompt'=>'']) ?>
 

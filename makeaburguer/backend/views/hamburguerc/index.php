@@ -7,10 +7,10 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\HamburgercSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Hamburger Customizado';
+$this->title = 'Hambúrguer Costumizado';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="hamburger-c-index">
+<div class="hamburguer-c-index">
 
 
     <p>

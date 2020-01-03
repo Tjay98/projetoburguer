@@ -2,7 +2,7 @@
 
 namespace backend\controllers;
 
-use app\models\Hamburger;
+use app\models\Hamburguer;
 use app\models\Pedido;
 use app\models\Produtos;
 use Yii;
@@ -68,8 +68,8 @@ class MenuController extends Controller
         if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
             $model = $this->findModel($id);
 
-            $hamburger = Hamburger::find()
-                ->where(['id' => $model->id_hamburger])
+            $hamburguer = Hamburguer::find()
+                ->where(['id' => $model->id_hamburguer])
                 ->one();
 
             $bebida = Produtos::find()
@@ -92,7 +92,7 @@ class MenuController extends Controller
 
             return $this->render('view', [
                 'model' => $model,
-                'hamburger'=>$hamburger,
+                'hamburguer'=>$hamburguer,
                 'bebida'=>$bebida,
                 'complemento'=>$complemento,
                 'sobremesa'=>$sobremesa,
@@ -117,8 +117,8 @@ class MenuController extends Controller
 
             if ($model->load(Yii::$app->request->post())){
 
-            $precoH= Hamburger::find()
-                ->where(['id'=> $model->id_hamburger])
+            $precoH= Hamburguer::find()
+                ->where(['id'=> $model->id_hamburguer])
                 ->sum('preco');
 
             $precoB= Produtos::find('preco')
@@ -135,7 +135,7 @@ class MenuController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-            $getH = Hamburger::find()->all();
+            $getH = Hamburguer::find()->all();
 
             $bebida = Produtos::find()
                 ->where(['categoria' => 7])
@@ -178,7 +178,7 @@ class MenuController extends Controller
         if(Yii::$app->user->can('update-detalhes-admin')) {
             $model = $this->findModel($id);
 
-            $getH = Hamburger::find()->all();
+            $getH = Hamburguer::find()->all();
 
             $bebida = Produtos::find()
                 ->where(['categoria' => 7])

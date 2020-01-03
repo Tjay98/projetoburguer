@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="hamburger-search">
+<div class="hamburguer-search">
 
         <?php Pjax::begin(); ?>
 

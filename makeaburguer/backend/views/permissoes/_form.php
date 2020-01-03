@@ -14,7 +14,7 @@ use kartik\select2\Select2;
     <?php $form = ActiveForm::begin(); ?>
 
     <?=$form->field($model, 'item_name')->widget(Select2::classname(), [
-        'data' => ['admin','funcionario','utilizador'],
+        'data' => $role,//['admin','funcionario','utilizador'],
         'language' => 'pt',
         'options' => ['placeholder' => 'Selecione a permissão..'],
         'pluginOptions' => [

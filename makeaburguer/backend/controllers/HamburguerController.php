@@ -4,8 +4,8 @@ namespace backend\controllers;
 
 use app\models\ingrediente;
 use Yii;
-use app\models\Hamburger;
-use backend\models\HamburgerSearch;
+use app\models\Hamburguer;
+use backend\models\HamburguerSearch;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
@@ -16,7 +16,7 @@ use yii\web\UploadedFile;
 /**
  * HamburgerController implements the CRUD actions for Hamburger model.
  */
-class HamburgerController extends Controller
+class HamburguerController extends Controller
 {
 
     const precision = 2;
@@ -42,7 +42,7 @@ class HamburgerController extends Controller
     public function actionIndex()
     {
         if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
-            $searchModel = new HamburgerSearch();
+            $searchModel = new HamburguerSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
             return $this->render('index', [
@@ -113,7 +113,7 @@ class HamburgerController extends Controller
     public function actionCreate()
     {
         if(Yii::$app->user->can('create-admin')) {
-            $model = new Hamburger();
+            $model = new Hamburguer();
 
             if (($model->load(Yii::$app->request->post()))) {
 
@@ -283,7 +283,7 @@ class HamburgerController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Hamburger::findOne($id)) !== null) {
+        if (($model = Hamburguer::findOne($id)) !== null) {
 
             return $model;
         }

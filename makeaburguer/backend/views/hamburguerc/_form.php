@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="hamburger-c-form">
+<div class="hamburguer-c-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
