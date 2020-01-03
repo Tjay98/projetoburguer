@@ -109,15 +109,20 @@ class PermissoesController extends Controller
     public function actionUpdate($item_name, $user_id)
     {
         if(Yii::$app->user->can('view-admin')) {
-        $model = $this->findModel($item_name, $user_id);
+            $model = $this->findModel($item_name, $user_id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]);
-        }
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]);
+            }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+            $utilizador = User::find()
+                ->where (['id'=>$model->user_id])
+                ->all();
+
+            return $this->render('update', [
+                'model' => $model,
+                'utilizador' => ArrayHelper::map($utilizador, 'id','username'),
+            ]);
         }
         else{
             throw new ForbiddenHttpException();
