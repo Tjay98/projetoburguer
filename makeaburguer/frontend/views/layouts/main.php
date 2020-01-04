@@ -60,8 +60,6 @@ AppAsset::register($this);
                     'items'=>[
                         ['label'=>'Ver Perfil','url'=>['cliente/info']],
                         '<li class="divider"></li>',
-                        ['label'=>'Pedidos','url'=>['#']],
-                        '<li class="divider"></li>',
                         ['label'=>'Faturas','url'=>['cliente/faturas']],
 
 
