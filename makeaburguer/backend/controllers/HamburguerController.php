@@ -210,11 +210,28 @@ class HamburguerController extends Controller
 
             if ($model->load(Yii::$app->request->post())) {
 
-                $model->imagem=UploadedFile::getInstance($model,'imagem');
-                $imagem=$model->nome.rand(1,4000).'.'.$model->imagem->extension;
-                $image_path='imagens/hamburguers/'.$imagem;
-                $model->imagem->saveAs($image_path);
-                $model->imagem=$image_path;
+                if(empty($model->imagem)){
+                    $model=$this->findModel($id);
+                    //método mágico
+                    $model->imagem= $model->imagem;
+
+                }
+                else{
+
+                    //nao está a funcionar completamente
+                    $hamburguer = Hamburguer::findOne($id);
+                    unlink(Yii::$app->basePath . '/web/' . $hamburguer->imagem);
+
+                    $model->imagem=UploadedFile::getInstance($model,'imagem');
+                    $imagem=$model->nome.'.'.$model->imagem->extension;
+//                    $imagem=$model->nome.rand(1,4000).'.'.$model->imagem->extension; <- maneira antiga de mudar
+                    $image_path='imagens/hamburguers/'.$imagem;
+                    $model->imagem->saveAs($image_path);
+                    $model->imagem=$image_path;
+                }
+
+
+
                 $model->save(false);
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -265,7 +282,11 @@ class HamburguerController extends Controller
     public function actionDelete($id)
     {
         if(Yii::$app->user->can('delete-admin')) {
+            $hamburguer = Hamburguer::findOne($id);
+            unlink(Yii::$app->basePath . '/web/' . $hamburguer->imagem);
             $this->findModel($id)->delete();
+
+
 
             return $this->redirect(['index']);
         }

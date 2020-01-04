@@ -164,6 +164,8 @@ class ProdutosController extends Controller
     public function actionDelete($id)
     {
         if(Yii::$app->user->can('view-admin')) {
+            $produto = Produtos::findOne($id);
+            unlink(Yii::$app->basePath . '/web/' . $produto->imagem);
             $this->findModel($id)->delete();
 
 

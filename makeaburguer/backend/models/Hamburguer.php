@@ -47,7 +47,7 @@ class Hamburguer extends \yii\db\ActiveRecord
             [['pao', 'molho', 'carne', 'vegetais', 'queijo', 'complemento'], 'integer'],
             [['preco'],'number'],
             [['nome'], 'string', 'max' => 30],
-            [['imagem'], 'file','extensions'=>'jpg'],
+            [['imagem'], 'file','extensions'=>'jpg','skipOnEmpty' => true],
             [['pao'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['pao' => 'id']],
             [['molho'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['molho' => 'id']],
             [['carne'], 'exist', 'skipOnError' => true, 'targetClass' => Ingrediente::className(), 'targetAttribute' => ['carne' => 'id']],

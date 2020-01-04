@@ -1,6 +1,6 @@
 html,
 body {
-    height: 105%;
+    height: 100%;
     /*background-color: #e0b861;*/
     /*background-image: linear-gradient(#faaf56, #ffbc3e);*/
     /*background-repeat: no-repeat;*/
@@ -276,5 +276,11 @@ a.desc:after {
     color:black;
 }
 
+/*.glyphicon.glyphicon-shopping-cart{*/
+/*    font-size:20px !important;*/
 
+/*}*/
+/*#pedidocart{*/
+
+/*}*/
 /*teste*/

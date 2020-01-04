@@ -97,13 +97,15 @@ class PedidoController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Pedido();
             $model2 = new Menu();
-            //novas para checar a promoçao
+
+
+
+            //verificar validade da promoção
             $hoje = date('d-M-Y');
             $hojed=strtotime($hoje);
             $promocao=Promocoes::find()
-                //->where(['data_inicio'<$hojed])
-                ->Where('data_fim'>$hojed);
-
+                ->where('data_fim'<$hojed)
+                ->all();
 
             if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
 
@@ -122,7 +124,20 @@ class PedidoController extends Controller
                     ->sum('preco');
 
                 $preco =$precoB+$precoH;
+
+                $valorpromo=Promocoes::find()
+                    ->where(['nome'=>$model->promocao])
+                    ->all();
+
+
+                //se selecionar uma promoçao, o valor que está indicado é subtraido ao valor normal do pedido
+                $preco=$preco-$valorpromo->valor;
+
+
+                //preço do menu
                 $model2->preco=$preco;
+
+                //preço do pedido
                 $model->preco=$preco;
 
                 $model2->save(false);

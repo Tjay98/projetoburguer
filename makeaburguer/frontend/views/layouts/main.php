@@ -52,11 +52,20 @@ AppAsset::register($this);
         ]
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Registo', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => ' Registo', 'url' => ['/site/signup'],'linkOptions'=>['class'=>'glyphicon glyphicon-user'],];
+        $menuItems[] = ['label' => ' Login', 'url' => ['/site/login'],'linkOptions'=>['class'=>'glyphicon glyphicon-log-in'],];
     } else {
+        $menuItems[]=['label'=>' Pedido',
+            'url'=>['produtos/pedido'],
+//            'options'=> ['class'=>'glyphicon glyphicon-shopping-cart'],
+            'linkOptions'=>['class'=>'glyphicon glyphicon-shopping-cart'],
+        ];
 
-        $menuItems[]=['label'=>'Perfil ('.Yii::$app->user->identity->username.')',
+
+
+
+        $menuItems[]=['label'=>' Perfil',
+                    'linkOptions'=>['class'=>'glyphicon glyphicon-user'],
                     'items'=>[
                         ['label'=>'Ver Perfil','url'=>['cliente/info']],
                         '<li class="divider"></li>',

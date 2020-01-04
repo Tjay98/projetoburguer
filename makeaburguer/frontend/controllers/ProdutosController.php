@@ -141,10 +141,7 @@ class ProdutosController extends Controller
                     'pagination'=>$pagination,]);
     
             }
-        return $this->render('acompanhamentos',[
-            'acompanhamentos'=>$acompanhamentos,
-            'pagination'=>$pagination,
-        ]);
+
     }
 
     public function actionInfoprodutos($id){
@@ -163,6 +160,12 @@ class ProdutosController extends Controller
 
         return $this->render('infohamburguer',[
             'hamburguer'=>$hamburguer,
+        ]);
+    }
+    public function actionPedido(){
+
+        return $this->render('pedido',[
+            //'hamburguer'=>$hamburguer,
         ]);
     }
 
