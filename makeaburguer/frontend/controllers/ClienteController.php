@@ -109,11 +109,15 @@ class ClienteController extends Controller
             $pedidos=Pedido::find()
                 ->where(['id'=>$id])
                 ->all();
-            $menu=Menu::find()
-                ->where(['id'=>$pedidos->id_menu])
-                ->all();
-            $hamburguer=Hamburguer::find()
-                ->where(['id'=>$menu->id_hamburguer]);
+            if (!empty($pedidos->id_menu)) {
+                $menu=Menu::find()
+                    ->where(['id'=>$pedidos->id_menu])
+                    ->all();
+            }
+            if (!empty($menu->id_hamburguer)) {
+                $hamburguer=Hamburguer::find()
+                    ->where(['id'=>$menu->id_hamburguer]);
+            }
 
 //            $bebida=Produtos::find()
 //                ->where

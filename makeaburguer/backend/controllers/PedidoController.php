@@ -97,6 +97,13 @@ class PedidoController extends Controller
         if(Yii::$app->user->can('create-admin')) {
             $model = new Pedido();
             $model2 = new Menu();
+            //novas para checar a promoçao
+            $hoje = date('d-M-Y');
+            $hojed=strtotime($hoje);
+            $promocao=Promocoes::find()
+                //->where(['data_inicio'<$hojed])
+                ->Where('data_fim'>$hojed);
+
 
             if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
 
@@ -127,15 +134,9 @@ class PedidoController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
-            //novas para checar a promoçao
-            $hoje = date('d-M-Y'); 
-            $hojed=strtotime($hoje);
-            $promocao=Promocoes::find()
-            ->where('data_inicio'<$hojed)
-            ->where('data_fim'>$hojed);
-            
-            
-    
+
+
+
 
             $getM = Menu::find()->all();
             $getU = User::find()->all();
@@ -161,7 +162,6 @@ class PedidoController extends Controller
                 'getM' => ArrayHelper::map($getM, 'id','id'),
                 'getU' => ArrayHelper::map($getU, 'id','username'),
                 'model2'=> $model2,
-                'getM' => ArrayHelper::map($getM, 'id','id'),
                 'hamburguer' => ArrayHelper::map($hamburguer, 'id', 'nome'),
                 'bebida' => ArrayHelper::map($bebida, 'id', 'nome'),
                 'complemento' => ArrayHelper::map($complemento , 'id', 'nome'),

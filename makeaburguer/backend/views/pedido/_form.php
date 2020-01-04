@@ -73,7 +73,7 @@ use yii\bootstrap\Modal;
     <?=$form->field($model, 'promocao')->widget(Select2::classname(), [
         'data' => $promocao,
         'language' => 'pt',
-        'options' => ['placeholder' => 'Selecione um complemento'],
+        'options' => ['placeholder' => 'Código promocional'],
         'pluginOptions' => [
             'allowClear' => true
         ],

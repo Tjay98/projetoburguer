@@ -82,9 +82,10 @@ class PromocoesController extends Controller
             if ($model->load(Yii::$app->request->post())) {
                 $inicio=strtotime($model->data_inicio);
                 $model->data_inicio=$inicio;
-                $hoje = date('d-M-Y');
-                $hojed=strtotime($hoje); 
-                $model->data_fim=$hojed;
+
+                $fim=strtotime($model->data_fim);
+                $model->data_fim=$fim;
+
                 $model->save(false);
                 return $this->redirect(['index']);
 
