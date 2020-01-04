@@ -26,14 +26,14 @@ use Yii;
  * @property Ingrediente $queijo0
  * @property Ingrediente $complemento0
  */
-class Hamburger extends \yii\db\ActiveRecord
+class Hamburguer extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'hamburger';
+        return 'hamburguer';
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 namespace frontend\controllers;
 
-use app\models\Hamburger;
+use app\models\Hamburguer;
 use app\models\Produtos;
 use Yii;
 use yii\base\InvalidArgumentException;
@@ -24,7 +24,7 @@ class ProdutosController extends Controller
 
     public function actionHamburguers()
     {
-        $hamburguerlist = Hamburger::find();
+        $hamburguerlist = Hamburguer::find();
 
         $pagination = new Pagination([
             'defaultPageSize' => 3,
