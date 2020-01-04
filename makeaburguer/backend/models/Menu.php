@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "menu".
  *
  * @property int $id
- * @property int $id_hamburger
+ * @property int $id_hamburguer
  * @property int $id_bebida
  * @property int $id_complemento
  * @property int $id_sobremesa

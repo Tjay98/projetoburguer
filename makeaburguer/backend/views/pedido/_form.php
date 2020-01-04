@@ -26,7 +26,7 @@ use yii\bootstrap\Modal;
 
 
     <h3>Menus</h3>
-    <?=$form->field($model2, 'id_hamburger')->widget(Select2::classname(), [
+    <?=$form->field($model2, 'id_hamburguer')->widget(Select2::classname(), [
         'data' => $hamburguer,
         'language' => 'pt',
         'options' => ['placeholder' => 'Selecione o Hamburguer'],

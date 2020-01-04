@@ -62,7 +62,7 @@ AppAsset::register($this);
                         '<li class="divider"></li>',
                         ['label'=>'Pedidos','url'=>['#']],
                         '<li class="divider"></li>',
-                        ['label'=>'Faturas','url'=>['#']],
+                        ['label'=>'Faturas','url'=>['cliente/faturas']],
 
 
                     ]
