@@ -6,6 +6,18 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Codeception\\Exception\\ExternalUrlException' => $vendorDir . '/codeception/lib-innerbrowser/src/Codeception/Exception/ExternalUrlException.php',
+    'Codeception\\Lib\\Connector\\Yii2' => $vendorDir . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2.php',
+    'Codeception\\Lib\\Connector\\Yii2\\ConnectionWatcher' => $vendorDir . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/ConnectionWatcher.php',
+    'Codeception\\Lib\\Connector\\Yii2\\FixturesStore' => $vendorDir . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/FixturesStore.php',
+    'Codeception\\Lib\\Connector\\Yii2\\Logger' => $vendorDir . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/Logger.php',
+    'Codeception\\Lib\\Connector\\Yii2\\TestMailer' => $vendorDir . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/TestMailer.php',
+    'Codeception\\Lib\\Connector\\Yii2\\TransactionForcer' => $vendorDir . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/TransactionForcer.php',
+    'Codeception\\Lib\\Framework' => $vendorDir . '/codeception/lib-innerbrowser/src/Codeception/Lib/Framework.php',
+    'Codeception\\Lib\\InnerBrowser' => $vendorDir . '/codeception/lib-innerbrowser/src/Codeception/Lib/InnerBrowser.php',
+    'Codeception\\Module\\Yii2' => $vendorDir . '/codeception/module-yii2/src/Codeception/Module/Yii2.php',
+    'Codeception\\Util\\HttpCode' => $vendorDir . '/codeception/lib-innerbrowser/src/Codeception/Util/HttpCode.php',
+    'Codeception\\Util\\Shared\\Asserts' => $vendorDir . '/codeception/lib-asserts/src/Codeception/Util/Shared/Asserts.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',

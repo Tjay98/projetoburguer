@@ -170,25 +170,36 @@ class ProdutosController extends Controller
 
 
 
-    public function actionPedido($id){
+    public function actionPedido(){
         if (yii::$app->user->can('utilizador')){
-            $session=Yii::$app->session;
-            if(empty($id)){
-                echo"a";
-            }
-            else{
-                $session['pedido']=$id;
+            $request = Yii::$app->request;
 
+            $session=Yii::$app->session;
+            if (!empty($_GET['id'])){
+
+                $session['pedido']=$_GET['id'];
+
+
+            }
             $pedidos=Hamburguer::find()
                 ->where(['id'=>$session['pedido']])->all();
-            //$session['cart']='';
+
+
+            if (isset(Yii::$app->session->id)) {
+                return $this->render('pedido',[
+                    'pedidos'=>$pedidos,
+                ]);
+
+
+            }
+            else{
+                return $this->render('pedido',[
+                ]);
             }
 
 
 
-            return $this->render('pedido',[
-                'pedidos'=>$pedidos,
-            ]);
+
         }
         else
         {

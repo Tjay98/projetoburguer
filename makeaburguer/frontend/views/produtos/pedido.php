@@ -18,9 +18,9 @@ $this->title = 'Hamburguers';
         </div>
 
         <?php if(!empty($pedidos)){
-        foreach($pedidos as $pedido){ ?>
+        foreach($pedidos as $pedido): ?>
             <?=$pedido->nome?>
-        <?php }}
+        <?php endforeach;}
         else{
             echo"ola";
         }?>

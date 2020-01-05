@@ -7,12 +7,12 @@ namespace Composer\Autoload;
 class ComposerStaticInit586613ccc0114d628772d3c7eb397757
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         '180092cfc969a12e06f2132a203a3184' => __DIR__ . '/..' . '/codeception/verify/src/Codeception/function.php',
@@ -256,11 +256,13 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
         'Codeception\\Extension\\' => 
         array (
             0 => __DIR__ . '/..' . '/codeception/base/ext',
+            1 => __DIR__ . '/..' . '/codeception/codeception/ext',
         ),
         'Codeception\\' => 
         array (
             0 => __DIR__ . '/..' . '/codeception/base/src/Codeception',
-            1 => __DIR__ . '/..' . '/codeception/stub/src',
+            1 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
+            2 => __DIR__ . '/..' . '/codeception/stub/src',
         ),
     );
 
@@ -296,6 +298,18 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
     );
 
     public static $classMap = array (
+        'Codeception\\Exception\\ExternalUrlException' => __DIR__ . '/..' . '/codeception/lib-innerbrowser/src/Codeception/Exception/ExternalUrlException.php',
+        'Codeception\\Lib\\Connector\\Yii2' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2.php',
+        'Codeception\\Lib\\Connector\\Yii2\\ConnectionWatcher' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/ConnectionWatcher.php',
+        'Codeception\\Lib\\Connector\\Yii2\\FixturesStore' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/FixturesStore.php',
+        'Codeception\\Lib\\Connector\\Yii2\\Logger' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/Logger.php',
+        'Codeception\\Lib\\Connector\\Yii2\\TestMailer' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/TestMailer.php',
+        'Codeception\\Lib\\Connector\\Yii2\\TransactionForcer' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/TransactionForcer.php',
+        'Codeception\\Lib\\Framework' => __DIR__ . '/..' . '/codeception/lib-innerbrowser/src/Codeception/Lib/Framework.php',
+        'Codeception\\Lib\\InnerBrowser' => __DIR__ . '/..' . '/codeception/lib-innerbrowser/src/Codeception/Lib/InnerBrowser.php',
+        'Codeception\\Module\\Yii2' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Module/Yii2.php',
+        'Codeception\\Util\\HttpCode' => __DIR__ . '/..' . '/codeception/lib-innerbrowser/src/Codeception/Util/HttpCode.php',
+        'Codeception\\Util\\Shared\\Asserts' => __DIR__ . '/..' . '/codeception/lib-asserts/src/Codeception/Util/Shared/Asserts.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
