@@ -16,9 +16,9 @@ $this->title = 'Hamburguers';
 
         <h1>INSERIR PEDIDO DINAMICO</h1>
         </div>
-
-
-
+        <?php foreach($pedidos as $pedido){ ?>
+            <h1>a</h1>
+        <?php }?>
     </div>
 
     <div class="body-content">

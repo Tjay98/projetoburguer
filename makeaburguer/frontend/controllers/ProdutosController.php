@@ -11,6 +11,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\web\ForbiddenHttpException;
 
 
 /**
@@ -27,7 +28,7 @@ class ProdutosController extends Controller
         $hamburguerlist = Hamburguer::find();
 
         $pagination = new Pagination([
-            'defaultPageSize' => 3,
+            'defaultPageSize' => 2,
             'totalCount' => $hamburguerlist->count(),
         ]);
 
@@ -153,8 +154,11 @@ class ProdutosController extends Controller
             'produto'=>$produto,
         ]);
     }
+
+
+
     public function actionInfohamburguer($id){
-        $hamburguer=Hamburger::find()
+        $hamburguer=Hamburguer::find()
             ->where(['id'=>$id])
             ->all();
 
@@ -162,11 +166,34 @@ class ProdutosController extends Controller
             'hamburguer'=>$hamburguer,
         ]);
     }
-    public function actionPedido(){
 
-        return $this->render('pedido',[
-            //'hamburguer'=>$hamburguer,
-        ]);
+
+
+
+    public function actionPedido($id){
+        if (yii::$app->user->can('utilizador')){
+            $session=Yii::$app->session;
+            if(isset($_POST['teste']))
+            {
+                $teste=$_POST['teste'];
+                $session['pedido']=$teste;
+            }
+
+            $pedidos=Hamburguer::find()
+                ->where(['id'=>$session['pedido']])->all();
+            //$session['cart']='';
+
+
+
+
+            return $this->render('pedido',[
+                'pedidos'=>$pedidos,
+            ]);
+        }
+        else
+        {
+            throw new ForbiddenHttpException();
+        }
     }
 
 }

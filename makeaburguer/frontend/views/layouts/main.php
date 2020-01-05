@@ -76,8 +76,8 @@ AppAsset::register($this);
         ];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout',
+            . Html::submitButton('<i class="glyphicon glyphicon-log-out"></i> Logout',
+
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()

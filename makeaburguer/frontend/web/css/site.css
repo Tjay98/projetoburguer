@@ -276,11 +276,28 @@ a.desc:after {
     color:black;
 }
 
-/*.glyphicon.glyphicon-shopping-cart{*/
-/*    font-size:20px !important;*/
+#carrinho{
+    font-size:30px !important;
 
-/*}*/
-/*#pedidocart{*/
+}
+#addcart{
+    padding: 5px 4px;
+    border-radius: 20px;
+    background-color:orange;
+    border-color:darkorange!important;
+    color:white!important;
+}
+#letracart{
+    font-size: 15px!important;
+}
+#infob{
+    padding: 12px 45px;
+    border-radius: 20px;
+    background-color:orange;
+    border-color:darkorange!important;
 
-/*}*/
+}
+#infoa{
+    color:white!important;
+}
 /*teste*/
