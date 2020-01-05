@@ -276,28 +276,24 @@ a.desc:after {
     color:black;
 }
 
-#carrinho{
-    font-size:30px !important;
-
-}
-#addcart{
-    padding: 5px 4px;
+#cartA{
+    padding: 2px 45px;
     border-radius: 20px;
     background-color:orange;
     border-color:darkorange!important;
     color:white!important;
+
 }
-#letracart{
-    font-size: 15px!important;
-}
-#infob{
-    padding: 12px 45px;
+#cartB{
+    padding: 12px 5px;
     border-radius: 20px;
     background-color:orange;
     border-color:darkorange!important;
+    color:white!important;
 
 }
 #infoa{
     color:white!important;
+
 }
 /*teste*/

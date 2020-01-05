@@ -29,17 +29,21 @@ $this->title = 'Hamburguers';
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                             <label class="btn btn-secondary">
-                                <button id="infob"><?= Html::a('Info', ['produtos/infohamburguer', 'id' => $hamburguer->id],['id' => 'infoa'],['class'=>'button']) ?>
-                                    <br>
-                                    <p class="glyphicon glyphicon-search" style="color:white"></p>
+                                <button id="cartA"><?= Html::a('Info<br>
+                                            <p class="glyphicon glyphicon-search" style="color:white"></p>',
+                                            ['produtos/infohamburguer', 'id' => $hamburguer->id],
+                                            ['id' => 'infoa'],
+                                            ['class'=>'button']) ?>
                                 </button>
                             </label>
                             <label class="btn btn-secondary">
-                                <form action="<?=Url::to(['/produtos/pedido'])?>" method="post">
-                                    <input name="teste" type="hidden" value="<?=$hamburguer->id?>">
-                                <button id="addcart"><p id="letracart">Adicionar ao pedido</p><p class="glyphicon glyphicon-shopping-cart" id="carrinho"></p></button>
-                            </label>
-                            </form>
+                                <button id="cartB"><?= Html::a('Adicionar ao pedido<br>
+                                            <p class="glyphicon glyphicon-shopping-cart" style="color:white"></p>',
+                                            ['produtos/pedido', 'id' => $hamburguer->id],
+                                            ['id' => 'infoa'],
+                                            ['class'=>'button']) ?>
+                                </button>
+
                         </div>
                     </div>
                 </div>

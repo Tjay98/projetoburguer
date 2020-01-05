@@ -16,9 +16,14 @@ $this->title = 'Hamburguers';
 
         <h1>INSERIR PEDIDO DINAMICO</h1>
         </div>
-        <?php foreach($pedidos as $pedido){ ?>
-            <h1>a</h1>
-        <?php }?>
+
+        <?php if(!empty($pedidos)){
+        foreach($pedidos as $pedido){ ?>
+            <?=$pedido->nome?>
+        <?php }}
+        else{
+            echo"ola";
+        }?>
     </div>
 
     <div class="body-content">
