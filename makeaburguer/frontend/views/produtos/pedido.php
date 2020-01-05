@@ -13,8 +13,8 @@ $this->title = 'Hamburguers';
 
     <div class="jumbotron">
         <div class="col-lg-12">
-
-        <h1>INSERIR PEDIDO DINAMICO</h1>
+        <div class="card" style="width: 50rem;"><center><H1 id="idperfil">Pedido</H1></center>
+            <div class="card-body">
         </div>
 
         <?php if(!empty($pedidos)){
@@ -22,13 +22,10 @@ $this->title = 'Hamburguers';
             <?=$pedido->nome?>
         <?php endforeach;}
         else{
-            echo"ola";
+            echo"<h3>Atualmente não selecionou nenhum produto, pode o fazer através das abas respetivas</h3>";
         }?>
     </div>
-
-    <div class="body-content">
-
-
-
-    </div>
+            </div>
+        </div>
+        
 </div>
