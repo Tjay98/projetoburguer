@@ -13,8 +13,6 @@ use yii\widgets\Pjax;
 $this->title = 'Hamburguers';
 ?>
 <div class="site-index">
-    <center><h2>Veja os hamburguers atuais</h2></center>
-    <hr>
     <div class="jumbotron">
         <div class="col-lg-12">
 
@@ -25,7 +23,7 @@ $this->title = 'Hamburguers';
                         <h2><?= $hamburguer->nome ?></h2>
                         <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$hamburguer->imagem,['class'=>'imagemproduto'])?></div>
                         <hr>
-                        <h4>Ver Hamburguer:</h4>
+                    
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                             <label class="btn btn-secondary">
@@ -39,7 +37,7 @@ $this->title = 'Hamburguers';
                             <label class="btn btn-secondary">
                                 <button id="cartB"><?= Html::a('Adicionar ao pedido<br>
                                             <p class="glyphicon glyphicon-shopping-cart" style="color:white"></p>',
-                                            ['produtos/pedido', 'id' => $hamburguer->id],
+                                            ['produtos/pedido', 'hamburguer' => $hamburguer->id],
                                             ['id' => 'infoa'],
                                             ['class'=>'button']) ?>
                                 </button>
@@ -53,7 +51,9 @@ $this->title = 'Hamburguers';
 
 
         </div>
-    </div> <?= LinkPager::widget(['pagination' => $pagination]) ?>
+    </div> 
+    <h4>Páginas</h4>
+    <?= LinkPager::widget(['pagination' => $pagination]) ?>
             <?php Pjax::end(); ?>
 
 

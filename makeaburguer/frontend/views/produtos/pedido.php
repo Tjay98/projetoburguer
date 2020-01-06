@@ -17,10 +17,34 @@ $this->title = 'Hamburguers';
             <div class="card-body">
         </div>
 
-        <?php if(!empty($pedidos)){
-        foreach($pedidos as $pedido): ?>
-            <?=$pedido->nome?>
-        <?php endforeach;}
+        <?php if(!empty($session)){
+            if (!empty($session['hamburguer'])){
+                foreach($session['hamburguer'] as $hamburguer) {
+                    echo $hamburguer->nome;
+                    echo $hamburguer->id;
+                }
+            }
+            /*
+            if (!empty($session['bebida'])){
+                foreach($session['bebida'] as $bebida) {
+                echo $bebida->id;
+                }
+            }
+            if (!empty($session['sobremesa'])){  
+                foreach($session['sobremesa'] as $sobremesa) {
+                    echo $sobremesa->nome;
+                }
+            }
+            if (!empty($session['hamburguer'])){
+                foreach($session['acompanhamento'] as $acompanhamento) {
+                echo $acompanhamento->nome;
+                }
+            }*/
+
+        
+        ?>
+            
+        <?php }
         else{
             echo"<h3>Atualmente não selecionou nenhum produto, pode o fazer através das abas respetivas</h3>";
         }?>

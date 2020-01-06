@@ -105,7 +105,9 @@ class PedidoController extends Controller
             $hojed=strtotime($hoje);
             $promocao=Promocoes::find()
                 ->where('data_fim'<$hojed)
+                ->andWhere('data_inicio'>=$hojed)
                 ->all();
+                
 
             if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
 
@@ -124,15 +126,20 @@ class PedidoController extends Controller
                     ->sum('preco');
 
                 $preco =$precoB+$precoH;
-
-                $valorpromo=Promocoes::find()
-                    ->where(['nome'=>$model->promocao])
-                    ->all();
+                
+            
 
 
                 //se selecionar uma promoçao, o valor que está indicado é subtraido ao valor normal do pedido
-                $preco=$preco-$valorpromo->valor;
+                if(!empty($model->promocao)){                
+                $valorpromo=Promocoes::find()
+                    ->where(['id'=>$model->promocao])
+                    ->one();
 
+
+                $preco=$preco-($valorpromo->valor);
+
+                }
 
                 //preço do menu
                 $model2->preco=$preco;

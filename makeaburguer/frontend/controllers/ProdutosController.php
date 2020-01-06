@@ -59,7 +59,7 @@ class ProdutosController extends Controller
             ->where (['categoria'=>7]);
 
         $pagination = new Pagination([
-            'defaultPageSize' => 3,
+            'defaultPageSize' =>2,
             'totalCount' => $bebidaslist->count(),
         ]);
 
@@ -89,7 +89,7 @@ class ProdutosController extends Controller
             ->where (['categoria'=>8]);
 
         $pagination = new Pagination([
-            'defaultPageSize' => 3,
+            'defaultPageSize' => 2,
             'totalCount' => $sobremesaslist->count(),
         ]);
 
@@ -120,7 +120,7 @@ class ProdutosController extends Controller
             ->where (['categoria'=>9]);
 
         $pagination= new Pagination([
-            'defaultPageSize'=>3,
+            'defaultPageSize'=>2,
             'totalCount'=>$acompanhamentoslist->count(),
         ]);
 
@@ -172,22 +172,58 @@ class ProdutosController extends Controller
 
     public function actionPedido(){
         if (yii::$app->user->can('utilizador')){
-            $request = Yii::$app->request;
-
+            //sessao
             $session=Yii::$app->session;
-            if (!empty($_GET['id'])){
 
-                $session['pedido']=$_GET['id'];
+            //limpar sessao 
+            //session='';
 
+
+            //verificar se hamburguer está no get
+            if (!empty($_GET['hamburguer'])){
+
+                
+
+                $hamburguer=Hamburguer::find()
+                ->where(['id'=>$_GET['hamburguer']])->one();
+                $session['hamburguer']=$hamburguer;
+            }
+            elseif(!empty($_GET['bebida'])){
+
+                //$session['bebida']=$_GET['bebida'];
+                $bebida=Produtos::find()
+                    ->where(['id'=>$_GET['bebida']])
+                    ->one();
+                $session['bebida']=$bebida;
 
             }
-            $pedidos=Hamburguer::find()
-                ->where(['id'=>$session['pedido']])->all();
+            elseif(!empty($_GET['sobremesa'])){
 
+               // $session['sobremesa']=$_GET['sobremesa'];
 
-            if (isset(Yii::$app->session->id)) {
+                $sobremesa=Produtos::find()
+                    ->where(['id'=>$_GET['sobremesa']])
+                    ->one();
+                $session['sobremesa']=$sobremesa;
+
+            }
+            elseif(!empty($_GET['acompanhamento'])){
+                //$session['acompanhamento']=$_GET['acompanhamento'];
+
+                $acompanhamento=Produtos::find()
+                ->where(['id'=>$_GET['acompanhamento']])
+                ->one();
+                $session['acompanhamento']=$acompanhamento;
+
+            }
+
+            
+
+            if (isset($session)) {
                 return $this->render('pedido',[
-                    'pedidos'=>$pedidos,
+                    'session'=>$session,
+
+                    
                 ]);
 
 

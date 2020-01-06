@@ -17,14 +17,31 @@ $this->title = 'My Yii Application';
         <div class="col-lg-12">
             <?php Pjax::begin(); ?>
             <?php foreach ($acompanhamentos as $acompanhamento): ?>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="container" id="hamburguercontainer">
                         <h2><?= $acompanhamento->nome ?></h2>
 
                         <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$acompanhamento->imagem,['class'=>'imagemproduto'])?></div>
                         <hr>
-                        <h4>Ver Acompanhamento:</h4>
-                        <?= Html::a('Info', ['produtos/infoprodutos', 'id' => $acompanhamento->id]) ?>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                            <label class="btn btn-secondary">
+                                <button id="cartA"><?= Html::a('Info<br>
+                                            <p class="glyphicon glyphicon-search" style="color:white"></p>',
+                                            ['produtos/infoprodutos', 'id' => $acompanhamento->id],
+                                            ['id' => 'infoa'],
+                                            ['class'=>'button']) ?>
+                                </button>
+                            </label>
+                            <label class="btn btn-secondary">
+                                <button id="cartB"><?= Html::a('Adicionar ao pedido<br>
+                                            <p class="glyphicon glyphicon-shopping-cart" style="color:white"></p>',
+                                            ['produtos/pedido', 'acompanhamento' => $acompanhamento->id],
+                                            ['id' => 'infoa'],
+                                            ['class'=>'button']) ?>
+                                </button>
+
+                        </div>
                     </div>
                 </div>
 
@@ -33,6 +50,7 @@ $this->title = 'My Yii Application';
 
         </div>
     </div>
+    <h4>Páginas</h4>
     <?= LinkPager::widget(['pagination' => $pagination]) ?>
     <?php Pjax::end(); ?>
 
