@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit586613ccc0114d628772d3c7eb397757
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -69,6 +69,7 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
             'Symfony\\Polyfill\\Iconv\\' => 23,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
+            'Symfony\\Component\\Process\\' => 26,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\DomCrawler\\' => 29,
@@ -94,6 +95,7 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
         'F' => 
         array (
             'Faker\\' => 6,
+            'Facebook\\WebDriver\\' => 19,
         ),
         'E' => 
         array (
@@ -212,6 +214,10 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
         'Symfony\\Component\\Finder\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/finder',
@@ -264,6 +270,10 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
+        'Facebook\\WebDriver\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/webdriver/lib',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
@@ -286,15 +296,13 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
         ),
         'Codeception\\Extension\\' => 
         array (
-            0 => __DIR__ . '/..' . '/codeception/base/ext',
-            1 => __DIR__ . '/..' . '/codeception/codeception/ext',
+            0 => __DIR__ . '/..' . '/codeception/codeception/ext',
         ),
         'Codeception\\' => 
         array (
-            0 => __DIR__ . '/..' . '/codeception/base/src/Codeception',
-            1 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
-            2 => __DIR__ . '/..' . '/codeception/stub/src',
-            3 => __DIR__ . '/..' . '/codeception/verify/src/Codeception',
+            0 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
+            1 => __DIR__ . '/..' . '/codeception/stub/src',
+            2 => __DIR__ . '/..' . '/codeception/verify/src/Codeception',
         ),
     );
 
@@ -337,6 +345,7 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
     );
 
     public static $classMap = array (
+        'Codeception\\Exception\\ConnectionException' => __DIR__ . '/..' . '/codeception/module-webdriver/src/Codeception/Exception/ConnectionException.php',
         'Codeception\\Exception\\ExternalUrlException' => __DIR__ . '/..' . '/codeception/lib-innerbrowser/src/Codeception/Exception/ExternalUrlException.php',
         'Codeception\\Lib\\Connector\\Yii2' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2.php',
         'Codeception\\Lib\\Connector\\Yii2\\ConnectionWatcher' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/ConnectionWatcher.php',
@@ -346,6 +355,11 @@ class ComposerStaticInit586613ccc0114d628772d3c7eb397757
         'Codeception\\Lib\\Connector\\Yii2\\TransactionForcer' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/TransactionForcer.php',
         'Codeception\\Lib\\Framework' => __DIR__ . '/..' . '/codeception/lib-innerbrowser/src/Codeception/Lib/Framework.php',
         'Codeception\\Lib\\InnerBrowser' => __DIR__ . '/..' . '/codeception/lib-innerbrowser/src/Codeception/Lib/InnerBrowser.php',
+        'Codeception\\Lib\\Interfaces\\ScreenshotSaver' => __DIR__ . '/..' . '/codeception/module-webdriver/src/Codeception/Lib/Interfaces/ScreenshotSaver.php',
+        'Codeception\\Lib\\Interfaces\\SessionSnapshot' => __DIR__ . '/..' . '/codeception/module-webdriver/src/Codeception/Lib/Interfaces/SessionSnapshot.php',
+        'Codeception\\Module\\Asserts' => __DIR__ . '/..' . '/codeception/module-asserts/src/Codeception/Module/Asserts.php',
+        'Codeception\\Module\\Filesystem' => __DIR__ . '/..' . '/codeception/module-filesystem/src/Codeception/Module/Filesystem.php',
+        'Codeception\\Module\\WebDriver' => __DIR__ . '/..' . '/codeception/module-webdriver/src/Codeception/Module/WebDriver.php',
         'Codeception\\Module\\Yii2' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Module/Yii2.php',
         'Codeception\\Util\\HttpCode' => __DIR__ . '/..' . '/codeception/lib-innerbrowser/src/Codeception/Util/HttpCode.php',
         'Codeception\\Util\\Shared\\Asserts' => __DIR__ . '/..' . '/codeception/lib-asserts/src/Codeception/Util/Shared/Asserts.php',
