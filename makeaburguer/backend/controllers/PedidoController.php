@@ -111,9 +111,6 @@ class PedidoController extends Controller
 
             if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
 
-                
-
-
                 $precoH= Hamburguer::find()
                     ->where(['id'=> $model2->id_hamburguer])
                     ->sum('preco');

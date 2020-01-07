@@ -3,6 +3,9 @@ namespace frontend\controllers;
 
 use app\models\Hamburguer;
 use app\models\Produtos;
+use app\models\Pedido;
+use app\models\Menu;
+use app\models\Promocoes;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\data\Pagination;
@@ -172,8 +175,82 @@ class ProdutosController extends Controller
 
     public function actionPedido(){
         if (yii::$app->user->can('utilizador')){
+            $model = new Pedido();
+            $model2 = new Menu();
+
+
+            $hamburguers=Hamburguer::find()
+                ->all();
+            $bebidas=Produtos::find()
+                ->where(['categoria'=>7])
+                ->all();
+            $sobremesas=Produtos::find()
+            ->where(['categoria'=>8])
+            ->all();
+            $complementos=Produtos::find()
+            ->where(['categoria'=>9])
+            ->all();
+            $extras=Produtos::find()
+            ->all();
+            if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
+
+                
+
+
+                $precoH= Hamburguer::find()
+                    ->where(['id'=> $model2->id_hamburguer])
+                    ->sum('preco');
+
+                $precoB= Produtos::find()
+                    ->where(['id'=> $model2->id_bebida])
+                    ->orWhere(['id'=> $model2->id_sobremesa])
+                    ->orWhere(['id'=> $model2->id_complemento])
+                    ->orWhere(['id'=> $model2->id_extra])
+                    ->sum('preco');
+
+                $preco =$precoB+$precoH;
+                
+            
+
+
+                //se selecionar uma promoçao, o valor que está indicado é subtraido ao valor normal do pedido
+                if(!empty($model->promocao)){                
+                $valorpromo=Promocoes::find()
+                    ->where(['id'=>$model->promocao])
+                    ->one();
+
+
+                $preco=$preco-($valorpromo->valor);
+
+                }
+
+                //preço do menu
+                $model2->preco=$preco;
+
+                //preço do pedido
+                $model->preco=$preco;
+
+                $model2->save(false);
+
+                $model->id_menu = $model2->id;
+
+                $model->save(false);
+
+                return renderPartial(['pedido']);
+            }
+
+
             return $this->render('pedido',[
-                    
+                'hamburguers'=>$hamburguers,
+                'bebidas'=>$bebidas,
+                'sobremesas'=>$sobremesas,
+                'complementos'=>$complementos,
+                'extras'=>$extras,
+                'model' => $model,
+                //'getM' => ArrayHelper::map($getM, 'id','id'),
+               //'getU' => ArrayHelper::map($getU, 'id','username'),
+                'model2'=> $model2,
+
             ]);
             
 

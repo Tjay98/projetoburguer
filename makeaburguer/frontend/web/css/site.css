@@ -298,6 +298,10 @@ a.desc:after {
 }
 
 #collapsepedido{
-    padding: 20px 100px;
+    padding: 20px 400px;
+    font-size: 20px
+    ;
 }
+input[type="radio"], input[type="checkbox"] {
+    visibility: hidden;}
 /*teste*/
