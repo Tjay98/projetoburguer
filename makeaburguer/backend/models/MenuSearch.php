@@ -19,7 +19,7 @@ class MenuSearch extends Menu
         return [
             [['id', 'id_hamburguer', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
             [['preco'], 'number'],
-            [['descricao'], 'safe'],
+            [['id'], 'safe'],
         ];
     }
 
@@ -68,7 +68,7 @@ class MenuSearch extends Menu
             'preco' => $this->preco,
         ]);
 
-        $query->andFilterWhere(['like', 'descricao', $this->descricao]);
+        $query->andFilterWhere(['like', 'id', $this->id]);
 
         return $dataProvider;
     }

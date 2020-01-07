@@ -172,69 +172,10 @@ class ProdutosController extends Controller
 
     public function actionPedido(){
         if (yii::$app->user->can('utilizador')){
-            //sessao
-            $session=Yii::$app->session;
-
-            //limpar sessao 
-            //session='';
-            if (!$session->isActive){
-                $session->open();
-            }
-
-            //verificar se hamburguer está no get
-            if (!empty($_GET['hamburguer'])){
-
-                
-
-                $hamburguer=Hamburguer::find()
-                ->where(['id'=>$_GET['hamburguer']])->one();
-                $session['hamburguer']=$hamburguer;
-            }
-            elseif(!empty($_GET['bebida'])){
-
-                //$session['bebida']=$_GET['bebida'];
-                $bebida=Produtos::find()
-                    ->where(['id'=>$_GET['bebida']])
-                    ->one();
-                $session['bebida']=$bebida;
-
-            }
-            elseif(!empty($_GET['sobremesa'])){
-
-               // $session['sobremesa']=$_GET['sobremesa'];
-
-                $sobremesa=Produtos::find()
-                    ->where(['id'=>$_GET['sobremesa']])
-                    ->one();
-                $session['sobremesa']=$sobremesa;
-
-            }
-            elseif(!empty($_GET['acompanhamento'])){
-                //$session['acompanhamento']=$_GET['acompanhamento'];
-
-                $acompanhamento=Produtos::find()
-                ->where(['id'=>$_GET['acompanhamento']])
-                ->one();
-                $session['acompanhamento']=$acompanhamento;
-
-            }
-
-            
-
-            if (isset($session)) {
-                return $this->render('pedido',[
-                    'session'=>$session,
-
+            return $this->render('pedido',[
                     
-                ]);
-
-
-            }
-            else{
-                return $this->render('pedido',[
-                ]);
-            }
-
+            ]);
+            
 
 
 

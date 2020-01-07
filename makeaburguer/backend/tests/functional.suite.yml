@@ -3,3 +3,11 @@ actor: FunctionalTester
 modules:
     enabled:
         - Yii2
+        - Db:
+            dsn: 'mysql:host=localhost;dbname=makeburger_test'
+            user: 'root'
+            password: ''
+            dump: 'tests/_data/dump.sql'
+            populate: false
+            cleanup: false
+

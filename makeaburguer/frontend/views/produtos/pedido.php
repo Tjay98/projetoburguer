@@ -7,7 +7,7 @@ use yii\bootstrap\Button;
 use yii\bootstrap\Html;
 use yii\web\View;
 
-$this->title = 'Hamburguers';
+$this->title = 'Pedido';
 ?>
 <div class="site-index">
 
@@ -17,37 +17,22 @@ $this->title = 'Hamburguers';
             <div class="card-body">
         </div>
 
-        <?php if(!empty($session)){
-            if (!empty($session['hamburguer'])){
-                foreach($session['hamburguer'] as $hamburguer) {
-                    echo $hamburguer->nome;
-                    echo $hamburguer->id;
-                }
-            }
-            /*
-            if (!empty($session['bebida'])){
-                foreach($session['bebida'] as $bebida) {
-                echo $bebida->id;
-                }
-            }
-            if (!empty($session['sobremesa'])){  
-                foreach($session['sobremesa'] as $sobremesa) {
-                    echo $sobremesa->nome;
-                }
-            }
-            if (!empty($session['hamburguer'])){
-                foreach($session['acompanhamento'] as $acompanhamento) {
-                echo $acompanhamento->nome;
-                }
-            }*/
-
+       <?php 
+       $request = Yii::$app->request;
+       if ($request->isPost) {?>
+        <h3>Pedido Efetuado!</h3>
         
-        ?>
-            
-        <?php }
-        else{
-            echo"<h3>Atualmente não selecionou nenhum produto, pode o fazer através das abas respetivas</h3>";
-        }?>
+
+
+       <?php } else{ ?>
+           <button data-toggle="collapse" data-target="#hamburguer" id='collapsepedido'>Hamburguer</button>
+
+           <div id="hamburguer" class="collapse">
+           Lorem ipsum dolor text....
+           </div>
+
+       <?php } ?>
+        
     </div>
             </div>
         </div>
