@@ -1,13 +1,17 @@
 <?php
 return [
     [
-        'username' => 'erau',
-        'auth_key' => 'tUu1qHcde0diwUol3xeI-18MuHkkprQI',
-        // password_0
-        'password_hash' => '$2y$13$nJ1WDlBaGcbCdbNC5.5l4.sgy.OMEKCqtDQOdQ2OWpgiKRWYyzzne',
-        'password_reset_token' => 'RkD_Jw0_8HEedzLk7MM-ZKEFfYR7VbMr_1392559490',
-        'created_at' => '1392559490',
-        'updated_at' => '1392559490',
-        'email' => 'sfriesen@jenkins.info',
+        'username' => 'rodolfo',
+        'auth_key' => 'Bye4Ny2cMEgB2B-K1zfY1lytAXpL6LUG',
+        // password :123456789
+        'password_hash' => '$2y$13$OaqlS/O.rCqi2iueW2XxRe7qY5fwbrT5kShAChtbYuMJV7Y7UW/76',
+        'password_reset_token' => '',
+        'email'=>'rodolfo@rodolfo.pt',
+        'status'=>'10',
+        'created_at' => '1574438451',
+        'updated_at' => '1574438451',
+        'verification_token'=>'4UlGRcR2W1UWlzhTRdMVCoB1KJOfG2nz_1574438451',
+        'nif'=>'987654321',
+        'telemovel'=>'987654321',
     ],
 ];

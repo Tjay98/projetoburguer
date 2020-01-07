@@ -22,7 +22,7 @@ class LoginCest
         return [
             'user' => [
                 'class' => UserFixture::className(),
-               // 'dataFile' => codecept_data_dir() . 'login_data.php'
+                'dataFile' => codecept_data_dir() . 'login_data.php'
             ]
         ];
     }
@@ -37,10 +37,11 @@ class LoginCest
         $I->fillField('password', '123456789');
         $I->click('login-button');
 
-        /*$I->see('Make a burger');
+        //$I->see('Logout (erau)', 'form button[type=submit]');
+       // $I->see('My Application','logo-lg'); 
         $I->dontSeeLink('Login');
-        $I->dontSeeLink('Signup');*/
+        $I->dontSeeLink('Signup');
     }
-    
+
     
 }
