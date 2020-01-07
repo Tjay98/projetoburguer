@@ -177,7 +177,9 @@ class ProdutosController extends Controller
 
             //limpar sessao 
             //session='';
-
+            if (!$session->isActive){
+                $session->open();
+            }
 
             //verificar se hamburguer está no get
             if (!empty($_GET['hamburguer'])){
