@@ -303,5 +303,6 @@ a.desc:after {
     ;
 }
 input[type="radio"], input[type="checkbox"] {
-    visibility: hidden;}
+    position:absolute !important;
+}
 /*teste*/
