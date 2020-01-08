@@ -17,7 +17,7 @@ $this->title = $model->username;
 
 
         <div class="card" style="width: 50rem;"><center><H1 id="idperfil">Perfil</H1></center>
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <?php echo Html::img('@web/imagens/avatar.png',['id'=>'profile-img-card']);?>
             <div class="card-body">
 
                 <?= DetailView::widget([

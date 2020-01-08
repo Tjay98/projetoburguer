@@ -18,16 +18,10 @@ $this->title = 'Pedido';
         
 
        <?php 
-       $request = Yii::$app->request;
-       if ($request->isPost) {?>
+       if (isset($_GET['id'])) {?>
         <h3>Pedido Efetuado!</h3>
-            <?php print_r($model2->id_hamburguer)?><br>
-            
-            <?php print_r($model2->id_bebida)?><br>
-            <?php print_r($model2->id_complemento)?><br>
-            <?php print_r($model2->id_sobremesa)?><br>
-            <?php print_r($model2->id_extra)?><br>
-            <?php var_dump($model2->preco)?><br>
+        <?= Html::a('Criar outro pedido', ['/produtos/pedido'], ['class'=>'btn btn-primary grid-button']) ?>
+        <?= Html::a('Ver as suas faturas', ['/cliente/faturas'], ['class'=>'btn btn-primary grid-button']) ?>
 
        <?php } else{ ?>
             <?php $form = ActiveForm::begin([
@@ -100,4 +94,13 @@ $this->title = 'Pedido';
     </div>
         
 </div>
+<script>/*
+    $(function(){
+        $('#menu-id_hamburguer :radio').change(function(){
+            var id = $(this).val();
+            alert(valor);
+        });
+    });
 
+
+</script>

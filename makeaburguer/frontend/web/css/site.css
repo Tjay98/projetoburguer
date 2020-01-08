@@ -206,7 +206,7 @@ a.desc:after {
     border-radius: 2px;
 }
 
-.profile-img-card {
+#profile-img-card {
     width: 96px;
     height: 96px;
     margin: 0 auto 10px;
@@ -243,6 +243,7 @@ a.desc:after {
 .pagination > li > a, .pagination > li > span {
     color: white;
     background-color: orange!important;
+    border-color:transparent;
 
 }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
@@ -272,26 +273,7 @@ a.desc:after {
     color:black;
 }
 
-#cartA{
-    padding: 2px 45px;
-    border-radius: 20px;
-    background-color:orange;
-    border-color:darkorange!important;
-    color:white!important;
 
-}
-#cartB{
-    padding: 12px 5px;
-    border-radius: 20px;
-    background-color:orange;
-    border-color:darkorange!important;
-    color:white!important;
-
-}
-#infoa{
-    color:white!important;
-
-}
 
 #collapsepedido{
     padding: 20px 400px;
@@ -305,4 +287,12 @@ input[type="radio"], input[type="checkbox"] {
 #pedidoform{
     background-color:transparent !important;
 }
+
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 10px 20px;
+}
+
+
 /*teste*/

@@ -9,7 +9,7 @@ use yii\web\View;
 use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 
-$this->title = 'My Yii Application';
+$this->title = 'Acompanhamentos';
 ?>
 <div class="site-index">
 
@@ -17,31 +17,17 @@ $this->title = 'My Yii Application';
         <div class="col-lg-12">
             <?php Pjax::begin(); ?>
             <?php foreach ($acompanhamentos as $acompanhamento): ?>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <div class="container" id="hamburguercontainer">
                         <h2><?= $acompanhamento->nome ?></h2>
 
                         <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$acompanhamento->imagem,['class'=>'imagemproduto'])?></div>
                         <hr>
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <?= Html::a('Ver mais informação<br><p class="glyphicon glyphicon-search" style="color:white"></p>', 
+                                    ['/produtos/infoprodutos','id'=>$acompanhamento->id], 
+                                    ['class'=>'btn btn-primary grid-button']) ?>
 
-                            <label class="btn btn-secondary">
-                                <button id="cartA"><?= Html::a('Info<br>
-                                            <p class="glyphicon glyphicon-search" style="color:white"></p>',
-                                            ['produtos/infoprodutos', 'id' => $acompanhamento->id],
-                                            ['id' => 'infoa'],
-                                            ['class'=>'button']) ?>
-                                </button>
-                            </label>
-                            <label class="btn btn-secondary">
-                                <button id="cartB"><?= Html::a('Adicionar ao pedido<br>
-                                            <p class="glyphicon glyphicon-shopping-cart" style="color:white"></p>',
-                                            ['produtos/pedido', 'acompanhamento' => $acompanhamento->id],
-                                            ['id' => 'infoa'],
-                                            ['class'=>'button']) ?>
-                                </button>
 
-                        </div>
                     </div>
                 </div>
 
@@ -50,7 +36,11 @@ $this->title = 'My Yii Application';
 
         </div>
     </div>
-    <h4>Páginas</h4>
+    <?php  //fazer display de uma label para identificar páginas
+    if ($contagem>3){
+    echo "<h4>Páginas</h4>";
+    }
+    ?>
     <?= LinkPager::widget(['pagination' => $pagination]) ?>
     <?php Pjax::end(); ?>
 

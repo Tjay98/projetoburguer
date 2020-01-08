@@ -31,11 +31,13 @@ class ProdutosController extends Controller
     {
         $hamburguerlist = Hamburguer::find();
 
-        $pagination = new Pagination([
-            'defaultPageSize' => 2,
-            'totalCount' => $hamburguerlist->count(),
-        ]);
+        $contagem=$hamburguerlist->count();
 
+        $pagination = new Pagination([
+            'defaultPageSize' => 3,
+            'totalCount' => $contagem,
+        ]);
+        
         $hamburguers = $hamburguerlist->orderBy('id')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
@@ -50,7 +52,9 @@ class ProdutosController extends Controller
     
                 return $this->render('hamburguers', [
                     'hamburguers' => $hamburguers,
-                    'pagination'=>$pagination,]);
+                    'pagination'=>$pagination,
+                    'contagem'=>$contagem,
+                    ]);
     
             }
         
@@ -62,9 +66,11 @@ class ProdutosController extends Controller
         $bebidaslist=Produtos::find()
             ->where (['categoria'=>7]);
 
+        $contagem=$bebidaslist->count();
+
         $pagination = new Pagination([
-            'defaultPageSize' =>2,
-            'totalCount' => $bebidaslist->count(),
+            'defaultPageSize' =>3,
+            'totalCount' => $contagem,
         ]);
 
         $bebidas = $bebidaslist->orderBy('id')
@@ -82,7 +88,9 @@ class ProdutosController extends Controller
     
                 return $this->render('bebidas', [
                     'bebidas' => $bebidas,
-                    'pagination'=>$pagination,]);
+                    'pagination'=>$pagination,
+                    'contagem'=>$contagem,
+                    ]);
     
             }
     }
@@ -91,10 +99,12 @@ class ProdutosController extends Controller
     {
         $sobremesaslist=Produtos::find()
             ->where (['categoria'=>8]);
+        
+        $contagem=$sobremesaslist->count();
 
         $pagination = new Pagination([
-            'defaultPageSize' => 2,
-            'totalCount' => $sobremesaslist->count(),
+            'defaultPageSize' => 3,
+            'totalCount' => $contagem,
         ]);
 
         $sobremesas = $sobremesaslist->orderBy('id')
@@ -112,7 +122,9 @@ class ProdutosController extends Controller
     
                 return $this->render('sobremesas', [
                     'sobremesas' => $sobremesas,
-                    'pagination'=>$pagination,]);
+                    'pagination'=>$pagination,
+                    'contagem'=>$contagem,
+                    ]);
     
             }
 
@@ -123,9 +135,11 @@ class ProdutosController extends Controller
         $acompanhamentoslist=Produtos::find()
             ->where (['categoria'=>9]);
 
+        $contagem=$acompanhamentoslist->count();
+
         $pagination= new Pagination([
             'defaultPageSize'=>2,
-            'totalCount'=>$acompanhamentoslist->count(),
+            'totalCount'=>$contagem,
         ]);
 
         $acompanhamentos=$acompanhamentoslist->orderBy('id')
@@ -143,7 +157,9 @@ class ProdutosController extends Controller
     
                 return $this->render('acompanhamentos', [
                     'acompanhamentos' => $acompanhamentos,
-                    'pagination'=>$pagination,]);
+                    'pagination'=>$pagination,
+                    'contagem'=>$contagem,
+                    ]);
     
             }
 
@@ -205,9 +221,8 @@ class ProdutosController extends Controller
 
 
             //quando submete fazer as funçoes
-            if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
+            if ($model2->load(Yii::$app->request->post())) {
 
-                
 
 
                 $precoH= Hamburguer::find()
@@ -238,16 +253,20 @@ class ProdutosController extends Controller
                 $preco=$preco-($valorpromo->valor);
 
                 }
-                //preço do pedido
+                //preço do pedido caso haja promoção ^é removido o preço como no codigo acima
                 $model->preco=$preco;
-                $model->id_user=$utilizador;
+
+
+                //guardar modelo do menu
                 $model2->save(false);
 
+                //guardar modelo do pedido
+                $model->id_user=$utilizador;
                 $model->id_menu = $model2->id;
 
                 $model->save(false);
 
-                return renderPartial(['pedido']);
+                return $this->redirect(['pedido','id' => $model->id]);
             }
 
 
@@ -258,8 +277,6 @@ class ProdutosController extends Controller
                 'complementos'=>$complementos,
                 'extras'=>$extras,
                 'model' => $model,
-                //'getM' => ArrayHelper::map($getM, 'id','id'),
-               //'getU' => ArrayHelper::map($getU, 'id','username'),
                 'model2'=> $model2,
 
             ]);
@@ -275,3 +292,5 @@ class ProdutosController extends Controller
     }
 
 }
+
+

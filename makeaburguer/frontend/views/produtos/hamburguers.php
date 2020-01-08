@@ -18,31 +18,14 @@ $this->title = 'Hamburguers';
 
             <?php Pjax::begin() ?>
             <?php  foreach ($hamburguers as $hamburguer): ?>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <div class="container">
                         <h2><?= $hamburguer->nome ?></h2>
                         <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$hamburguer->imagem,['class'=>'imagemproduto'])?></div>
                         <hr>
-                    
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
-                            <label class="btn btn-secondary">
-                                <button id="cartA"><?= Html::a('Info<br>
-                                            <p class="glyphicon glyphicon-search" style="color:white"></p>',
-                                            ['produtos/infohamburguer', 'id' => $hamburguer->id],
-                                            ['id' => 'infoa'],
-                                            ['class'=>'button']) ?>
-                                </button>
-                            </label>
-                            <label class="btn btn-secondary">
-                                <button id="cartB"><?= Html::a('Adicionar ao pedido<br>
-                                            <p class="glyphicon glyphicon-shopping-cart" style="color:white"></p>',
-                                            ['produtos/pedido', 'hamburguer' => $hamburguer->id],
-                                            ['id' => 'infoa'],
-                                            ['class'=>'button']) ?>
-                                </button>
-
-                        </div>
+                        <?= Html::a('Ver mais informação<br><p class="glyphicon glyphicon-search" style="color:white"></p>', 
+                                    ['/produtos/infohamburguer','id'=>$hamburguer->id], 
+                                    ['class'=>'btn btn-primary grid-button']) ?>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -52,7 +35,14 @@ $this->title = 'Hamburguers';
 
         </div>
     </div> 
-    <h4>Páginas</h4>
+    <br><br>
+
+    <?php  //fazer display de uma label para identificar páginas
+    if ($contagem>3){
+    echo "<h4>Páginas</h4>";
+    }
+    ?>
+    
     <?= LinkPager::widget(['pagination' => $pagination]) ?>
             <?php Pjax::end(); ?>
 

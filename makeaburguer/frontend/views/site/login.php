@@ -14,7 +14,7 @@ $this->title = 'Login';
 
     <div class="container">
         <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <?php echo Html::img('@web/imagens/avatar.png',['id'=>'profile-img-card']);?>
             <p id="profile-name" class="profile-name-card"></p>
             <div class="form-signin">
                 <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
