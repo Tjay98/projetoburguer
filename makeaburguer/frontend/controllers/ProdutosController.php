@@ -6,6 +6,7 @@ use app\models\Produtos;
 use app\models\Pedido;
 use app\models\Menu;
 use app\models\Promocoes;
+use app\models\User;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\data\Pagination;
@@ -178,7 +179,14 @@ class ProdutosController extends Controller
             $model = new Pedido();
             $model2 = new Menu();
 
+            //definir utilizador para atribuir o menu
+            $nomeutilizador=Yii::$app->user->identity->username;
+            $utilizador=User::find()
+                ->where(['username'=>$nomeutilizador])
+                ->select('id');
 
+
+            //procurar pelos vários componentes do pedido
             $hamburguers=Hamburguer::find()
                 ->all();
             $bebidas=Produtos::find()
@@ -191,7 +199,12 @@ class ProdutosController extends Controller
             ->where(['categoria'=>9])
             ->all();
             $extras=Produtos::find()
+            ->where(['categoria'=>7])
+            ->orWhere(['categoria'=>8])
             ->all();
+
+
+            //quando submete fazer as funçoes
             if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
 
                 
@@ -211,6 +224,8 @@ class ProdutosController extends Controller
                 $preco =$precoB+$precoH;
                 
             
+                //preço do menu
+                $model2->preco=$preco;
 
 
                 //se selecionar uma promoçao, o valor que está indicado é subtraido ao valor normal do pedido
@@ -223,13 +238,9 @@ class ProdutosController extends Controller
                 $preco=$preco-($valorpromo->valor);
 
                 }
-
-                //preço do menu
-                $model2->preco=$preco;
-
                 //preço do pedido
                 $model->preco=$preco;
-
+                $model->id_user=$utilizador;
                 $model2->save(false);
 
                 $model->id_menu = $model2->id;

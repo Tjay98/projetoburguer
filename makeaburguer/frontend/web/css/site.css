@@ -171,11 +171,7 @@ a.desc:after {
         width: 100%;
         padding: 10px 15px;
     }
-    .carousel{
-        width:100% !important;
-        height:300px !important;
-        align-content: center;
-        background-color: transparent;
+
 
     }
 }
@@ -304,5 +300,9 @@ a.desc:after {
 }
 input[type="radio"], input[type="checkbox"] {
     position:absolute !important;
+}
+
+#pedidoform{
+    background-color:transparent !important;
 }
 /*teste*/
