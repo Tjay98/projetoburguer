@@ -33,7 +33,8 @@ $this->title = 'Pedido';
                
                <h2>Hambúrguers</h2>
            <?php foreach($hamburguers as $hamburguer){
-                $list[$hamburguer->id]=Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$hamburguer->imagem,['class'=>'imagemproduto']);
+                $preco='<p>Preço:</p>'.$hamburguer->preco;
+                $list[$hamburguer->id]=Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$hamburguer->imagem,['class'=>'imagemproduto']).$preco;
 
            }
            //RadioList permite selecionar apenas um dos ids, neste caso mostra a imagem e o que é selecionado é o id
@@ -78,7 +79,7 @@ $this->title = 'Pedido';
            echo $form->field($model2, 'id_extra')->radioList($list5   , ['encode' => false])->label(false) ?>
             
             
-            <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Efetuar Pedido', ['class' => 'btn btn-primary']) ?>
             
             <?php ActiveForm::end(); ?> 
            

@@ -44,7 +44,8 @@ $this->title = 'Faturas';
 
 
                     </div>
-                </div> <?= LinkPager::widget(['pagination' => $pagination]) ?>
+                </div> <center><?= LinkPager::widget(['pagination' => $pagination]) ?></center>
+                
                 <?php Pjax::end(); ?>
 </div>
 
