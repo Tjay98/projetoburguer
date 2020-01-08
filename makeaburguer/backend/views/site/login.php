@@ -31,12 +31,12 @@ $fieldOptions2 = [
 
         <?= $form
             ->field($model, 'username', $fieldOptions1)
-            ->label(false)
+            ->label('username')
             ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
 
         <?= $form
             ->field($model, 'password', $fieldOptions2)
-            ->label(false)
+            ->label('password')
             ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
         <div class="row">

@@ -13,9 +13,12 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nome')
+    ->label('nome')
+    ->textInput(['maxlength' => true]) ?>
 
-    <?=$form->field($model, 'tipo')->widget(Select2::classname(), [
+    <?=$form->field($model, 'tipo')
+    ->widget(Select2::classname(), [
         'data' => $tipo,
         'language' => 'pt',
         'options' => ['placeholder' => 'Selecione o tipo de ingrediente'],
@@ -25,7 +28,8 @@ use yii\widgets\ActiveForm;
     ]);?>
 
 
-    <?= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'preco')
+    ->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

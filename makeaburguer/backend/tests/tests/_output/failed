@@ -1,0 +1,2 @@
+tests\functional\LoginCest.php:loginUser
+tests\functional\LoginCest.php:loginUser2
