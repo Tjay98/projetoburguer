@@ -109,14 +109,44 @@ class ClienteController extends Controller
             $pedidos=Pedido::find()
                 ->where(['id'=>$id])
                 ->all();
+            $menu='';
+            $hamburguer='';
+            $bebida='';
+            $complemento='';
+            $sobremesa='';
+            $extra='';
             if (!empty($pedidos->id_menu)) {
-                $menu=Menu::find()
-                    ->where(['id'=>$pedidos->id_menu])
-                    ->all();
+            $menu=Menu::find()
+                ->where(['id'=>$pedidos->id_menu])
+                ->one();
             }
+
             if (!empty($menu->id_hamburguer)) {
                 $hamburguer=Hamburguer::find()
-                    ->where(['id'=>$menu->id_hamburguer]);
+                    ->where(['id'=>$menu->id_hamburguer])
+                    ->one();
+            }
+            if (!empty($menu->id_bebida)){
+                $bebida=Produtos::find()
+                    ->where(['id'=>$menu->id_bebida])
+                    ->one();
+            }
+            if (!empty($menu->id_complemento)){
+                $complemento=Produtos::find()
+                    ->where(['id'=>$menu->id_complemento])
+                    ->one();
+            }
+
+            if (!empty($menu->id_sobremesa)){
+                $sobremesa=Produtos::find()
+                    ->where(['id'=>$menu->id_sobremesa])
+                    ->one();
+            }
+
+            if (!empty($menu->id_extra)){
+                $bebida=Produtos::find()
+                    ->where(['id'=>$menu->id_extra])
+                    ->one();
             }
 
 //            $bebida=Produtos::find()
@@ -124,6 +154,13 @@ class ClienteController extends Controller
 
             return $this->render('detalhesfatura', [
                 'pedidos'=>$pedidos,
+                'menu'=>$menu,
+                'hamburguer'=>$hamburguer,
+                'bebida'=>$bebida,
+                'complemento'=>$complemento,
+                'sobremesa'=>$sobremesa,
+                'extra'=>$extra,
+
 
             ]);
         }

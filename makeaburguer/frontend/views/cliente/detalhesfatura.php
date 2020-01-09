@@ -20,8 +20,15 @@ $this->title = 'pedido';
 
             <?php if(!empty($pedidos)){
 
-                echo "<tr><td>".$pedido->data."</td></tr>";?>
-
+                echo $pedido->data;
+                echo "<br>";
+                echo $pedido->id_menu;
+                if(!empty($hamburguer)){
+                    echo $hamburguer->nome;
+                }
+                
+                
+            ?>
             <?php }
             else{
                 echo"<h3>Ainda não efetuou nenhum pedido</h3>";
