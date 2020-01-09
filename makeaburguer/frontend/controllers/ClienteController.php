@@ -116,38 +116,40 @@ class ClienteController extends Controller
             $sobremesa='';
             $extra='';
             if (!empty($pedidos->id_menu)) {
-            $menu=Menu::find()
-                ->where(['id'=>$pedidos->id_menu])
-                ->one();
+                $menu=Menu::find()
+                    ->where(['id'=>$pedidos->id_menu])
+                    ->all();
+                    
+                    if (!empty($menu->id_hamburguer)) {
+                        $hamburguer=Hamburguer::find()
+                            ->where(['id'=>$menu->id_hamburguer])
+                            ->one();
+                    }
+                    if (!empty($menu->id_bebida)){
+                        $bebida=Produtos::find()
+                            ->where(['id'=>$menu->id_bebida])
+                            ->one();
+                    }
+                    if (!empty($menu->id_complemento)){
+                        $complemento=Produtos::find()
+                            ->where(['id'=>$menu->id_complemento])
+                            ->one();
+                    }
+        
+                    if (!empty($menu->id_sobremesa)){
+                        $sobremesa=Produtos::find()
+                            ->where(['id'=>$menu->id_sobremesa])
+                            ->one();
+                    }
+        
+                    if (!empty($menu->id_extra)){
+                        $bebida=Produtos::find()
+                            ->where(['id'=>$menu->id_extra])
+                            ->one();
+                    }
             }
 
-            if (!empty($menu->id_hamburguer)) {
-                $hamburguer=Hamburguer::find()
-                    ->where(['id'=>$menu->id_hamburguer])
-                    ->one();
-            }
-            if (!empty($menu->id_bebida)){
-                $bebida=Produtos::find()
-                    ->where(['id'=>$menu->id_bebida])
-                    ->one();
-            }
-            if (!empty($menu->id_complemento)){
-                $complemento=Produtos::find()
-                    ->where(['id'=>$menu->id_complemento])
-                    ->one();
-            }
-
-            if (!empty($menu->id_sobremesa)){
-                $sobremesa=Produtos::find()
-                    ->where(['id'=>$menu->id_sobremesa])
-                    ->one();
-            }
-
-            if (!empty($menu->id_extra)){
-                $bebida=Produtos::find()
-                    ->where(['id'=>$menu->id_extra])
-                    ->one();
-            }
+            
 
 //            $bebida=Produtos::find()
 //                ->where

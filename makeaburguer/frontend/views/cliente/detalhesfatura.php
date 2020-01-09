@@ -26,6 +26,18 @@ $this->title = 'pedido';
                 if(!empty($hamburguer)){
                     echo $hamburguer->nome;
                 }
+                if(!empty($bebida)){
+                    echo $bebida->nome;
+                }
+                if(!empty($complemento)){
+                    echo $complemento->nome;
+                }
+                if(!empty($sobremesa)){
+                    echo $sobremesa->nome;
+                }
+                if(!empty($extra)){
+                    echo $extra->nome;
+                }
                 
                 
             ?>
