@@ -54,13 +54,13 @@ body {
 /*Mudar a cor dos botoes*/
 .btn-primary {
     color: #fff;
-    background-color: darkorange;
-    border-color: transparent;
+    background-color: darkorange!important;
+    border-color: transparent!important;
 }
 .btn-primary:hover {
     color: #fff;
-    background-color: orangered;
-    border-color: transparent;
+    background-color: orangered!important;
+    border-color: transparent!important;
 }
 
 .wrap {
