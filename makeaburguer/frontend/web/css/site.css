@@ -266,6 +266,12 @@ a.desc:after {
      background-color: orangered!important;
      border-color: transparent!important;
  }
+ .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    color: white;
+    cursor: default;
+    background-color: darkorange !important;
+    border-color: transparent;
+}
 
 .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
     border: 1px solid #ddd;
