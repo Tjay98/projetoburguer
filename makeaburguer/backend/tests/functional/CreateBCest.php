@@ -4,7 +4,7 @@ use backend\tests\FunctionalTester;
 
 use common\fixtures\UserFixture;
 
-class IngreCest
+class CreateBCest
 {
     public function _fixtures()
     {
@@ -16,20 +16,20 @@ class IngreCest
         ];
     }
 
-    public function insertIngre(FunctionalTester $I)
-    {   $I->amOnPage('/site/login');
+    public function createBCest(FunctionalTester $I)
+    {   
+        $I->amOnPage('/site/login');
         $I->fillField('username', 'rodolfo');
         $I->fillField('password', '123456789');
         $I->click('login-button');
 
-        $I->amOnPage('/ingrediente/create');
-        $I->fillField('Nome','teste');
-        $I->selectOption('Tipo', 'pao');
-        $I->fillField('Preço', '2');
-        $I->click('Guardar');
-
-        /*$I->see('My Application');
-        $I->dontSeeLink('Login');
-        $I->dontSeeLink('Signup');*/
+        $I->amOnPage('/categoria/create');
+        $I->see('Nome');
+        
+       /* $I->fillField('Nome','teste');
+      $I->selectOption('Pao', 'pao');
+        $I->selectOption('Carne', 'carne');
+        $I->fillField('Descrição', '2');
+        $I->click('Save');*/
     }
 }

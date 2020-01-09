@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nome')
-    ->label('nome')
+    ->label('Nome')
     ->textInput(['maxlength' => true]) ?>
 
     <?=$form->field($model, 'tipo')
