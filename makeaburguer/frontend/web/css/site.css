@@ -295,4 +295,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 
+#pedidocard{
+    background-color: transparent!important;
+}
 /*teste*/
