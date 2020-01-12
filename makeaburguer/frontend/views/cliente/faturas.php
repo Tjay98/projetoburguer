@@ -31,7 +31,7 @@ $this->title = 'Faturas';
                             <?php if(!empty($pedidos)){
                                 $contador++;
                                 echo "<tr><th>$contador</th><td>".$pedido->data."</td>";?>
-                                <td><?= \yii\bootstrap\Html::a('Info', ['cliente/detalhesfatura', 'id' => $pedido->id]) ?></td>
+                                <td><?= Html::a('Info', ['cliente/detalhesfatura', 'id' => $pedido->id]) ?></td>
                                 </tr>
                             <?php }
                             else{

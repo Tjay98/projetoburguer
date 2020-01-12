@@ -19,7 +19,6 @@ $this->title = 'pedido';
         <?php  foreach ($pedidos as $pedido): ?>
 
             <?php if(!empty($pedidos)){
-
                 echo $pedido->data;
                 echo "<br>";
                 echo $pedido->id_menu;
