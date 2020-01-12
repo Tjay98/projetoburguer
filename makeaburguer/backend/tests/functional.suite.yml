@@ -2,12 +2,10 @@ suite_namespace: backend\tests\functional
 actor: FunctionalTester
 modules:
     enabled:
-        - Yii2
-        - Db:
-            dsn: 'mysql:host=localhost;dbname=makeburger_test'
+        - Yii2:
+            dsn: 'mysql:host=localhost;dbname=makeburger_teste'
             user: 'root'
             password: ''
-            dump: 'tests/_data/dump.sql'
             populate: false
             cleanup: false
 

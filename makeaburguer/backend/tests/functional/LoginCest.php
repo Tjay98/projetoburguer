@@ -31,14 +31,14 @@ class LoginCest
      * @param FunctionalTester $I
      */
     public function loginUser(FunctionalTester $I)
-    {
-        $I->amOnPage('/site/login');
+    {   
+        $I->amOnPage('/');
         $I->fillField('username', 'rodolfo');
         $I->fillField('password', '123456789');
         $I->click('login-button');
 
         //$I->see('Logout (erau)', 'form button[type=submit]');
-       // $I->see('My Application','logo-lg'); 
+        $I->see('Make a burger'); 
         $I->dontSeeLink('Login');
         $I->dontSeeLink('Signup');
     }

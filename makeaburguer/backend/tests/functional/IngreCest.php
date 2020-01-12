@@ -17,7 +17,8 @@ class IngreCest
     }
 
     public function insertIngre(FunctionalTester $I)
-    {   $I->amOnPage('/site/login');
+    { 
+        $I->amOnPage('/site/login');
         $I->fillField('username', 'rodolfo');
         $I->fillField('password', '123456789');
         $I->click('login-button');
@@ -28,7 +29,7 @@ class IngreCest
         $I->fillField('Preço', '2');
         $I->click('Guardar');
 
-        /*$I->see('My Application');
+       /* $I->see('My Application');
         $I->dontSeeLink('Login');
         $I->dontSeeLink('Signup');*/
     }
