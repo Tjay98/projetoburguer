@@ -107,7 +107,8 @@ class ClienteController extends Controller
         if(Yii::$app->user->can('utilizador')) {
 
             $pedidos=Pedido::find()
-                ->where(['id'=>$_GET['id']])
+                ->select('id_menu')
+                ->where(['id'=>$id])
                 ->all();
             /*$menu='';
             $hamburguer='';
@@ -117,7 +118,7 @@ class ClienteController extends Controller
             $extra='';*/
 
                 $menu=Menu::find()
-                    ->where(['id'=>$pedidos->id_menu])
+                    ->where(['id'=>$pedidos])
                     ->all();
                     
                     if (!empty($menu->id_hamburguer)) {
