@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descricao')->textarea(['rows  ' => 6])->label('Descrição') ?>
 
-    <?=$form->field($model, 'pao')->widget(Select2::classname(), [
+    <?=$form->field($model, 'pao')->label('Pão')->widget(Select2::classname(), [
             'data' => $pao,
             'language' => 'pt',
             'options' => ['placeholder' => 'Selecione o tipo de pão'],
@@ -36,7 +36,8 @@ use yii\widgets\ActiveForm;
         'pluginOptions' => [
             'allowClear' => true
         ],
-    ]);?>
+    ])->label('Carne');?>
+    
     <?=$form->field($model, 'molho')->widget(Select2::classname(), [
         'data' => $molho,
         'language' => 'pt',

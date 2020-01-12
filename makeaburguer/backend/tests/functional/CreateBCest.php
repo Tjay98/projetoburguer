@@ -1,7 +1,8 @@
 <?php
-namespace backend\tests\functional;
-use backend\tests\FunctionalTester;
 
+namespace backend\tests\functional;
+
+use backend\tests\FunctionalTester;
 use common\fixtures\UserFixture;
 
 class CreateBCest
@@ -22,14 +23,13 @@ class CreateBCest
         $I->fillField('username', 'rodolfo');
         $I->fillField('password', '123456789');
         $I->click('login-button');
-
-        $I->amOnPage('/categoria/create');
-        $I->see('Nome');
-        
-       /* $I->fillField('Nome','teste');
-      $I->selectOption('Pao', 'pao');
+       
+        $I->amOnPage('/hamburguer/create');
+        $I->fillField('Nome','teste');
+        $I->selectOption('Pão', 'pao');
         $I->selectOption('Carne', 'carne');
         $I->fillField('Descrição', '2');
-        $I->click('Save');*/
+        $I->click('.btn');
+
     }
 }
