@@ -25,12 +25,11 @@ $this->title = 'Faturas';
                         <?php Pjax::begin() ?>
                     <table class="table table-striped table-bordered detail-view">
                         <tbody>
-                        <tr><th>Pedido</th><th>Data</th><th>Detalhes</th></tr>
+                        <tr><th>Data</th><th>Valor</th><th>Detalhes</th></tr>
                         <?php  foreach ($pedidos as $pedido): ?>
 
                             <?php if(!empty($pedidos)){
-                                $contador++;
-                                echo "<tr><th>$contador</th><td>".$pedido->data."</td>";?>
+                                echo "<tr><td>".$pedido->data."</td><td>$pedido->preco</td>";?>
                                 <td><?= Html::a('Info', ['cliente/detalhesfatura', 'id' => $pedido->id]) ?></td>
                                 </tr>
                             <?php }

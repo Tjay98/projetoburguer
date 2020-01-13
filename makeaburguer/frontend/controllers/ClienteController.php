@@ -78,7 +78,8 @@ class ClienteController extends Controller
 
 
             $pedidolist=Pedido::find()
-                ->where(['id_user'=>$id]);
+                ->where(['id_user'=>$id])
+                ->orderBy (['id'=>SORT_DESC]);
 
             $pagination= new Pagination([
                 'defaultPageSize' => 5,
@@ -89,12 +90,12 @@ class ClienteController extends Controller
                 ->offset($pagination->offset)
                 ->limit($pagination->limit)
                 ->all();
-            $contador=0;
+
 
             return $this->render('faturas', [
                 'pedidos'=>$pedidos,
                 'pagination'=>$pagination,
-                'contador'=>$contador,
+
 
             ]);
         }
@@ -106,35 +107,46 @@ class ClienteController extends Controller
     public function actionDetalhesfatura($id){
         if(Yii::$app->user->can('utilizador')) {
 
-            $pedidos=Pedido::find()
-                ->select('id_menu')
-                ->where(['id'=>$id])
-                ->all();
-            /*$menu='';
-            $hamburguer='';
-            $bebida='';
-            $complemento='';
-            $sobremesa='';
-            $extra='';*/
 
-                $menu=Menu::find()
-                    ->where(['id'=>$pedidos])
-                    ->all();
-                    
-                    if (!empty($menu->id_hamburguer)) {
+            $pedidos=Pedido::find()
+                ->where(['id'=>$id])
+                ->limit(1)
+                ->one();  
+        
+            $menu=Menu::find()
+            ->where(['id'=>$pedidos->id_menu])
+            ->limit(1)
+            ->one();
+
+                
+
+            
+                    if (!empty($menu->id_hamburguer)){
                         $hamburguer=Hamburguer::find()
                             ->where(['id'=>$menu->id_hamburguer])
                             ->one();
                     }
+                    else{
+                        $hamburguer='';
+                    }
+                        
+            
                     if (!empty($menu->id_bebida)){
                         $bebida=Produtos::find()
                             ->where(['id'=>$menu->id_bebida])
                             ->one();
                     }
+                    else {
+                        $bebida = '';
+                    }
+
                     if (!empty($menu->id_complemento)){
                         $complemento=Produtos::find()
                             ->where(['id'=>$menu->id_complemento])
                             ->one();
+                    }
+                    else{
+                        $complemento='';
                     }
         
                     if (!empty($menu->id_sobremesa)){
@@ -142,18 +154,20 @@ class ClienteController extends Controller
                             ->where(['id'=>$menu->id_sobremesa])
                             ->one();
                     }
+                    else{
+                        $sobremesa='';
+                    }
         
                     if (!empty($menu->id_extra)){
                         $extra=Produtos::find()
                             ->where(['id'=>$menu->id_extra])
                             ->one();
                     }
+                    else{
+                        $extra='';
+                    }
             
 
-            
-
-//            $bebida=Produtos::find()
-//                ->where
 
             return $this->render('detalhesfatura', [
                 'pedidos'=>$pedidos,
@@ -166,6 +180,7 @@ class ClienteController extends Controller
 
 
             ]);
+            
         }
         else{
             throw new ForbiddenHttpException();
