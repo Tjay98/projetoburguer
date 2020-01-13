@@ -30,16 +30,19 @@ $this->title = 'pedido';
                     }
                     if(!empty($complemento)){
                         echo $complemento->nome;
+                        echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$complemento->imagem,['class'=>'imagemproduto']);
                     }
                     if(!empty($sobremesa)){
                         echo $sobremesa->nome;
+                        echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$sobremesa->imagem,['class'=>'imagemproduto']);
                     }
                     if(!empty($extra)){
                         echo $extra->nome;
+                        echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$extra->imagem,['class'=>'imagemproduto']);
                     } 
                     ?>
         <?php }else{
-            echo '<h2>Não selecionou nenhum pedido</h2>';
+            echo '<center><h2>Não selecionou nenhum pedido</h2></center>';
         } ?>  
       
 

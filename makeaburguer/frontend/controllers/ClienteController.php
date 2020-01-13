@@ -104,19 +104,19 @@ class ClienteController extends Controller
         }
     }
 
-    public function actionDetalhesfatura($id){
+    public function actionDetalhesfatura(){
         if(Yii::$app->user->can('utilizador')) {
 
-
-            $pedidos=Pedido::find()
-                ->where(['id'=>$id])
-                ->limit(1)
-                ->one();  
-        
-            $menu=Menu::find()
-            ->where(['id'=>$pedidos->id_menu])
-            ->limit(1)
-            ->one();
+        if(!empty($_GET['id'])){
+                    $pedidos=Pedido::find()
+                        ->where(['id'=>$_GET['id']])
+                        ->limit(1)
+                        ->one();  
+                
+                    $menu=Menu::find()
+                    ->where(['id'=>$pedidos->id_menu])
+                    ->limit(1)
+                    ->one();
 
                 
 
@@ -180,6 +180,10 @@ class ClienteController extends Controller
 
 
             ]);
+        }
+        else{
+            return $this->render('detalhesfatura');
+        }
             
         }
         else{
