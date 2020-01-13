@@ -8,7 +8,7 @@ use common\fixtures\UserFixture;
 /**
  * Class LoginCest
  */
-class editaCest
+class pedidoCest
 {
     /**
      * Load fixtures before db transaction begin
@@ -30,18 +30,19 @@ class editaCest
     /**
      * @param FunctionalTester $I
      */
-    public function editaUser(FunctionalTester $I)
+    public function pedidoCest(FunctionalTester $I)
     {
         $I->amOnPage('/site/login');
         $I->fillField('Username', 'rodolfo');
         $I->fillField('Password', '123456789');
         $I->click('login-button');
 
-        $I->amOnPage('/cliente/info');
-        $I->click('Editarinformações');
-        $I->see('Gravar');
-        $I->fillField('Nome de utilizador', 'teste');
-        $I->click('Gravar');
+        $I->click('Pedido');
+        $I->click('.btn-primary');
+        $I->see('Hambúrguers');
+        $I->click('.imagemproduto');
+        $I->click('Efetuar Pedido');
+       
     }
     
 }
