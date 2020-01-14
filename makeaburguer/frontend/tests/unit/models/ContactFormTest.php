@@ -14,11 +14,6 @@ class ContactFormTest extends \Codeception\Test\Unit
     {
         $model = new ContactForm();
 
-        $model2 = new Categoria();
-
-        $this->assertFalse($model2->validate(['nome']));
-
-
         $model->attributes = [
             'name' => 'Tester',
             'email' => 'tester@example.com',

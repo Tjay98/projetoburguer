@@ -34,7 +34,7 @@ class PasswordResetRequestFormTest extends \Codeception\Test\Unit
 
     public function testNotSendEmailsToInactiveUser()
     {
-        $user = $this->tester->grabFixture('user', 1);
+        $user = $this->tester->grabFixture('user', 2);
         $model = new PasswordResetRequestForm();
         $model->email = $user['email'];
         expect_not($model->sendEmail());
