@@ -1,6 +1,10 @@
 <?php
 namespace frontend\tests\unit\models;
 
+use app\models\Categoria;
+use app\models\Hamburguer;
+
+use app\models\Ingrediente;
 use frontend\models\ContactForm;
 use yii\mail\MessageInterface;
 
@@ -9,6 +13,11 @@ class ContactFormTest extends \Codeception\Test\Unit
     public function testSendEmail()
     {
         $model = new ContactForm();
+
+        $model2 = new Categoria();
+
+        $this->assertFalse($model2->validate(['nome']));
+
 
         $model->attributes = [
             'name' => 'Tester',
