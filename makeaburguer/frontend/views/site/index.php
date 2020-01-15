@@ -58,7 +58,8 @@ $this->title = 'Make A Burguer';
               <div class="card" ><center><H4 style="color:white">Promoções atuais</H4></center>
                 <div class="card-body">
                   <?php if (!empty($promocoes)){
-                            echo "<hr><br><h4 style='color:white'>Promocão válida atual<br><br>Utilize o código:<br><b>".$promocoes->nome."</b></h4>"."<br><h4 style='color:white'>No valor de:".$promocoes->valor."€</h4>";
+                          foreach($promocoes as $promocao)
+                            echo "<hr><br><h4 style='color:white'>Promocão válida atual<br><br>Utilize o código:<br><b>".$promocao->nome."</b></h4>"."<br><h4 style='color:white'>No valor de:".$promocao->valor."€</h4>";
                             }
                             else{
                               echo"<br><h4>Não existem promoções válidas atualmente</h4>";

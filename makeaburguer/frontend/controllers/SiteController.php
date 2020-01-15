@@ -76,11 +76,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $hoje = date('d-M-Y');
+        $hojed=strtotime($hoje);
+        $listapromo=Promocoes::find()
+        ->all();
+    
+        foreach ($listapromo as $promos){
+            if(($promos->data_inicio<=$hojed)&&($promos->data_fim>=$hojed)){
+                $promocoes[$promos->id]=$promos;
+            }
+        }
 
-            $promocoes=Promocoes::find()
-                ->orderBy('id DESC')
-                ->limit(1)
-                ->one();
             if(!empty($promocoes)){
                 return $this->render('index',['promocoes'=>$promocoes]);
             }

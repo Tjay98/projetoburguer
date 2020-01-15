@@ -103,11 +103,14 @@ class PedidoController extends Controller
             //verificar validade da promoção
             $hoje = date('d-M-Y');
             $hojed=strtotime($hoje);
-            $promocao=Promocoes::find()
-                ->andWhere('data_fim' > $hojed)
-                ->limit(1)
+            $listapromo=Promocoes::find()
                 ->all();
-                
+            
+                foreach ($listapromo as $promos){
+                    if(($promos->data_inicio<=$hojed)&&($promos->data_fim>=$hojed)){
+                        $promocao[$promos->id]=$promos;
+                    }
+                }
 
             if ($model2->load(Yii::$app->request->post()) && $model->load(Yii::$app->request->post())) {
 
