@@ -105,7 +105,7 @@ $this->title = 'pedido';
                                         <div class="modal-body">
                                         <center><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$complemento->imagem,['class'=>'imagemproduto']);?></center>
                                         <br>
-                                        <center><h5>Preço: <?= $complemento->preco?>€</h5></center>
+                                        <center><h5>Preço: <?= $bebida->preco?>€</h5></center>
                                         </div>
                                 </div>
                             </div>
