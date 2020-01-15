@@ -9,31 +9,64 @@ use yii\bootstrap\Html;
 $this->title = 'Make A Burguer';
 ?>
 <div class="site-index">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="..." alt="First slide">
+    <div class="jumbotron">
+      <div class="col-lg-12">
+          <!--Coluna 1 index -->
+          <div class="col-lg-4">
+            <div class="card" style='background-image:linear-gradient(orange,yellow)'><center><H4 style="color:white">Veja os nossos produtos</H4></center>
+              <div class="card-body">
+                <?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/imagens/hamburguers/hamburguer de bacon.jpg',['class'=>'imagemproduto'])?>
+                
+              </div> 
+            </div>
+          </div>
+          <!--Coluna 2 index -->
+          <?php if (Yii::$app->user->can('view-utilizador')){?>
+          <div class="col-lg-4">
+              <div class="card" style='background-image:linear-gradient(orange,yellow)'><center><H4 style="color:white">Crie o seu pedido</H4></center>
+                <div class="card-body">
+                  <?php 
+                  echo Html::a('Criar pedido <p class="glyphicon glyphicon-shopping-cart" style="color:white"></p>', 
+                  ['/site/login'], 
+                  ['class'=>'btn btn-primary']) ?>
+                  
+                </div> 
+              </div>
+          </div>
+          <?php }
+          else {?>
+          <div class="col-lg-4">
+              <div class="card" style='background-image:linear-gradient(orange,yellow)'><center><H4 style="color:white">Para criar um pedido registe-se ou faça login</H4></center>
+                <div class="card-body">
+                  <?php 
+                  echo Html::a('Registro <p class="glyphicon glyphicon-edit" style="color:white"></p>', 
+                  ['/site/signup'], 
+                  ['class'=>'btn btn-primary']) ?>
+                  <br>
+                  <br>
+                  <?php 
+                  echo Html::a('Login <p class="glyphicon glyphicon-edit" style="color:white"></p>', 
+                  ['/site/login'], 
+                  ['class'=>'btn btn-primary']) ?>
+                  
+                </div> 
+              </div>
+          </div>
+          <?php }?>
+          <!--Coluna 3 index -->
+          <div class="col-lg-4">
+              <div class="card" ><center><H4 style="color:white">Promoções atuais</H4></center>
+                <div class="card-body">
+                  <?php if (!empty($promocoes)){
+                            echo "<hr><br><h4 style='color:white'>Promocão válida atual<br><br>Utilize o código:<br><b>".$promocoes->nome."</b></h4>"."<br><h4 style='color:white'>No valor de:".$promocoes->valor."€</h4>";
+                            }
+                            else{
+                              echo"<br><h4>Não existem promoções válidas atualmente</h4>";
+                            }
+                            ?>
+                </div> 
+              </div>
+          </div>
+      </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="..." alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
 </div>

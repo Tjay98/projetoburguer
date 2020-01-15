@@ -104,8 +104,8 @@ class PedidoController extends Controller
             $hoje = date('d-M-Y');
             $hojed=strtotime($hoje);
             $promocao=Promocoes::find()
-                ->where('data_fim'<$hojed)
-//                ->andWhere('data_inicio'>=$hojed)
+                ->andWhere('data_fim' > $hojed)
+                ->limit(1)
                 ->all();
                 
 

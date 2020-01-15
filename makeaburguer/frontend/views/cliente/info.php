@@ -30,7 +30,7 @@ $this->title = $model->username;
 
                     ],
                 ]) ?>
-                <center><?= Html::a('Editarinformações', ['update', 'id' => $model->id], ['name'=>'edita','id'=>'edita','class' => 'btn btn-primary']) ?></center>
+                <center><?= Html::a('Editar informações', ['update', 'id' => $model->id], ['name'=>'edita','id'=>'edita','class' => 'btn btn-primary']) ?></center>
             </div>
         </div>
 
