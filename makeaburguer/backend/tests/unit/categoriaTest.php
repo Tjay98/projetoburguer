@@ -2,8 +2,6 @@
 namespace backend\tests;
 
 use app\models\Categoria;
-use app\models\User;
-use common\fixtures\UserFixture;
 
 class categoriaTest extends \Codeception\Test\Unit
 {
@@ -12,18 +10,20 @@ class categoriaTest extends \Codeception\Test\Unit
      */
     protected $tester;
 
-    
     // tests
     public function testSomeFeature()
     {
+        $model = new Categoria();
 
-        $model = new User();
-        $this->assertUserIsValid($model);
-        $this->assertUserIsAdmin($model);
-       /* $model = new Categoria();
-        $model->setNome(null);
-        $this->assertFalse($model->validate(['nome']));
-       // $model->save();*/
+        $model->setNome('Teste');
+        $model->save();
+
+        $this->assertTrue($model->validate(['Teste']));
+
+        $this->assertEquals($model->getNome(),'Teste');
+
+        $this->tester->seeRecord('app\models\Categoria', ['nome' => 'Teste']);
+        
     }
 
 }

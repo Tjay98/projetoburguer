@@ -124,4 +124,64 @@ class Hamburguer extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Ingrediente::className(), ['id' => 'complemento']);
     }
+
+    public function setNome($nome)
+    {
+        $this->nome=$nome;
+    }
+
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    public function setImagem($imagem)
+    {
+        $this->imagem=$imagem;
+    }
+
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    public function setDescricao($descricao)
+    {
+        $this->descricao=$descricao;
+    }
+
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    public function setPao($pao)
+    {
+        $this->pao=$pao;
+    }
+
+    public function getPao()
+    {
+        return $this->carne;
+    }
+
+    public function setCarne($carne)
+    {
+        $this->carne=$carne;
+    }
+
+    public function getCarne()
+    {
+        return $this->pao;
+    }
+
+    public function setPreco($preco)
+    {
+        $this->preco=$preco;
+    }
+
+    public function getPreco()
+    {
+        return $this->preco;
+    }
 }
