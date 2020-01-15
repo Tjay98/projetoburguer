@@ -27,7 +27,7 @@ $this->title = 'Make A Burguer';
                 <div class="card-body">
                   <?php 
                   echo Html::a('Criar pedido <p class="glyphicon glyphicon-shopping-cart" style="color:white"></p>', 
-                  ['/site/login'], 
+                  ['/produtos/pedido'], 
                   ['class'=>'btn btn-primary']) ?>
                   
                 </div> 

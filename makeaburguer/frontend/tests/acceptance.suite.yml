@@ -3,8 +3,13 @@ actor: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: http://localhost:8080
-            browser: firefox
+            url: http://localhost/projetoburguer/makeaburguer
+            window_size: false #disable in chromedriver
+            port: 5000
+            browser: chrome
+            capabilities:
+                "goog:chromeOptions":
         - Yii2:
             part: init
+            cleanup: false
             
