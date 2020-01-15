@@ -11,6 +11,7 @@ use yii\bootstrap\Button;
 use yii\bootstrap\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
 $this->title = 'Pedido';
 ?>
@@ -21,7 +22,7 @@ $this->title = 'Pedido';
         <hr>
 
         
-
+     
        <?php 
        if (isset($_GET['id'])) {?>
         <h3>Pedido Efetuado!</h3>
@@ -29,6 +30,15 @@ $this->title = 'Pedido';
         <?= Html::a('Ver as suas faturas', ['/cliente/faturas'], ['class'=>'btn btn-primary grid-button']) ?>
 
        <?php } else{ ?>
+       <div id="selecionar">
+       <button class="btn btn-primary" id="hamburguer_costumizado">Criar pedido com hambúrguer customizado</button>
+       <button class="btn btn-primary" id="hamburguer_casa">Criar pedido com hambúrguers da casa</button>
+       </div>
+       <button class="btn btn-primary" id="voltar">Voltar à seleção de tipo</button> 
+       <hr>
+          
+       <div id="tipo_pedido">
+          <button class="btn btn-primary" id="criarcostumizado"> Seu hambúrguer</button>
           <button class="btn btn-primary" id="verhamburguers"> Ver Hambúrguers</button>
           <button class="btn btn-primary" id="verbebidas"> Ver Bebidas</button>
           <button class="btn btn-primary" id="vercomplementos"> Ver Complementos</button>
@@ -43,10 +53,65 @@ $this->title = 'Pedido';
              ]
             ]); ?>
 
+          <div id="hamburguerC">
+               <?=$form->field($model3, 'pao')->widget(Select2::classname(), [
+                    'data' => $pao,
+                    'language' => 'pt',
+                    'options' => ['placeholder' => 'Selecione o tipo de pão'],
+                    'pluginOptions' => [
+                         'allowClear' => true
+               ],
+               ]);?>
+
+
+               <?=$form->field($model3, 'carne')->widget(Select2::classname(), [
+                    'data' => $carne,
+                    'language' => 'pt',
+                    'options' => ['placeholder' => 'Selecione o tipo de carne'],
+                    'pluginOptions' => [
+                         'allowClear' => true
+                    ],
+               ]);?>
+               <?=$form->field($model3, 'molho')->widget(Select2::classname(), [
+                    'data' => $molho,
+                    'language' => 'pt',
+                    'options' => ['placeholder' => 'Selecione o tipo de molho'],
+                    'pluginOptions' => [
+                         'allowClear' => true
+                    ],
+               ]);?>
+
+               <?=$form->field($model3, 'vegetais')->widget(Select2::classname(), [
+                    'data' => $vegetais,
+                    'language' => 'pt',
+                    'options' => ['placeholder' => 'Selecione o tipo de vegetais'],
+                    'pluginOptions' => [
+                         'allowClear' => true
+                    ],
+               ]);?>
+
+               <?=$form->field($model3, 'queijo')->widget(Select2::classname(), [
+                    'data' => $queijo,
+                    'language' => 'pt',
+                    'options' => ['placeholder' => 'Selecione o tipo de queijo'],
+                    'pluginOptions' => [
+                         'allowClear' => true
+                    ],
+               ]);?>
+               <?=$form->field($model3, 'complementos')->widget(Select2::classname(), [
+                    'data' => $complemento,
+                    'language' => 'pt',
+                    'options' => ['placeholder' => 'Selecione o tipo de complemento'],
+                    'pluginOptions' => [
+                         'allowClear' => true
+                    ],
+               ]);?>
+          </div>
                
           <?php echo '<div id="hamburguers">'; ?>
           
                <h2>Hambúrguers</h2>
+               
                <?php foreach($hamburguers as $hamburguer){
                     //declarar variaveis para colocar dentro da lista para a radiolist
                     $nomeH='<p class="card-text" style="color:white; font-size:15px ">'.$hamburguer->nome.'</p>';
@@ -136,7 +201,7 @@ $this->title = 'Pedido';
 
 
           <?php ActiveForm::end(); ?> 
-           
+         </div>  
           
        <?php } ?>
 
@@ -153,11 +218,36 @@ $this->title = 'Pedido';
 <script>
      //ao carregar coloca as div invisiveis
      $( document ).ready(function() {
+     $('#tipo_pedido').hide();
      $('#hamburguers').hide();
      $('#bebidas').hide();
      $('#complementos').hide();
      $('#sobremesas').hide();
      $('#extras').hide();
+     $('#voltar').hide();
+     });
+     //ao selecionar o hamburguer costumizado mostra a criaçao de pedido e permite criar o seu proprio hamburguer
+     $("#hamburguer_costumizado").click(function() {
+          $('#selecionar').hide();
+          $('#tipo_pedido').show();
+          $('#verhamburguers').hide();
+          $('#voltar').show();
+          
+
+     });
+     //faz o contrario do superior e mostra os hamburguers da casa
+     $("#hamburguer_casa").click(function() {
+          $('#selecionar').hide();
+          $('#tipo_pedido').show();
+          $('#criarcostumizado').hide();
+          $('#voltar').show();
+
+     });
+     $("#voltar").click(function() {
+          $('#selecionar').show();
+          $('#tipo_pedido').hide();
+          $('#voltar').hide();
+
      });
 
      //ao clicar ver hamburguer

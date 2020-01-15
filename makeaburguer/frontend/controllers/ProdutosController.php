@@ -2,11 +2,13 @@
 namespace frontend\controllers;
 
 use app\models\Hamburguer;
+use app\models\HamburguerC;
 use app\models\Produtos;
 use app\models\Pedido;
 use app\models\Menu;
 use app\models\Promocoes;
 use app\models\User;
+use app\models\Ingrediente;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\data\Pagination;
@@ -194,6 +196,7 @@ class ProdutosController extends Controller
         if (yii::$app->user->can('utilizador')){
             $model = new Pedido();
             $model2 = new Menu();
+            $model3 = new HamburguerC();
 
             //definir utilizador para atribuir o menu
             $nomeutilizador=Yii::$app->user->identity->username;
@@ -218,6 +221,29 @@ class ProdutosController extends Controller
             ->where(['categoria'=>7])
             ->orWhere(['categoria'=>8])
             ->all();
+            $pao = Ingrediente::find()
+                ->where(['tipo' => 1])
+                ->all();
+
+            $molho = Ingrediente::find()
+                ->where(['tipo' => 2])
+                ->all();
+
+            $carne = Ingrediente::find()
+                ->where(['tipo' => 3])
+                ->all();
+
+            $vegetais = Ingrediente::find()
+                ->where(['tipo' => 4])
+                ->all();
+
+            $queijo = Ingrediente::find()
+                ->where(['tipo' => 5])
+                ->all();
+
+            $complementos = Ingrediente::find()
+                ->where(['tipo' => 6])
+                ->all();
 
 
             //quando submete fazer as funçoes
@@ -225,9 +251,22 @@ class ProdutosController extends Controller
 
 
 
-                $precoH= Hamburguer::find()
+                $precoHamburguer= Hamburguer::find()
                     ->where(['id'=> $model2->id_hamburguer])
                     ->sum('preco');
+
+                //procurar os ingredientes e somar o valor desses ingredientes
+                $precoHamburguerC= Ingrediente::find()
+                    ->where(['id'=> $model3->pao])
+                    ->orWhere(['id'=> $model3->carne])
+                    ->orWhere(['id'=> $model3->molho])
+                    ->orWhere(['id'=> $model3->vegetais])
+                    ->orWhere(['id' => $model3->queijo])
+                    ->orWhere(['id' => $model3->complementos])
+                    ->asArray()
+                    ->sum('preco');
+                //atribuir esse preço ao modelo do hamburguer c
+                $model3->preco=$precoHamburguerC;
 
                 $precoB= Produtos::find()
                     ->where(['id'=> $model2->id_bebida])
@@ -236,7 +275,7 @@ class ProdutosController extends Controller
                     ->orWhere(['id'=> $model2->id_extra])
                     ->sum('preco');
 
-                $preco =$precoB+$precoH;
+                $preco =$precoB+$precoHamburguer;
                 
             
                 //preço do menu
@@ -255,8 +294,10 @@ class ProdutosController extends Controller
                 }
                 //preço do pedido caso haja promoção ^é removido o preço como no codigo acima
                 $model->preco=$preco;
-
-
+                //guardar o modelo 
+                $model3->id_user=$utilizador;
+                $model3->save(false);
+                $model2->id_hamburguerc=$model3->id;
                 //guardar modelo do menu
                 $model2->save(false);
 
@@ -265,6 +306,7 @@ class ProdutosController extends Controller
                 $model->id_menu = $model2->id;
 
                 $model->save(false);
+                
 
                 return $this->redirect(['pedido','id' => $model->id]);
             }
@@ -276,8 +318,15 @@ class ProdutosController extends Controller
                 'sobremesas'=>$sobremesas,
                 'complementos'=>$complementos,
                 'extras'=>$extras,
+                'pao' => ArrayHelper::map($pao, 'id', 'nome'),
+                'molho' => ArrayHelper::map($molho, 'id', 'nome'),
+                'carne' => ArrayHelper::map($carne, 'id', 'nome'),
+                'vegetais' => ArrayHelper::map($vegetais, 'id', 'nome'),
+                'queijo' => ArrayHelper::map($queijo, 'id', 'nome'),
+                'complemento' => ArrayHelper::map($complemento, 'id', 'nome'),
                 'model' => $model,
                 'model2'=> $model2,
+                'model3'=>$model3,
 
             ]);
             
