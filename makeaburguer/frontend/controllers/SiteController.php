@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use app\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
+use app\models\Promocoes;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
@@ -75,7 +76,24 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $hoje = date('d-M-Y');
+        $hojed=strtotime($hoje);
+        $listapromo=Promocoes::find()
+        ->all();
+    
+        foreach ($listapromo as $promos){
+            if(($promos->data_inicio<=$hojed)&&($promos->data_fim>=$hojed)){
+                $promocoes[$promos->id]=$promos;
+            }
+        }
+
+            if(!empty($promocoes)){
+                return $this->render('index',['promocoes'=>$promocoes]);
+            }
+            else{
+                return $this->render('index');
+            }
+      
     }
 
     /**
@@ -251,11 +269,6 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
-    public function actionMenu(){
-        return $this->render('menu.php');
-    }
-//    public function actionContactos(){
-//        return $this->render('contactos.php');
-//    }
+
 
 }
