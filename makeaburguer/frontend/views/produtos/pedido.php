@@ -134,27 +134,6 @@ $this->title = 'Pedido';
 
 
 
-          <!-- modal para colocar informações do pedido
-          <div class="modal fade" id="modalpedido" tabindex="-1" role="dialog" >
-               <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                         <div class="modal-header">
-                              <h5 class="modal-title" >O seu Pedido</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                   <span aria-hidden="true">&times;</span>
-                              </button>
-                         </div>
-                         <div class="modal-body">
-                              <?php
-
-                              ?>
-                         </div>
-
-                    </div>
-               </div>
-          </div>
-          -->
-
 
           <?php ActiveForm::end(); ?> 
            
@@ -169,6 +148,7 @@ $this->title = 'Pedido';
         
 
         
+     </div>
 </div>
 <script>
      //ao carregar coloca as div invisiveis
@@ -236,14 +216,17 @@ $this->title = 'Pedido';
      //ao selecionar o input radio esconder
      $('#id_hamburguer input:radio').change(function() {
                $('#hamburguers').hide();
-               /*var radioValue = $('input[type="radio"]:checked').val();
-               if(radioValue){
-                    $.session_set($hamburguer->id,radioValue);
+              /* if ($(this).is(':checked'))
+               {
+                   var hamburguera=($(this).val());
+                   
+                   alert(hamburguera);
                }*/
                
           });
      $('#id_bebida input:radio').change(function() {
                $('#bebidas').hide();
+               alert("selecionou a bebida");
           });
      $('#id_complemento input:radio').change(function() {
                $('#complementos').hide();

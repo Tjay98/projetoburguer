@@ -46,8 +46,6 @@ AppAsset::register($this);
             ['label'=>'Bebidas','url'=>['produtos/bebidas']],
             '<li class="divider"></li>',
             ['label'=>'Sobremesas','url'=>['produtos/sobremesas']],
-            '<li class="divider"></li>',
-            ['label'=>'Promoções','url'=>['produtos/promocoes']],
 
         ]
     ];
