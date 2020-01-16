@@ -18,7 +18,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\ForbiddenHttpException;
-
+use yii\web\Request;
 
 /**
  * Site controller
@@ -249,38 +249,37 @@ class ProdutosController extends Controller
 
 
             //quando submete fazer as funçoes
-            if ($model2->load(Yii::$app->request->post())) {
-
-
-               // if((!empty($model))||(!empty($model2)||(!empty($model3)))){
-
-                
-                $precoHamburguer= Hamburguer::find()
-                    ->where(['id'=> $model2->id_hamburguer])
-                    ->sum('preco');
+            if (($model2->load(Yii::$app->request->post()))&&($model3->load(Yii::$app->request->post()))) {
 
                 //procurar os ingredientes e somar o valor desses ingredientes
                 if (!empty($model3)){
-                $precoHamburguerC= Ingrediente::find()
+            
+                $precohamburguerc= Ingrediente::find()
                     ->where(['id'=> $model3->pao])
                     ->orWhere(['id'=> $model3->carne])
                     ->orWhere(['id'=> $model3->molho])
                     ->orWhere(['id'=> $model3->vegetais])
                     ->orWhere(['id' => $model3->queijo])
                     ->orWhere(['id' => $model3->complementos])
-                    ->sum('preco');  
-                //atribuir esse preço ao modelo do hamburguer c 
-                $model3->preco=$precoHamburguerC;
-                $model3->id_user=$utilizador;
+                    ->asArray()
+                    ->sum('preco');
                 
+                //atribuir esse preço ao modelo do hamburguer c 
+                $model3->preco=$precohamburguerc;
+                $model3->id_user=$utilizador;
                 //guardar o modelo 
                 $model3->save(false);//tirar false para meter a funcionar pq o hamburguer c nao ta a gravar adequadamente
                 //atribuir o hamburguer costumizado ao menu do cliente
                 $model2->id_hamburguerC=$model3->id;
                 }
                 else{
-                    $precoHamburguerC=0;
+                    $precohamburguerc=0;
                 }
+
+                $precoHamburguer= Hamburguer::find()
+                ->where(['id'=> $model2->id_hamburguer])
+                ->sum('preco');
+
                 //procurar o preço dos produtos selecionados
                 $precoB= Produtos::find()
                     ->where(['id'=> $model2->id_bebida])
@@ -289,7 +288,7 @@ class ProdutosController extends Controller
                     ->orWhere(['id'=> $model2->id_extra])
                     ->sum('preco');
 
-                $preco =$precoB+$precoHamburguer+$precoHamburguerC;
+                $preco =$precoB+$precoHamburguer+$model3->preco;
                 
             
                 //preço do menu
