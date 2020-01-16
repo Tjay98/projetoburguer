@@ -29,8 +29,8 @@ class pedidoTest extends \Codeception\Test\Unit
         $model->setId_user('12345678966');
         $this->assertFalse($model->validate(['id_user']));
         
-        $model->setId_user('3');
-       // $this->assertTrue($model->validate(['id_user']));
+        $model->setId_user(3);
+//        $this->assertTrue($model->validate(['id_user']));
 
 //id_menu
         $model->setId_menu('lorem ipsum dolor sit amet consectetur adipiscing elit vulputate aliquam sagittis metus nisl ridiculus euismod ornare tincidunt nec interdum lobortis aptent imperdiet bibendum dapibus sed sociosqu nostra dui penatibus venenatis phasellus non quam faucibus rutrum vel magnis quisque arcu lacus eu luctus porta diam tempor facilisis vitae ultricies semper cras maximus consequat fermentum vivamus tristique iaculis ante commodo felis suspendisse fames dis integer ligula taciti habitasse mus nulla elementum pellentesque feugiat senectus inceptos curabitur lectus laoreet ex ultrices himenaeos vestibulum libero primis facilisi mi mollis turpis est erat pretium velit orci purus aenean sollicitudin odio mauris duis congue nam netus1');

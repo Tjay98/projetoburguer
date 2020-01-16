@@ -57,6 +57,11 @@ class Menu extends \yii\db\ActiveRecord
         ];
     }
 
+    public function setId($id)
+    {
+        $this->id=$id;
+    }
+
     public function setId_hamburguer($id_hamburguer)
     {
         $this->id_hamburguer=$id_hamburguer;
@@ -91,4 +96,5 @@ class Menu extends \yii\db\ActiveRecord
     {
         $this->descricao=$descricao;
     }
+
 }
