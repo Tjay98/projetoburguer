@@ -221,6 +221,8 @@ class ProdutosController extends Controller
             ->where(['categoria'=>7])
             ->orWhere(['categoria'=>8])
             ->all();
+
+            //componentes do hamburguer costumizado
             $pao = Ingrediente::find()
                 ->where(['tipo' => 1])
                 ->all();
@@ -241,7 +243,7 @@ class ProdutosController extends Controller
                 ->where(['tipo' => 5])
                 ->all();
 
-            $complementos = Ingrediente::find()
+            $complementosing = Ingrediente::find()
                 ->where(['tipo' => 6])
                 ->all();
 
@@ -264,10 +266,13 @@ class ProdutosController extends Controller
                     ->orWhere(['id' => $model3->queijo])
                     ->orWhere(['id' => $model3->complementos])
                     ->asArray()
-                    ->sum('preco');
+                    ->sum('preco');  
                 //atribuir esse preço ao modelo do hamburguer c
                 $model3->preco=$precoHamburguerC;
-
+                $model3->id_user=$utilizador;
+                $model3->save(false);
+                
+                //procurar o preço dos produtos selecionados
                 $precoB= Produtos::find()
                     ->where(['id'=> $model2->id_bebida])
                     ->orWhere(['id'=> $model2->id_sobremesa])
@@ -295,8 +300,7 @@ class ProdutosController extends Controller
                 //preço do pedido caso haja promoção ^é removido o preço como no codigo acima
                 $model->preco=$preco;
                 //guardar o modelo 
-                $model3->id_user=$utilizador;
-                $model3->save(false);
+                
                 $model2->id_hamburguerc=$model3->id;
                 //guardar modelo do menu
                 $model2->save(false);
@@ -323,7 +327,7 @@ class ProdutosController extends Controller
                 'carne' => ArrayHelper::map($carne, 'id', 'nome'),
                 'vegetais' => ArrayHelper::map($vegetais, 'id', 'nome'),
                 'queijo' => ArrayHelper::map($queijo, 'id', 'nome'),
-                'complemento' => ArrayHelper::map($complemento, 'id', 'nome'),
+                'complementosing' => ArrayHelper::map($complementosing, 'id', 'nome'),
                 'model' => $model,
                 'model2'=> $model2,
                 'model3'=>$model3,

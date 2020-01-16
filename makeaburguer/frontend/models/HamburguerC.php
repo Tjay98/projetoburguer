@@ -37,7 +37,7 @@ class HamburguerC extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos', 'preco'], 'required'],
+           // [['id_user', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos', 'preco'], 'required'],
             [['id_user', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos'], 'integer'],
             [['preco'], 'number'],
             [['data_criacao'], 'safe'],

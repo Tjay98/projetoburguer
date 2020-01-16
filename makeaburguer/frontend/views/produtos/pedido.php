@@ -41,7 +41,7 @@ $this->title = 'Pedido';
           <button class="btn btn-primary" id="criarcostumizado"> Seu hambúrguer</button>
           <button class="btn btn-primary" id="verhamburguers"> Ver Hambúrguers</button>
           <button class="btn btn-primary" id="verbebidas"> Ver Bebidas</button>
-          <button class="btn btn-primary" id="vercomplementos"> Ver Complementos</button>
+          <button class="btn btn-primary" id="vercomplementos"> Ver Acompanhamentos</button>
           <button class="btn btn-primary" id="versobremesas"> Ver Sobremesas</button>
           <button class="btn btn-primary" id="verextras"> Ver Extras</button>
           <hr>
@@ -99,7 +99,7 @@ $this->title = 'Pedido';
                     ],
                ]);?>
                <?=$form->field($model3, 'complementos')->widget(Select2::classname(), [
-                    'data' => $complemento,
+                    'data' => $complementosing,
                     'language' => 'pt',
                     'options' => ['placeholder' => 'Selecione o tipo de complemento'],
                     'pluginOptions' => [
@@ -151,7 +151,7 @@ $this->title = 'Pedido';
 
             <br>
           <?php echo '<div id="complementos">'; ?>
-               <h2>Complementos</h2>
+               <h2>Acompanhamentos</h2>
                <?php foreach($complementos as $complemento){
                     $nomec='<p class="card-text" style="color:white; font-size:15px ">'.$complemento->nome.'</p>';
                     $precoc='<p class="card-text" style="color:white; font-size:15px ">Preço:'.$complemento->preco.'</p>';
@@ -219,6 +219,7 @@ $this->title = 'Pedido';
      //ao carregar coloca as div invisiveis
      $( document ).ready(function() {
      $('#tipo_pedido').hide();
+     $('#hamburguerC').hide();
      $('#hamburguers').hide();
      $('#bebidas').hide();
      $('#complementos').hide();
@@ -232,6 +233,13 @@ $this->title = 'Pedido';
           $('#tipo_pedido').show();
           $('#verhamburguers').hide();
           $('#voltar').show();
+          if($('#hamburguerC').is(':visible')){
+               $('#hamburguerC').hide();
+
+          }
+          else{
+               $('#hamburguerC').show();
+          }
           
 
      });
