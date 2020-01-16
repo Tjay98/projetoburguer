@@ -233,13 +233,7 @@ $this->title = 'Pedido';
           $('#tipo_pedido').show();
           $('#verhamburguers').hide();
           $('#voltar').show();
-          if($('#hamburguerC').is(':visible')){
-               $('#hamburguerC').hide();
-
-          }
-          else{
-               $('#hamburguerC').show();
-          }
+          
           
 
      });
@@ -257,7 +251,15 @@ $this->title = 'Pedido';
           $('#voltar').hide();
 
      });
+     $('#criarcostumizado').click(function(){
+          if($('#hamburguerC').is(':visible')){
+               $('#hamburguerC').hide();
 
+          }
+          else{
+               $('#hamburguerC').show();
+          }
+     });
      //ao clicar ver hamburguer
      $("#verhamburguers").click(function() {
           if($('#hamburguers').is(':visible')){
