@@ -258,6 +258,7 @@ class ProdutosController extends Controller
                     ->sum('preco');
 
                 //procurar os ingredientes e somar o valor desses ingredientes
+                if (!empty($model3)){
                 $precoHamburguerC= Ingrediente::find()
                     ->where(['id'=> $model3->pao])
                     ->orWhere(['id'=> $model3->carne])
@@ -267,11 +268,15 @@ class ProdutosController extends Controller
                     ->orWhere(['id' => $model3->complementos])
                     ->asArray()
                     ->sum('preco');  
-                //atribuir esse preço ao modelo do hamburguer c
+                //atribuir esse preço ao modelo do hamburguer c 
                 $model3->preco=$precoHamburguerC;
                 $model3->id_user=$utilizador;
+                $model2->id_hamburguerC=$model3->id;
                 $model3->save(false);
-                
+                }
+                else{
+                    $precoHamburguerC=0;
+                }
                 //procurar o preço dos produtos selecionados
                 $precoB= Produtos::find()
                     ->where(['id'=> $model2->id_bebida])
@@ -280,7 +285,7 @@ class ProdutosController extends Controller
                     ->orWhere(['id'=> $model2->id_extra])
                     ->sum('preco');
 
-                $preco =$precoB+$precoHamburguer;
+                $preco =$precoB+$precoHamburguer+$precoHamburguerC;
                 
             
                 //preço do menu
