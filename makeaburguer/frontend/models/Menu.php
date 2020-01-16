@@ -35,7 +35,7 @@ class Menu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_hamburguer', 'id_hamburguerC', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
+            [['id_hamburguer', 'id_hamburguerc', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
             [['preco'], 'number'],
             [['id_hamburguerC'], 'exist', 'skipOnError' => true, 'targetClass' => HamburguerC::className(), 'targetAttribute' => ['id_hamburguerC' => 'id']],
         ];
@@ -49,7 +49,7 @@ class Menu extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_hamburguer' => 'Id Hamburguer',
-            'id_hamburguerC' => 'Id Hamburguer C',
+            'id_hamburguerc' => 'Id Hamburguer c',
             'id_bebida' => 'Id Bebida',
             'id_complemento' => 'Id Complemento',
             'id_sobremesa' => 'Id Sobremesa',

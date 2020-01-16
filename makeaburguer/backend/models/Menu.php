@@ -56,4 +56,39 @@ class Menu extends \yii\db\ActiveRecord
             'descricao' => 'Descrição',
         ];
     }
+
+    public function setId_hamburguer($id_hamburguer)
+    {
+        $this->id_hamburguer=$id_hamburguer;
+    }
+
+    public function setId_bebida($id_bebida)
+    {
+        $this->id_bebida=$id_bebida;
+    }
+    
+    public function setId_complemento($id_complemento)
+    {
+        $this->id_complemento=$id_complemento;
+    }
+
+    public function setId_sobremesa($id_sobremesa)
+    {
+        $this->id_sobremesa=$id_sobremesa;
+    }
+
+    public function setId_extra($id_extra)
+    {
+        $this->id_extra=$id_extra;
+    }
+
+    public function setPreco($preco)
+    {
+        $this->preco=$preco;
+    }
+
+    public function setDescricao($descricao)
+    {
+        $this->descricao=$descricao;
+    }
 }

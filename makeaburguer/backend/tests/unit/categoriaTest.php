@@ -23,6 +23,7 @@ class categoriaTest extends \Codeception\Test\Unit
         $this->assertEquals($model->getNome(),'Teste');
 
         $this->tester->seeRecord('app\models\Categoria', ['nome' => 'Teste']);
+        $this->tester->seeRecord('app\models\Categoria', ['nome' => 'pao']);
         
     }
 

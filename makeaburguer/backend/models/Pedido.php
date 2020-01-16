@@ -87,4 +87,54 @@ class Pedido extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Promocoes::className(), ['id' => 'promocao']);
     }
+
+    public function setId_user($id_user)
+    {
+        $this->id_user=$id_user;
+    }
+
+    public function getId_user()
+    {
+        return $this->id_user;
+    }
+
+    public function setId_menu($id_menu)
+    {
+        $this->id_menu=$id_menu;
+    }
+
+    public function getId_menu()
+    {
+        return $this->id_menu;
+    }
+
+    public function setPromocao($promocao)
+    {
+        $this->promocao=$promocao;
+    }
+
+    public function getPromocao()
+    {
+        return $this->promocao;
+    }
+
+    public function setPreco($preco)
+    {
+        $this->preco=$preco;
+    }
+
+    public function getPreco()
+    {
+        return $this->preco;
+    }
+
+    public function setData($data)
+    {
+        $this->data=$data;
+    }
+
+    public function getData()
+    {
+        return $this->data;
+    }
 }

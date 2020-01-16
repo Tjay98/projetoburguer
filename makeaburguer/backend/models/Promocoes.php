@@ -58,4 +58,44 @@ class Promocoes extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Pedido::className(), ['promocao' => 'id']);
     }
+
+    public function setNome($nome)
+    {
+        $this->nome=$nome;
+    }
+
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    public function setValor($valor)
+    {
+        $this->valor=$valor;
+    }
+
+    public function getValor()
+    {
+        return $this->valor;
+    }
+
+    public function setData_inicio($data_inicio)
+    {
+        $this->data_inicio=$data_inicio;
+    }
+
+    public function getData_inicio()
+    {
+        return $this->data_inicio;
+    }
+
+    public function setData_fim($data_fim)
+    {
+        $this->data_fim=$data_fim;
+    }
+
+    public function getData_fim()
+    {
+        return $this->data_fim;
+    }
 }

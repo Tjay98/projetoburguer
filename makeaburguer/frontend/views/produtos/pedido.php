@@ -325,8 +325,8 @@ $this->title = 'Pedido';
                
           });
      $('#id_bebida input:radio').change(function() {
-               $('#bebidas').hide();
-               alert("selecionou a bebida");
+              /* $('#bebidas').hide();
+               alert("selecionou a bebida");*/
           });
      $('#id_complemento input:radio').change(function() {
                $('#complementos').hide();
