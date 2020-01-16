@@ -252,7 +252,9 @@ class ProdutosController extends Controller
             if ($model2->load(Yii::$app->request->post())) {
 
 
+               // if((!empty($model))||(!empty($model2)||(!empty($model3)))){
 
+                
                 $precoHamburguer= Hamburguer::find()
                     ->where(['id'=> $model2->id_hamburguer])
                     ->sum('preco');
@@ -266,13 +268,15 @@ class ProdutosController extends Controller
                     ->orWhere(['id'=> $model3->vegetais])
                     ->orWhere(['id' => $model3->queijo])
                     ->orWhere(['id' => $model3->complementos])
-                    ->asArray()
                     ->sum('preco');  
                 //atribuir esse preço ao modelo do hamburguer c 
                 $model3->preco=$precoHamburguerC;
                 $model3->id_user=$utilizador;
+                
+                //guardar o modelo 
+                $model3->save(false);//tirar false para meter a funcionar pq o hamburguer c nao ta a gravar adequadamente
+                //atribuir o hamburguer costumizado ao menu do cliente
                 $model2->id_hamburguerC=$model3->id;
-                $model3->save(false);
                 }
                 else{
                     $precoHamburguerC=0;
@@ -304,9 +308,8 @@ class ProdutosController extends Controller
                 }
                 //preço do pedido caso haja promoção ^é removido o preço como no codigo acima
                 $model->preco=$preco;
-                //guardar o modelo 
                 
-                $model2->id_hamburguerc=$model3->id;
+
                 //guardar modelo do menu
                 $model2->save(false);
 
@@ -318,6 +321,7 @@ class ProdutosController extends Controller
                 
 
                 return $this->redirect(['pedido','id' => $model->id]);
+                
             }
 
 
