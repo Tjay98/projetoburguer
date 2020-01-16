@@ -38,7 +38,7 @@ class editaCest
         $I->click('login-button');
 
         $I->amOnPage('/cliente/info');
-        $I->click('Editarinformações');
+        $I->click('Editar informações');
         $I->see('Gravar');
         $I->fillField('Nome de utilizador', 'teste');
         $I->click('Gravar');

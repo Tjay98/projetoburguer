@@ -38,9 +38,13 @@ class pedidoCest
         $I->click('login-button');
 
         $I->click('Pedido');
+        $I->see('Criar pedido com hambúrguer customizado');
         $I->click('.btn-primary');
-        $I->see('Hambúrguers');
-        $I->click('.imagemproduto');
+        $I->see('Voltar à seleção de tipo');
+        $I->see('Seu hambúrguer');
+        $I->see('Pao','.control-label');
+        $I->selectOption('Pao', 'pao');
+        $I->selectOption('Carne', 'carne');
         $I->click('Efetuar Pedido');
        
     }
