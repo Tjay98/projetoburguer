@@ -205,6 +205,19 @@ class ProdutosController extends Controller
                 ->select('id');
 
 
+            //encontrar promoções válidas
+            $hoje = date('d-M-Y');
+            $hojed=strtotime($hoje);
+            $listapromo=Promocoes::find()
+            ->all();
+        
+            foreach ($listapromo as $promos){
+                if(($promos->data_inicio<=$hojed)&&($promos->data_fim>=$hojed)){
+                    $promocoes[$promos->id]=$promos;
+                }
+            }
+
+
             //procurar pelos vários componentes do pedido
             $hamburguers=Hamburguer::find()
                 ->all();
@@ -336,6 +349,7 @@ class ProdutosController extends Controller
                 'vegetais' => ArrayHelper::map($vegetais, 'id', 'nome'),
                 'queijo' => ArrayHelper::map($queijo, 'id', 'nome'),
                 'complementosing' => ArrayHelper::map($complementosing, 'id', 'nome'),
+                'promocoes' => ArrayHelper::map($promocoes, 'id', 'nome'),
                 'model' => $model,
                 'model2'=> $model2,
                 'model3'=>$model3,
