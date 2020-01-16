@@ -195,6 +195,14 @@ $this->title = 'Pedido';
                     ])->label(false) ?>
           <?php echo '</div>'; ?>     
             <hr>
+            <?=$form->field($model, 'promocao')->widget(Select2::classname(), [
+                    'data' => $promocoes,
+                    'language' => 'pt',
+                    'options' => ['placeholder' => 'Selecione a promoção'],
+                    'pluginOptions' => [
+                         'allowClear' => true
+               ],
+               ]);?>
             <?= Html::submitButton('Efetuar Pedido', ['class' => 'btn btn-primary']) ?>
 
 
@@ -325,8 +333,8 @@ $this->title = 'Pedido';
                
           });
      $('#id_bebida input:radio').change(function() {
-              /* $('#bebidas').hide();
-               alert("selecionou a bebida");*/
+               $('#bebidas').hide();
+              /* alert("selecionou a bebida");*/
           });
      $('#id_complemento input:radio').change(function() {
                $('#complementos').hide();
