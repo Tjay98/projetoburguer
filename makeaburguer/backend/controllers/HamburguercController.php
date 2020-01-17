@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use app\models\Ingrediente;
+use app\models\User;
 use Yii;
 use app\models\HamburguerC;
 use backend\models\HamburguercSearch;
@@ -101,6 +102,8 @@ class HamburguercController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
+            $getU = User::find()->all();
+
             $pao = Ingrediente::find()
                 ->where(['tipo' => 1])
                 ->all();
@@ -128,6 +131,7 @@ class HamburguercController extends Controller
 
             return $this->render('create', [
                 'model' => $model,
+                'getU' => ArrayHelper::map($getU, 'id', 'username'),
                 'pao' => ArrayHelper::map($pao, 'id', 'nome'),
                 'molho' => ArrayHelper::map($molho, 'id', 'nome'),
                 'carne' => ArrayHelper::map($carne, 'id', 'nome'),
@@ -190,6 +194,7 @@ class HamburguercController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
+            $getU = User::find()->all();
 
             $pao = Ingrediente::find()
                 ->where(['tipo' => 1])
@@ -217,6 +222,7 @@ class HamburguercController extends Controller
 
             return $this->render('update', [
                 'model' => $model,
+                'getU' => ArrayHelper::map($getU, 'id', 'username'),
                 'pao' => ArrayHelper::map($pao, 'id', 'nome'),
                 'molho' => ArrayHelper::map($molho, 'id', 'nome'),
                 'carne' => ArrayHelper::map($carne, 'id', 'nome'),

@@ -13,6 +13,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?=$form->field($model, 'id_user')->widget(Select2::classname(), [
+        'data' => $getU,
+        'language' => 'pt',
+        'options' => ['placeholder' => 'Selecione o cliente'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]);?>
+
     <?=$form->field($model, 'pao')->widget(Select2::classname(), [
             'data' => $pao,
             'language' => 'pt',
