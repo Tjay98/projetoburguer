@@ -9,12 +9,12 @@ use Yii;
  *
  * @property int $id
  * @property int $id_user
- * @property int $pao
- * @property int $molho
- * @property int $carne
- * @property int $vegetais
- * @property int $queijo
- * @property int $complementos
+ * @property int|null $pao
+ * @property int|null $molho
+ * @property int|null $carne
+ * @property int|null $vegetais
+ * @property int|null $queijo
+ * @property int|null $complementos
  * @property float $preco
  * @property string $data_criacao
  *
@@ -37,7 +37,7 @@ class HamburguerC extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-           // [['id_user', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos', 'preco'], 'required'],
+            [['id_user', 'preco'], 'required'],
             [['id_user', 'pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos'], 'integer'],
             [['preco'], 'number'],
             [['data_criacao'], 'safe'],

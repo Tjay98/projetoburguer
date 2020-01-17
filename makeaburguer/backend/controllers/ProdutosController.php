@@ -124,14 +124,20 @@ class ProdutosController extends Controller
     {
         if(Yii::$app->user->can('update-detalhes-admin')) {
             $model = $this->findModel($id);
-
+            $current_image=$model->imagem;
             if ($model->load(Yii::$app->request->post())) {
 
-                $model->imagem=UploadedFile::getInstance($model,'imagem');
-                $imagem=$model->nome.rand(1,400).'.'.$model->imagem->extension;
-                $image_path='imagens/produtos/'.$imagem;
-                $model->imagem->saveAs($image_path);
-                $model->imagem=$image_path;
+                $imageUpload=UploadedFile::getInstance($model,'imagem');
+                if(!empty($imageUpload)&&$imageUpload !==0){
+                    $imageUpload->saveAs('imagens/produtos/'.$model->nome.$imageUpload->extension);
+                    //método mágico
+                    $model->imagem= 'imagens/produtos/'.$model->nome.$imageUpload->extension;
+
+                }
+                else{
+                    $model->imagem=$current_image;
+                }
+
 
                 $model->save(false);
 

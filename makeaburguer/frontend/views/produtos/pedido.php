@@ -240,6 +240,7 @@ $this->title = 'Pedido';
           $('#selecionar').hide();
           $('#tipo_pedido').show();
           $('#verhamburguers').hide();
+          $('#criarcostumizado').show();
           $('#voltar').show();
           
           
@@ -250,6 +251,7 @@ $this->title = 'Pedido';
           $('#selecionar').hide();
           $('#tipo_pedido').show();
           $('#criarcostumizado').hide();
+          $('#verhamburguers').show();
           $('#voltar').show();
 
      });
