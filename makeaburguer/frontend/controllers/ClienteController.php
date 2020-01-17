@@ -2,6 +2,8 @@
 namespace frontend\controllers;
 
 use app\models\Hamburguer;
+use app\models\HamburguerC;
+use app\models\Ingrediente;
 use app\models\Menu;
 use app\models\Produtos;
 use Yii;
@@ -129,7 +131,74 @@ class ClienteController extends Controller
                     else{
                         $hamburguer='';
                     }
+
+                    if (!empty($menu->id_hamburguerC)){
+                        $hamburguerc=HamburguerC::find()
+                            ->where(['id'=>$menu->id_hamburguerC])
+                            ->one();
+                            //verificar se o pão foi escolhido
+                            if(!empty($hamburguerc->pao)){
+                                $pao=Ingrediente::find()
+                                    ->where(['id'=>$hamburguerc->pao])
+                                    ->one();
+                            }
+                            else{
+                                $pao='';
+                            }
+                            //verificar se a carne foi escolhida
+                            if(!empty($hamburguerc->carne)){
+                                $carne=Ingrediente::find()
+                                ->where(['id'=>$hamburguerc->carne])
+                                ->one();  
+                            }
+                            else{
+                                $carne='';
+                            }
+
+                            //verificar molho
+                            if(!empty($hamburguerc->molho)){
+                                $molho=Ingrediente::find()
+                                ->where(['id'=>$hamburguerc->molho])
+                                ->one(); 
+                            }
+                            else{
+                                $molho='';
+                            }
+
+                            //verificar vegetais
+                            if(!empty($hamburguerc->vegetais)){
+                                $vegetais=Ingrediente::find()
+                                ->where(['id'=>$hamburguerc->vegetais])
+                                ->one();   
+                            }
+                            else{
+                                $vegetais='';
+                            }
+                            
+                            //verificar o queijo
+                            if(!empty($hamburguerc->queijo))
+                            {
+                            $queijo=Ingrediente::find()
+                            ->where(['id'=>$hamburguerc->queijo])
+                            ->one();   
+                            }
+                            else{
+                                $queijo='';
+                            }
+                            if(!empty($hamburguerc->complementos)){
+                            $complemntoing=Ingrediente::find()
+                            ->where(['id'=>$hamburguerc->complementos])
+                            ->one();  
+                            }
+                            else{
+                                $complemntoing='';
+                            }
                         
+
+                    }else{
+                    
+                        $hamburguerc='';
+                    }   
             
                     if (!empty($menu->id_bebida)){
                         $bebida=Produtos::find()
@@ -173,10 +242,16 @@ class ClienteController extends Controller
                 'pedidos'=>$pedidos,
                 'menu'=>$menu,
                 'hamburguer'=>$hamburguer,
+                'hamburguerc'=>$hamburguerc,
                 'bebida'=>$bebida,
                 'complemento'=>$complemento,
                 'sobremesa'=>$sobremesa,
                 'extra'=>$extra,
+                'pao'=>$pao,
+                'carne'=>$carne,
+                'vegetais'=>$vegetais,
+                'queijo'=>$queijo,
+                'queijo'=>$complemntoing,
 
 
             ]);

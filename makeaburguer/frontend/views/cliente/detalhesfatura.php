@@ -18,7 +18,7 @@ $this->title = 'pedido';
         <center><H1 id="idperfil">INFO</H1></center>
         <?php if(!empty($pedidos)){ ?>
 
-            <?php
+            <?php //var_dump($hamburguerc);
                     echo '<h5 style="color:white">'.$pedidos->data.'</h5>';
                     echo '<p style="color:white">Id do menu: '.$pedidos->id_menu.'</p>';
                 
@@ -29,6 +29,62 @@ $this->title = 'pedido';
                                         <th>Valor</th>
                                         <th>Detalhes</th>
                                     </tr>';
+                    if(!empty($hamburguerc)){
+                        echo '<tr>';
+                        echo '<td>Hambúrguer costumizado</td>';
+                        echo '<td>'.$hamburguerc->preco.'</td>';
+                        echo '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#hamburguerc">Detalhes</button></td>';
+                        echo '</tr>';
+                        ?>
+                        <div class="modal fade" id="hamburguerc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title"><center>Hambúrguer costumizado</center></h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                        <center><h4>Ingredientes:</h4></center>
+                                        <?php //verificar se os ingredientes estão vazios
+                                        if(!empty($pao)){
+                                            echo"<center>Tipo de Pão: ".$pao->nome." </center>";
+                                        }
+                                        ?>
+                                        <?php 
+                                        if(!empty($carne)){
+                                            echo"<center>Tipo de Carne: ".$carne->nome." </center>";
+                                        }
+                                        ?>
+                                        <?php 
+                                        if(!empty($vegetais)){
+                                            echo"<center>Tipo de vegetais: ".$vegetais->nome." </center>";
+                                        }
+                                        ?>
+                                        <?php 
+                                        if(!empty($molho)){
+                                            echo"<center>Tipo de molho: ".$molho->nome." </center>";
+                                        }
+                                        ?>
+                                        <?php 
+                                        if(!empty($queijo)){
+                                            echo"<center>Tipo de Carne: ".$queijo->nome." </center>";
+                                        }
+                                        ?>
+                                        <?php 
+                                        if(!empty($complementosing)){
+                                            echo"<center>Tipo de Carne: ".$complementosing->nome." </center>";
+                                        }
+                                        ?>
+
+                                        <center><h5>Preço: <?= $hamburguerc->preco?>€</h5></center>
+
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
                     if(!empty($hamburguer)){
                         echo '<tr>';
                         echo '<td>'.$hamburguer->nome.'</td>';

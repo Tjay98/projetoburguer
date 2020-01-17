@@ -262,7 +262,7 @@ class ProdutosController extends Controller
 
 
             //quando submete fazer as funçoes
-            if (($model2->load(Yii::$app->request->post()))&&($model3->load(Yii::$app->request->post()))) {
+            if (($model2->load(Yii::$app->request->post()))&&($model3->load(Yii::$app->request->post()))&&($model->load(Yii::$app->request->post()))) {
 
                 //procurar os ingredientes e somar o valor desses ingredientes
                 if (!empty($model3)){

@@ -37,7 +37,7 @@ class Menu extends \yii\db\ActiveRecord
         return [
             [['id_hamburguer', 'id_hamburguerc', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
             [['preco'], 'number'],
-            [['id_hamburguerC'], 'exist', 'skipOnError' => true, 'targetClass' => HamburguerC::className(), 'targetAttribute' => ['id_hamburguerC' => 'id']],
+           // [['id_hamburguerC'], 'exist', 'skipOnError' => true, 'targetClass' => HamburguerC::className(), 'targetAttribute' => ['id_hamburguerC' => 'id']],
         ];
     }
 

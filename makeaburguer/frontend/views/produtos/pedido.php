@@ -31,7 +31,7 @@ $this->title = 'Pedido';
 
        <?php } else{ ?>
        <div id="selecionar">
-       <button class="btn btn-primary" id="hamburguer_costumizado">Criar pedido com hambúrguer customizado</button>
+       <button class="btn btn-primary" id="hamburguer_costumizado">Criar pedido com hambúrguer costumizado</button>
        <button class="btn btn-primary" id="hamburguer_casa">Criar pedido com hambúrguers da casa</button>
        </div>
        <button class="btn btn-primary" id="voltar">Voltar à seleção de tipo</button> 
