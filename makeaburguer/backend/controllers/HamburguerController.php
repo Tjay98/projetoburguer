@@ -207,27 +207,17 @@ class HamburguerController extends Controller
     {
         if(Yii::$app->user->can('update-detalhes-admin')) {
             $model = $this->findModel($id);
-
+            $current_image=$model->imagem;
             if ($model->load(Yii::$app->request->post())) {
-
-                if(empty($model->imagem)){
-                    $model=$this->findModel($id);
+                $imageUpload=UploadedFile::getInstance($model,'imagem');
+                if(!empty($imageUpload)&&$imageUpload !==0){
+                    $imageUpload->saveAs('imagens/hamburguers/'.$model->nome.$imageUpload->extension);
                     //método mágico
-                    $model->imagem= $model->imagem;
+                    $model->imagem= 'imagens/hamburguers/'.$model->nome.$imageUpload->extension;
 
                 }
                 else{
-
-                    //nao está a funcionar completamente
-                    $hamburguer = Hamburguer::findOne($id);
-                    unlink(Yii::$app->basePath . '/web/' . $hamburguer->imagem);
-
-                    $model->imagem=UploadedFile::getInstance($model,'imagem');
-                    $imagem=$model->nome.'.'.$model->imagem->extension;
-//                    $imagem=$model->nome.rand(1,4000).'.'.$model->imagem->extension; <- maneira antiga de mudar
-                    $image_path='imagens/hamburguers/'.$imagem;
-                    $model->imagem->saveAs($image_path);
-                    $model->imagem=$image_path;
+                    $model->imagem=$current_image;
                 }
 
 
