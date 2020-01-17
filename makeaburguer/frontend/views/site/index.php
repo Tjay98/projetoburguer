@@ -13,10 +13,13 @@ $this->title = 'Make A Burguer';
       <div class="col-lg-12">
           <!--Coluna 1 index -->
           <div class="col-lg-4">
-            <div class="card" style='background-image:linear-gradient(orange,yellow)'><center><H4 style="color:white">Veja os nossos produtos</H4></center>
+            <div class="card" style='background-image:linear-gradient(orange,yellow)'><center><H4 style="color:white">Veja os nossos Hambúrguers</H4></center>
               <div class="card-body">
                 <?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/imagens/hamburguers/hamburguer de bacon.jpg',['class'=>'imagemproduto'])?>
-                
+                <?php 
+                  echo Html::a('Ver hambúrguers', 
+                  ['/produtos/hamburguers'], 
+                  ['class'=>'btn btn-primary']) ?>
               </div> 
             </div>
           </div>

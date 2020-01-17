@@ -17,14 +17,15 @@ $this->title = 'Produtos';
         <div class="col-lg-12">
 
             <?php  foreach ($produto as $produtoI): ?>
-
-                <div class="container">
-                    <h2><?= $produtoI->nome ?></h2>
+                <div class="card" ><center><h2 style='color:white'><?= $produtoI->nome ?></h2></center>
+                    <div class="card-body">
+                        <div class="container">
                     <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$produtoI->imagem,['class'=>'imagemproduto'])?></div>
                     <hr>
-                    <h2>Preço: <?= $produtoI->preco ?> €</h2>
-                </div>
-
+                    <h2 style='color:white'>Preço: <?= $produtoI->preco ?> €</h2>
+                        </div>
+                    </div>
+                </div>    
             <?php endforeach; ?>
 
 

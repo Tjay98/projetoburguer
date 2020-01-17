@@ -18,16 +18,19 @@ $this->title = 'Hamburguers';
 
             <?php  foreach ($hamburguer as $hamburguerI): ?>
 
-                    <div class="container">
-                        <h2><?= $hamburguerI->nome ?></h2>
-                        <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$hamburguerI->imagem,['class'=>'imagemproduto'])?></div>
-                        <hr>
-                        <h3>Sobre:</h3>
-                        <br>
-                        <h2><?= $hamburguerI->descricao ?></h2>
-                        <hr>
-                        <h2>Preço: <?= $hamburguerI->preco ?> €</h2>
-                    </div>
+                    
+                        <div class="card" ><center><h2 style='color:white'><?= $hamburguerI->nome ?></h2></center>
+                            <div class="card-body">
+                                <div><?php echo Html::img(Yii::$app->request->baseUrl.'/backend/web/'.$hamburguerI->imagem,['class'=>'imagemproduto'])?></div>
+                                <hr>
+                                <h2 style='color:white'>Descrição</h2>
+                                <br>
+                                <h2 style='color:white'><?= $hamburguerI->descricao ?></h2>
+                                <hr>
+                                <h2 style='color:white'>Preço: <?= $hamburguerI->preco ?> €</h2>
+                            </div>
+                        </div>
+                  
 
             <?php endforeach; ?>
 
