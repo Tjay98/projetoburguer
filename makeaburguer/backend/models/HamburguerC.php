@@ -31,7 +31,7 @@ class HamburguerC extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['pao', 'carne'], 'required'],
+            [['id_user','pao', 'carne'], 'required'],
             [['pao', 'molho', 'carne', 'vegetais', 'queijo', 'complementos'], 'integer'],
         ];
     }
@@ -43,6 +43,7 @@ class HamburguerC extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'id_user' => 'Id User',
             'pao' => 'Pão',
             'molho' => 'Molho',
             'carne' => 'Carne',
