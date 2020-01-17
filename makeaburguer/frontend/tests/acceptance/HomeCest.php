@@ -23,9 +23,9 @@ class HomeCest
         $I->wait(5);
         $I->see('perfil');
         $I->wait(5);
-        $I->seeLink('Logout');
         $I->click('Logout');
         $I->wait(5);
+        $I->see('Para criar um pedido registe-se ou faça login');
         //$I->see('This is the About page.');
     }
 }
