@@ -37,7 +37,7 @@ class promocaoTest extends \Codeception\Test\Unit
         $model->save();
 
         $this->tester->seeRecord('app\models\Promocoes', ['nome' => 'Teste']);
-        $this->tester->dontSeeRecord('app\models\Promocoes', ['nome' => 'Teste']);
+        $this->tester->dontSeeRecord('app\models\Promocoes', ['nome' => 'Test']);
 
     }
 }

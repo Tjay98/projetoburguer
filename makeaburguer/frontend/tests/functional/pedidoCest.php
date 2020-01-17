@@ -38,7 +38,7 @@ class pedidoCest
         $I->click('login-button');
 
         $I->click('Pedido');
-        $I->see('Criar pedido com hambúrguer customizado');
+        $I->see('Criar pedido com hambúrguer costumizado');
         $I->click('.btn-primary');
         $I->see('Voltar à seleção de tipo');
         $I->see('Seu hambúrguer');

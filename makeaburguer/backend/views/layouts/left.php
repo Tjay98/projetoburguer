@@ -56,8 +56,7 @@ use yii\helpers\Url;
                     ['label' => 'Produtos', 'url' => ['produtos/index']],
                     ['label' => 'Pedidos', 'url' => ['pedido/index']],
                     ['label' => 'Menus', 'url' => ['menu/index']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+                
 
                 ],
             ]
@@ -74,8 +73,6 @@ use yii\helpers\Url;
                     ['label' => 'Produtos', 'url' => ['produtos/index']],
                     ['label' => 'Pedidos', 'url' => ['pedido/index']],
                     ['label' => 'Menus', 'url' => ['menu/index']],
-
-
 
                 ],
             ]
