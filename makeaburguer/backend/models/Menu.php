@@ -35,7 +35,7 @@ class Menu extends \yii\db\ActiveRecord
             [['id'], 'required'],
             [['id', 'id_hamburguer', 'id_bebida', 'id_complemento', 'id_sobremesa', 'id_extra'], 'integer'],
             [['preco'], 'number'],
-            [['descricao'], 'string', 'max' => 255],
+
             [['id'], 'unique'],
         ];
     }
@@ -53,7 +53,7 @@ class Menu extends \yii\db\ActiveRecord
             'id_sobremesa' => 'Sobremesa',
             'id_extra' => 'Extra',
             'preco' => 'Preço',
-            'descricao' => 'Descrição',
+
         ];
     }
 

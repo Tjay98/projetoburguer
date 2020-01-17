@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use app\models\Ingrediente;
 use Yii;
-use app\models\Hamburguerc;
+use app\models\HamburguerC;
 use backend\models\HamburguercSearch;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -80,9 +80,24 @@ class HamburguercController extends Controller
     public function actionCreate()
     {
         if(Yii::$app->user->can('create-admin')) {
-            $model = new Hamburguerc();
+            $model = new HamburguerC();
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+
+                $precoteste= Ingrediente::find()
+                    ->where(['id'=> $model->pao])
+                    ->orWhere(['id'=> $model->carne])
+                    ->orWhere(['id'=> $model->molho])
+                    ->orWhere(['id'=> $model->vegetais])
+                    ->orWhere(['id' => $model->queijo])
+                    ->orWhere(['id' => $model->complemento])
+                    ->asArray()
+                    ->sum('preco');
+
+                $model->preco= $precoteste;
+
+                 $model->save(false);
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
