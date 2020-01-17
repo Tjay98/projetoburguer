@@ -90,7 +90,7 @@ class HamburguercController extends Controller
                     ->orWhere(['id'=> $model->molho])
                     ->orWhere(['id'=> $model->vegetais])
                     ->orWhere(['id' => $model->queijo])
-                    ->orWhere(['id' => $model->complemento])
+                    ->orWhere(['id' => $model->complementos])
                     ->asArray()
                     ->sum('preco');
 
@@ -164,7 +164,7 @@ class HamburguercController extends Controller
                     ->orWhere(['id'=> $model->molho])
                     ->orWhere(['id'=> $model->vegetais])
                     ->orWhere(['id' => $model->queijo])
-                    ->orWhere(['id' => $model->complemento])
+                    ->orWhere(['id' => $model->complementos])
                     ->sum('preco');
 
 //                if(empty($model->molho)) {
