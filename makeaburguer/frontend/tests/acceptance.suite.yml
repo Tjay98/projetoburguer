@@ -4,7 +4,7 @@ modules:
     enabled:
         - WebDriver:
             url: http://localhost/projetoburguer/makeaburguer
-            window_size: false #disable in chromedriver
+            window_size: false 
             port: 5000
             browser: chrome
             capabilities:
