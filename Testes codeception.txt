@@ -1,0 +1,15 @@
+Testes
+
+vendor/bin/codecept run functional -c backend
+vendor/bin/codecept run unit -c backend
+
+Os do frontend são estes 2. Os outros já vinham predefinidos
+vendor/bin/codecept run functional editaCest -c frontend
+vendor/bin/codecept run functional pedidoCest -c frontend
+
+Para correr o acceptance test do front end é necessário abrir o servidor de java através do seguinte codigo
+
+java "-Dwebdriver.chrome.driver=chromedriver.exe" -jar ./selenium-server-standalone-3.141.59.jar -port 5000
+
+E depois:
+vendor/bin/codecept run -- -c frontend acceptance HomeCest.ph
