@@ -266,7 +266,24 @@ class ProdutosController extends Controller
 
                 //procurar os ingredientes e somar o valor desses ingredientes
                 if (!empty($model3)){
-            
+                    /*if(!empty($model3->pao)){
+                        $model3->pao='1';
+                    }
+                    if(!empty($model3->molho)){
+                        $model3->pao='2';
+                    }
+                    if(!empty($model3->carne)){
+                        $model3->pao='3';
+                    }
+                    if(!empty($model3->vegetais)){
+                        $model3->pao='4';
+                    }
+                    if(!empty($model3->queijo)){
+                        $model3->pao='5';
+                    }
+                    if(!empty($model3->complemento)){
+                        $model3->pao='6';
+                    }*/
                 $precohamburguerc= Ingrediente::find()
                     ->where(['id'=> $model3->pao])
                     ->orWhere(['id'=> $model3->carne])
