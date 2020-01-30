@@ -40,7 +40,7 @@ class MenuController extends Controller
      */
     public function actionIndex()
     {
-        if ((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
+        if ((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('funcionario'))) {
             $searchModel = new MenuSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -65,7 +65,7 @@ class MenuController extends Controller
     {
 
 
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('funcionario'))) {
             $model = $this->findModel($id);
 
             $hamburguer = Hamburguer::find()

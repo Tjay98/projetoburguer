@@ -36,7 +36,7 @@ class CategoriaController extends Controller
      */
     public function actionIndex()
     {
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('funcionario'))) {
             $searchModel = new CategoriaSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -58,7 +58,7 @@ class CategoriaController extends Controller
      */
     public function actionView($id)
     {
-        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('view-funcionario'))) {
+        if((Yii::$app->user->can('view-admin'))||(Yii::$app->user->can('funcionario'))) {
             return $this->render('view', [
                 'model' => $this->findModel($id),
             ]);
