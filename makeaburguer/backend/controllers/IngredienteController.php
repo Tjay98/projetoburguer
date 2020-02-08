@@ -164,21 +164,12 @@ class IngredienteController extends Controller
 
             $verifica = Hamburguer::find()
                 ->select('id')
-                ->where(['ingrediente1' => $id])
-                ->orWhere(['ingrediente2' => $id])
-                ->orWhere(['ingrediente3' => $id])
-                ->orWhere(['ingrediente4' => $id])
-                ->orWhere(['ingrediente5' => $id])
-                ->orWhere(['ingrediente6' => $id])
-                ->orWhere(['ingrediente7' => $id])
-                ->orWhere(['ingrediente8' => $id])
-                ->orWhere(['ingrediente9' => $id])
-                ->orWhere(['ingrediente10' => $id])
-                ->orWhere(['ingrediente_extra1' => $id])
-                ->orWhere(['ingrediente_extra2' => $id])
-                ->orWhere(['ingrediente_extra3' => $id])
-                ->orWhere(['ingrediente_extra4' => $id])
-                ->orWhere(['ingrediente_extra5' => $id])
+                ->where(['pao' => $id])
+                ->orWhere(['molho' => $id])
+                ->orWhere(['carne' => $id])
+                ->orWhere(['vegetais' => $id])
+                ->orWhere(['queijo' => $id])
+                ->orWhere(['complemento' => $id])
                 ->one();
             if( $verifica !== null ) {
 
