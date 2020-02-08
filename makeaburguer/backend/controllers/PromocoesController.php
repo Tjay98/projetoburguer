@@ -112,7 +112,21 @@ class PromocoesController extends Controller
         if(Yii::$app->user->can('view-admin')) {
             $model = $this->findModel($id);
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+                if(!empty($model->data_inicio)){
+                $inicio=strtotime($model->data_inicio);
+                $model->data_inicio=$inicio;
+                $model->save(false);
+                }
+                if(!empty($model->data_fim)){
+                $fim=strtotime($model->data_fim);
+                $model->data_fim=$fim;
+                $model->save(false);
+                }
+
+
+                
+
                 return $this->redirect(['view', 'id' => $model->id]);
             }
 
